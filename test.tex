@@ -1,14 +1,117 @@
-\documentclass[11pt]{scrartcl}
+\documentclass[12pt,a4paper,ngerman]{article}
+\usepackage[german,ngerman]{babel} % sorgt dafür, dass "Inhaltsverzeichnis" auf deutsch angezeigt wird, und wahrscheinlich noch ein paar andere Sachen auch
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[top=2.5cm, bottom=2.5cm, outer=4cm, inner=2.5cm, heightrounded, marginparwidth=2.5cm, marginparsep=0.5cm]{geometry}
+\usepackage{graphicx}
+
+\usepackage{wrapfig, ragged2e}
+\usepackage[font=small,labelfont=bf]{caption} % Bildunterschriftdesign
+\usepackage{float}
+\usepackage{fontspec,xunicode}  % dadurch kann man auch äöü direkt im text eingeben
+
+%\usepackage[utf8]{inputenc}
 
 
 
+\setmainfont{Arial}
+
+\setcounter{secnumdepth}{4} % erlaubt Unter-Unter-Kapitel
+
+% folgendes macht automatisch Links im Inhaltsverzeichnis des Pdfs, die direkt zum Unterkapitel führen
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH,bookmarksopen = true,
+bookmarksnumbered = true,linkcolor = black,plainpages = false,hypertexnames = false,
+citecolor = black] {hyperref}
+
+
+% für Zitate
+\usepackage[style=numeric, backend=bibtex]{biblatex}
+\addbibresource{Quellenverzeichnis}  % Bibtex-Datei wird schon in der Preambel eingebunden
+
+% Sachen wegen Literaturverzeichnis
+\usepackage{url}
+\newcommand*\oldurlbreaks{}
+\let\oldurlbreaks=\UrlBreaks
+\renewcommand{\UrlBreaks}{\oldurlbreaks\do\\}
+%\renewcommand{\UrlBreaks}{\oldurlbreaks\do\a\do\b\do\c\do\d\do\e%
+%  \do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q%
+%  \do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\?\do\&}
+\usepackage{hyperref} 
+
+
+ \usepackage[disable]{todonotes}
 \begin{document}
+\setlength{\parindent}{0pt} % kein Einzug bei Absatzanfang
 
-Finster war's, der Mond schien helle auf die grünbeschneite Flur, als
-ein Wagen blitzesschnelle langsam um die runde Ecke fuhr. Drinnen
-saßen stehend Leute schweigend ins Gespräch vertieft, als ein
-totgeschossner Hase auf dem Wasser Schlittschuh lief und ein
-blondgelockter Knabe mit kohlrabenschwarzem Haar auf die grüne Bank
-sich setzte, die gelb angestrichen war.
+\begin{titlepage}
+\begin{flushleft}
+\begin{Huge}
+\textbf{Hochschule München}
+\par\medskip
+Projektarbeit Wackelroboter
+\end{Huge}
+\begin{large}
+\par\bigskip
+\par\bigskip
+\par\bigskip
+\par\bigskip
+\begin{figure}[h]
+\centering\includegraphics[width=0.3\textwidth]{images/segwayIcon.png}
 
+% würde eine Bildunterschrift erzeugen
+%\caption[Eintrag im Abbildungsverzeichnis]{}
+\end{figure}
+
+\par\bigskip
+\par\bigskip
+\par\bigskip
+\par\bigskip
+
+\begin{description}
+\item[Autoren]~\par
+\begin{itemize}
+\item Valentyn Chepil
+\item Stephan Morongowski
+\item Severin Schendel
+\item Aleksandar Stoiljkovic
+\item Timo Veit
+\end{itemize}
+\end{description}
+
+%Autoren: Valentyn Chepil, Stephan Morongowski, Severin Schendel, Aleksandar Stoiljkovic, Timo Veit
+
+\begin{description}
+\item[Betreuer]~\par
+\begin{itemize}
+\item Prof. Dr. Norbert Nitzsche
+\end{itemize}
+\end{description}
+
+
+\end{large}
+\end{flushleft}
+
+
+%\centering\includegraphics{images/segwayIcon.jpg}
+\vfill % Fill the rest of the page with whitespace
+\end{titlepage}
+
+
+%\pdfbookmark[1]{Inhaltsverzeichnis}{toc}
+
+\tableofcontents
+\newpage
+
+
+
+% hier werden alle Extradateien eingebunden
+\input{motivation.tex}
+\input{unterdokument.tex}
+
+
+\newpage
+\renewcommand\refname{Literaturverzeichnis}
+\printbibliography 
+\listoffigures
 \end{document}

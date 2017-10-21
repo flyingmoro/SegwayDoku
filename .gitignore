@@ -1,3 +1,11 @@
+*.lof
+*.bbl
+*.blg
+
+*.xml
+*.gz
+*.toc
+*.bak
 
 
 *.aux
@@ -58,3 +66,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+test-blx.bib
