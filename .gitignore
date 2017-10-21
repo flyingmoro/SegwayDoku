@@ -1,3 +1,11 @@
+
+
+*.aux
+*.log
+*.fls
+*.pdf
+*.fdb_latexmk
+
 # Prerequisites
 *.d
 
