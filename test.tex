@@ -1,18 +1,110 @@
 \documentclass[12pt,a4paper,ngerman]{article}
 \usepackage[german,ngerman]{babel} % sorgt dafür, dass "Inhaltsverzeichnis" auf deutsch angezeigt wird, und wahrscheinlich noch ein paar andere Sachen auch
+
+
+
+% alles bezüglich Matheformeln
+
+% Gleichungen linksbündig
+\usepackage[fleqn]{amsmath}  
+
+% wieweit Gleichungen vom linken Rand aus abgerückt werden
+\setlength\mathindent{20pt}
+
 \usepackage{amsmath}
+
 \usepackage{amsfonts}
+
 \usepackage{amssymb}
+
+% Schriftart ohne Serifen für Formeln
+\usepackage{cmbright}
+\SetSymbolFont{largesymbols}{normal}{OMX}{iwona}{m}{n}
+
+\usepackage{mathtools}
+
+
+% Seitenlayout (Ränder)
 \usepackage[top=2.5cm, bottom=2.5cm, outer=4cm, inner=2.5cm, heightrounded, marginparwidth=2.5cm, marginparsep=0.5cm]{geometry}
+
+% Bildunterschriftdesign
+\usepackage[font=small,labelfont=bf]{caption} 
+\usepackage{caption}
+
+
+
 \usepackage{graphicx}
 
+
+
+% Benutzerdefinierte Farben
+\usepackage{color}
+\definecolor{light-gray}{gray}{0.95}
+
+
+
+
+% Programmcode Formatierung
+\usepackage{listings}
+\lstset{
+	backgroundcolor=\color{light-gray},
+	breaklines=true,
+	captionpos=b,
+	frame=none, % zB leftline oder single
+	keepspaces=true,
+	keywordstyle=\color{olive},
+	%numbers=left,
+	numbersep=5pt,
+	tabsize=4,
+	%numberstyle=\tiny,
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \usepackage{wrapfig, ragged2e}
-\usepackage[font=small,labelfont=bf]{caption} % Bildunterschriftdesign
+
 \usepackage{float}
 \usepackage{fontspec,xunicode}  % dadurch kann man auch äöü direkt im text eingeben
 
-%\usepackage[utf8]{inputenc}
 
+
+\usepackage[utf8]{inputenc}
+
+
+
+% sollte eigentlich Gleichungen linksbündig ausrichten
+%\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+%\let\endchangemargin=\endlist 
+
+%\newfontfamily\codefont[]{Hack}
+%\lstset{basicstyle=\codefont,breaklines=true}
+
+% sorgt dafür, dass nicht so viel Platz über und unter Gleichungen eingefügt wird
+\newenvironment{mathezeug}
+ {\setlength{\abovedisplayskip}{00pt}\setlength{\belowdisplayskip}{\baselineskip}}%
+ %\csname flalign*\endcsname}
+ %{\csname endflalign*\endcsname\ignorespacesafterend}
+
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
 
 
 \setmainfont{Arial}
@@ -40,67 +132,34 @@ citecolor = black] {hyperref}
 \usepackage{hyperref} 
 
 
- \usepackage[disable]{todonotes}
+\usepackage[disable]{todonotes}
+
+%\raggedright % verhindert Blocksatz
+
+% Zeilenabstand = 1.5
+\usepackage{setspace}
+\onehalfspacing
+
+
+
+
+
+
+
+
+
 \begin{document}
 \setlength{\parindent}{0pt} % kein Einzug bei Absatzanfang
+\captionsetup{singlelinecheck=false}
+\input{Titelseite.tex}
 
-\begin{titlepage}
-\begin{flushleft}
-\begin{Huge}
-\textbf{Hochschule München}
-\par\medskip
-Projektarbeit Wackelroboter
-\end{Huge}
-\begin{large}
-\par\bigskip
-\par\bigskip
-\par\bigskip
-\par\bigskip
-\begin{figure}[h]
-\centering\includegraphics[width=0.3\textwidth]{images/segwayIcon.png}
-
-% würde eine Bildunterschrift erzeugen
-%\caption[Eintrag im Abbildungsverzeichnis]{}
-\end{figure}
-
-\par\bigskip
-\par\bigskip
-\par\bigskip
-\par\bigskip
-
-\begin{description}
-\item[Autoren]~\par
-\begin{itemize}
-\item Valentyn Chepil
-\item Stephan Morongowski
-\item Severin Schendel
-\item Aleksandar Stoiljkovic
-\item Timo Veit
-\end{itemize}
-\end{description}
-
-%Autoren: Valentyn Chepil, Stephan Morongowski, Severin Schendel, Aleksandar Stoiljkovic, Timo Veit
-
-\begin{description}
-\item[Betreuer]~\par
-\begin{itemize}
-\item Prof. Dr. Norbert Nitzsche
-\end{itemize}
-\end{description}
-
-
-\end{large}
-\end{flushleft}
-
-
-%\centering\includegraphics{images/segwayIcon.jpg}
-\vfill % Fill the rest of the page with whitespace
-\end{titlepage}
 
 
 %\pdfbookmark[1]{Inhaltsverzeichnis}{toc}
 
 \tableofcontents
+\newpage
+\listoffigures
 \newpage
 
 
@@ -113,5 +172,4 @@ Projektarbeit Wackelroboter
 \newpage
 \renewcommand\refname{Literaturverzeichnis}
 \printbibliography 
-\listoffigures
 \end{document}
