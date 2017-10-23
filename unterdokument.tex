@@ -50,7 +50,18 @@ Durch Aufsummieren von \(\Delta\varphi\) nach jeder Auswertung der Inkrementalge
 \begin{lstlisting}[language=C++, caption=deadReckonTotalPhi]
 float deadReckonTotalPhi(int inkLeft, int inkRight) {
 	static float totalPhi = 0.0f;
+    static int fullTurns = 0;
 	totalPhi = totalPhi + 1/l_a * (inkRight - inkLeft);
+
+    // adjust for -2pi < totalPhi < +2pi
+    if (totalPhi > 6.283185307) {
+        totalPhi -= 6.283185307;
+        fullTurns += 1;
+    }
+    else if (totalPhi < -6.283185307){
+        totalPhi += 6.283185307;
+        fullTurns -= 1;
+    }
 	return totalPhi;
 }
 \end{lstlisting}
