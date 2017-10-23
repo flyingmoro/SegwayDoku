@@ -1,3 +1,5 @@
+% !TEX root = test.tex
+\renewcommand{\autoren}{Stephan Morongowski}
 \newpage
 \section{Navigation}
 
@@ -15,7 +17,7 @@ Zur Verfügung stehen folgende Sensoren:
 \subsection{Inkrementalgeber}
 
 Zur Bestimmung der Position des Roboters in einem festen Koordinatensystem können die Inkrementalgeber der Antriebsmotoren benutzt werden.
-Sie liefern pro Umdrehung 1024 Impulse. Das ergibt bei einem Raddurchmesser von 8 cm eine Auflösung von ca. 0,5 mm pro Strich. 
+Sie liefern pro Umdrehung 1024 Impulse. Das ergibt bei einem Raddurchmesser von 8 cm eine Auflösung von ca. 0,5 mm pro Strich.
 
 \begin{figure}[h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 \centering\includegraphics[width=0.8\textwidth]{images/Kurvenkinematic.eps}
@@ -27,11 +29,11 @@ Zur Ermittlung der aktuellen Position ist in Abbildung \ref{kurvenkinematik} die
 Es gilt:
 \begin{flalign}
     % durch das & Zeichen werden alle Gleichungen an diesem Punkt ausgerichtet
-	arc_{R1} &  = \Delta\varphi\cdot r_{R1} 
+	arc_{R1} &  = \Delta\varphi\cdot r_{R1}
 	\label{eq:bogenmaß_1} \\
-	arc_{R2} & = \Delta\varphi\cdot r_{R2} 
+	arc_{R2} & = \Delta\varphi\cdot r_{R2}
 	\label{eq:bogenmaß_2} \\
-	r_{R1} & = r_{R2}  + l_a 
+	r_{R1} & = r_{R2}  + l_a
 	\label{eq:achsZuMomentanpol} \\
 	\Delta arcs & = arc_{R2} - arc_{R1}
 	\label{eq:arcsDef}
@@ -53,5 +55,8 @@ float deadReckonTotalPhi(int inkLeft, int inkRight) {
 }
 \end{lstlisting}
 
-Zur Bestimmung des Schwerpunktes in xy-Koordinaten wird die Verschiebung von 
+Zur Bestimmung des Schwerpunktes in xy-Koordinaten wird die Verschiebung von
 \(S_0\) zu \(S_1\) mit trigonometrischen Funktionen berechnet und anschließend aufsummiert.
+
+
+\newpage

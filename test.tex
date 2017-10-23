@@ -6,7 +6,7 @@
 % alles bezüglich Matheformeln
 
 % Gleichungen linksbündig
-\usepackage[fleqn]{amsmath}  
+\usepackage[fleqn]{amsmath}
 
 % wieweit Gleichungen vom linken Rand aus abgerückt werden
 \setlength\mathindent{20pt}
@@ -28,7 +28,7 @@
 \usepackage[top=2.5cm, bottom=2.5cm, outer=4cm, inner=2.5cm, heightrounded, marginparwidth=2.5cm, marginparsep=0.5cm]{geometry}
 
 % Bildunterschriftdesign
-\usepackage[font=small,labelfont=bf]{caption} 
+\usepackage[font=small,labelfont=bf]{caption}
 \usepackage{caption}
 
 
@@ -59,10 +59,23 @@
 	%numberstyle=\tiny,
 }
 
+% Kopf- und Fußzeile
+\usepackage[headsepline,footsepline]{scrpage2}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+
+% Kopfzeile
+\ihead{Hochschule München - Segway}
+\ohead{\headmark}
+\automark[subsection]{section}
+
+%Fußzeile
+\ifoot{\autoren}
+\ofoot{\pagemark}
 
 
-
-
+% hiermit kann man später angeben, wer welche Seite geschrieben hat
+\newcommand{\autoren}{}
 
 
 
@@ -92,7 +105,7 @@
 
 % sollte eigentlich Gleichungen linksbündig ausrichten
 %\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
-%\let\endchangemargin=\endlist 
+%\let\endchangemargin=\endlist
 
 %\newfontfamily\codefont[]{Hack}
 %\lstset{basicstyle=\codefont,breaklines=true}
@@ -129,7 +142,7 @@ citecolor = black] {hyperref}
 %\renewcommand{\UrlBreaks}{\oldurlbreaks\do\a\do\b\do\c\do\d\do\e%
 %  \do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q%
 %  \do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\?\do\&}
-\usepackage{hyperref} 
+\usepackage{hyperref}
 
 
 \usepackage[disable]{todonotes}
@@ -157,19 +170,24 @@ citecolor = black] {hyperref}
 
 %\pdfbookmark[1]{Inhaltsverzeichnis}{toc}
 
+% verhindert die Fußzeile für die aktuelle Seite
+\thispagestyle{empty}
+
 \tableofcontents
 \newpage
+\thispagestyle{empty}
 \listoffigures
 \newpage
-
+\setcounter{page}{1}
 
 
 % hier werden alle Extradateien eingebunden
 \input{motivation.tex}
 \input{unterdokument.tex}
 
-
+\renewcommand{\autoren}{}
 \newpage
+\thispagestyle{empty}
 \renewcommand\refname{Literaturverzeichnis}
-\printbibliography 
+\printbibliography
 \end{document}
