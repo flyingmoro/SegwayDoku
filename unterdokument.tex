@@ -3,21 +3,21 @@
 \newpage
 \section{Navigation}
 
-Wie navigiert man in der Ebene? Hier ein Beispiel für ein Zitat: Vgl. \cite{bildungAtmosphaere}
+Wie navigiert man in der Ebene? Hier ein Beispiel fÃ¼r ein Zitat: Vgl. \cite{bildungAtmosphaere}
 
 \subsection{Sensorik}
-Zur Verfügung stehen folgende Sensoren:
+Zur VerfÃ¼gung stehen folgende Sensoren:
 \begin{itemize}
 \item Gyros in allen drei Raumachsen
 \item Beschleunigungssensoren in allen drei Raumachsen
-\item Inkrementalgeber der Räder
+\item Inkrementalgeber der RÃ¤der
 \item Ultraschallsensoren
 \end{itemize}
 
 \subsection{Inkrementalgeber}
 
-Zur Bestimmung der Position des Roboters in einem festen Koordinatensystem können die Inkrementalgeber der Antriebsmotoren benutzt werden.
-Sie liefern pro Umdrehung 1024 Impulse. Das ergibt bei einem Raddurchmesser von 8 cm eine Auflösung von ca. 0,5 mm pro Strich.
+Zur Bestimmung der Position des Roboters in einem festen Koordinatensystem kÃ¶nnen die Inkrementalgeber der Antriebsmotoren benutzt werden.
+Sie liefern pro Umdrehung 1024 Impulse. Das ergibt bei einem Raddurchmesser von 8 cm eine AuflÃ¶sung von ca. 0,5 mm pro Strich.
 
 \begin{figure}[h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 \centering\includegraphics[width=0.8\textwidth]{images/Kurvenkinematic.eps}
@@ -25,27 +25,27 @@ Sie liefern pro Umdrehung 1024 Impulse. Das ergibt bei einem Raddurchmesser von 
 \label{kurvenkinematik}
 \end{figure}
 
-Zur Ermittlung der aktuellen Position ist in Abbildung \ref{kurvenkinematik} die Kinematik einer Kurvenfahrt dargestellt, betrachtet für einen gedanklich sehr kleinen Zeitabschnitt. In diesem wird angenommen, dass die Geschwindigkeiten \(v_1\) und \(v_2\) beider Räder konstant bleiben. Dies sorgt fürdie Vereinfachung, dass der Roboter sich auf einer Kreisbahn um einen für die betrachtete Zeitspanne konstanten Momentanpol bewegt. Im Folgenden sind die durch den Inkrementalgeber erfassten Bogenlängen mit arc bezeichnet.
+Zur Ermittlung der aktuellen Position ist in Abbildung \ref{kurvenkinematik} die Kinematik einer Kurvenfahrt dargestellt, betrachtet fÃ¼r einen gedanklich sehr kleinen Zeitabschnitt. In diesem wird angenommen, dass die Geschwindigkeiten \(v_1\) und \(v_2\) beider RÃ¤der konstant bleiben. Dies sorgt fÃ¼rdie Vereinfachung, dass der Roboter sich auf einer Kreisbahn um einen fÃ¼r die betrachtete Zeitspanne konstanten Momentanpol bewegt. Im Folgenden sind die durch den Inkrementalgeber erfassten BogenlÃ¤ngen mit arc bezeichnet.
 Es gilt:
 \begin{flalign}
     % durch das & Zeichen werden alle Gleichungen an diesem Punkt ausgerichtet
 	arc_{R1} &  = \Delta\varphi\cdot r_{R1}
-	\label{eq:bogenmaß_1} \\
+	\label{eq:bogenmaÃ_1} \\
 	arc_{R2} & = \Delta\varphi\cdot r_{R2}
-	\label{eq:bogenmaß_2} \\
+	\label{eq:bogenmaÃ_2} \\
 	r_{R1} & = r_{R2}  + l_a
 	\label{eq:achsZuMomentanpol} \\
 	\Delta arcs & = arc_{R2} - arc_{R1}
 	\label{eq:arcsDef}
 \end{flalign}
 
-Aus \eqref{eq:bogenmaß_1}, \eqref{eq:bogenmaß_2}, \eqref{eq:achsZuMomentanpol} und \eqref{eq:arcsDef} folgt:
-% hier keine Leerzeile machen, sonst wird der Abstand ganz groß
+Aus \eqref{eq:bogenmaÃ_1}, \eqref{eq:bogenmaÃ_2}, \eqref{eq:achsZuMomentanpol} und \eqref{eq:arcsDef} folgt:
+% hier keine Leerzeile machen, sonst wird der Abstand ganz groÃ
 \begin{flalign}
     \Delta\varphi & = \frac{1}{l_a} \cdot \Delta arcs
 	\label{eq:deltaPhi}
 \end{flalign}
-Durch Aufsummieren von \(\Delta\varphi\) nach jeder Auswertung der Inkrementalgeber kann somit ein ungefährer Absolutwinkel der Roboterachse zu einem festen KS berechnet werden.
+Durch Aufsummieren von \(\Delta\varphi\) nach jeder Auswertung der Inkrementalgeber kann somit ein ungefÃ¤hrer Absolutwinkel der Roboterachse zu einem festen KS berechnet werden.
 
 \begin{lstlisting}[language=C++, caption=deadReckonTotalPhi]
 float deadReckonTotalPhi(int inkLeft, int inkRight) {
@@ -67,7 +67,7 @@ float deadReckonTotalPhi(int inkLeft, int inkRight) {
 \end{lstlisting}
 
 Zur Bestimmung des Schwerpunktes in xy-Koordinaten wird die Verschiebung von
-\(S_0\) zu \(S_1\) mit trigonometrischen Funktionen berechnet und anschließend aufsummiert.
+\(S_0\) zu \(S_1\) mit trigonometrischen Funktionen berechnet und anschlieÃend aufsummiert.
 
 
 \newpage
