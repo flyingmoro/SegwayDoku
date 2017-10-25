@@ -1,4 +1,4 @@
-% !TEX root = test.tex
+% !TEX root = Beispielhauptdokument.tex
 \renewcommand{\autoren}{Stephan Morongowski}
 \newpage
 \section{Navigation}
@@ -29,45 +29,64 @@ Zur Ermittlung der aktuellen Position ist in Abbildung \ref{kurvenkinematik} die
 Es gilt:
 \begin{flalign}
     % durch das & Zeichen werden alle Gleichungen an diesem Punkt ausgerichtet
-	arc_{R1} &  = \Delta\varphi\cdot r_{R1}
-	\label{eq:bogenmaÃ_1} \\
-	arc_{R2} & = \Delta\varphi\cdot r_{R2}
-	\label{eq:bogenmaÃ_2} \\
+	arc_{R1} &  = \Delta\gamma\cdot r_{R1}
+	\label{eq:bogenmaß_1} \\
+	arc_{R2} & = \Delta\gamma\cdot r_{R2}
+	\label{eq:bogenmaß_2} \\
 	r_{R1} & = r_{R2}  + l_a
 	\label{eq:achsZuMomentanpol} \\
 	\Delta arcs & = arc_{R2} - arc_{R1}
-	\label{eq:arcsDef}
+	\label{eq:arcsDef} \\
+    r_S & = r_{R2} - \frac{1}{2} l_a
+	\label{eq:r_s}
 \end{flalign}
 
-Aus \eqref{eq:bogenmaÃ_1}, \eqref{eq:bogenmaÃ_2}, \eqref{eq:achsZuMomentanpol} und \eqref{eq:arcsDef} folgt:
+Aus \eqref{eq:bogenmaß_1}, \eqref{eq:bogenmaß_2}, \eqref{eq:achsZuMomentanpol} und \eqref{eq:arcsDef} folgen:
 % hier keine Leerzeile machen, sonst wird der Abstand ganz groÃ
 \begin{flalign}
-    \Delta\varphi & = \frac{1}{l_a} \cdot \Delta arcs
-	\label{eq:deltaPhi}
+    \Delta\gamma & = \frac{1}{l_a} \cdot \Delta arcs
+	\label{eq:deltaPhi} \\
+    r_S & = \frac{arc_{R2}}{\Delta\gamma} - \frac{1}{2} l_a
 \end{flalign}
-Durch Aufsummieren von \(\Delta\varphi\) nach jeder Auswertung der Inkrementalgeber kann somit ein ungefährer Absolutwinkel der Roboterachse zu einem festen KS berechnet werden.
+Durch Aufsummieren von \(\Delta\gamma\) nach jeder Auswertung der Inkrementalgeber kann somit ein ungefährer Absolutwinkel der Roboterachse zu einem festen KS berechnet werden.
+\par\bigskip
+Zur Bestimmung des Schwerpunktes in xy-Koordinaten wird die Verschiebung von
+\(S_0\) zu \(S_1\) mit trigonometrischen Funktionen berechnet und anschließend aufsummiert. Es gilt:
+\begin{flalign}
+	\vec{S_1} = \vec{S_0} +
+        \begin{pmatrix}
+            -\sin{(\Delta \gamma)} \cdot r_S \cdot \sin{(\gamma_0)}
+            - (r_S - \cos{(\Delta \gamma)} \cdot r_S) \cdot \cos{(\gamma_0}) \\
+            \sin{(\Delta \gamma)} \cdot r_S \cdot \cos{(\gamma_0)}
+            - (r_S - \cos{(\Delta \gamma)} \cdot r_S) \cdot \sin{(\gamma_0})
+        \end{pmatrix}
+	\label{eq:S_1}
+\end{flalign}
 
-\begin{lstlisting}[language=C++, caption=deadReckonTotalPhi]
+Die Berechnung im Mikrocontroller wurde wie in Listing \ref{lst:deadReackon} umgesetzt.
+
+\begin{lstlisting}[language=C++, caption=deadReckonTotalPhi, label={lst:deadReackon}]
 float deadReckonTotalPhi(int inkLeft, int inkRight) {
-	static float totalPhi = 0.0f;
+	static float totalGamma = 0.0f;
     static int fullTurns = 0;
-	totalPhi = totalPhi + 1/l_a * (inkRight - inkLeft);
+	totalGamma = totalGamma + 1/l_a * (inkRight - inkLeft);
 
-    // adjust for -2pi < totalPhi < +2pi
-    if (totalPhi > 6.283185307) {
-        totalPhi -= 6.283185307;
+    // adjust for -2pi < totalGamma < +2pi
+    if (totalGamma > 6.283185307) {
+        totalGamma -= 6.283185307;
         fullTurns += 1;
     }
-    else if (totalPhi < -6.283185307){
-        totalPhi += 6.283185307;
+    else if (totalGamma < -6.283185307){
+        totalGamma += 6.283185307;
         fullTurns -= 1;
     }
-	return totalPhi;
+	return totalGamma;
 }
 \end{lstlisting}
 
-Zur Bestimmung des Schwerpunktes in xy-Koordinaten wird die Verschiebung von
-\(S_0\) zu \(S_1\) mit trigonometrischen Funktionen berechnet und anschließend aufsummiert.
+
+
+
 
 
 \newpage
