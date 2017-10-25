@@ -1,9 +1,9 @@
-% !TEX root = Beispielhauptdokument.tex
+% !TEX root = SegwayDoku.tex
 \renewcommand{\autoren}{Stephan Morongowski}
 \newpage
 \section{Navigation}
 
-Wie navigiert man in der Ebene? Hier ein Beispiel für ein Zitat: Wie in \cite{bildungAtmosphaere} beschrieben, ...
+Wie navigiert man in der Ebene?
 
 \subsection{Sensorik}
 Zur Verfügung stehen folgende Sensoren:
@@ -17,7 +17,6 @@ Zur Verfügung stehen folgende Sensoren:
 \subsection{Inkrementalgeber}
 
 Zur Bestimmung der Position des Roboters in einem festen Koordinatensystem können die Inkrementalgeber der Antriebsmotoren benutzt werden.
-Sie liefern pro Umdrehung 1024 Impulse. Das ergibt bei einem Raddurchmesser von 8 cm eine Auflösung von ca. 0,5 mm pro Strich.
 
 \begin{figure}[h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 \centering\includegraphics[width=0.8\textwidth]{images/Kurvenkinematic.eps}
@@ -41,8 +40,8 @@ Es gilt:
 	\label{eq:r_s}
 \end{flalign}
 
-Aus \eqref{eq:bogenmaß_1}, \eqref{eq:bogenmaß_2}, \eqref{eq:achsZuMomentanpol} und \eqref{eq:arcsDef} folgen:
-% hier keine Leerzeile machen, sonst wird der Abstand ganz groß
+Aus \eqref{eq:bogenmaß_1}, \eqref{eq:bogenmaß_2}, \eqref{eq:achsZuMomentanpol}, \eqref{eq:arcsDef} und \eqref{eq:r_s} folgen:
+% hier keine Leerzeile machen, sonst wird der Abstand ganz groÃ
 \begin{flalign}
     \Delta\gamma & = \frac{1}{l_a} \cdot \Delta arcs
 	\label{eq:deltaPhi} \\

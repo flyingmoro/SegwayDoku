@@ -1,0 +1,209 @@
+\documentclass[12pt,a4paper,ngerman]{article}
+\usepackage[german,ngerman]{babel} % sorgt dafür, dass "Inhaltsverzeichnis" auf deutsch angezeigt wird, und wahrscheinlich noch ein paar andere Sachen auch
+
+
+% alles bezüglich Matheformeln
+
+% Gleichungen linksbÃ¼ndig
+\usepackage[fleqn]{amsmath}
+
+% wieweit Gleichungen vom linken Rand aus abgerückt werden
+\setlength\mathindent{20pt}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Schriftart ohne Serifen für Formeln
+\usepackage{cmbright}
+\SetSymbolFont{largesymbols}{normal}{OMX}{iwona}{m}{n}
+
+\usepackage{mathtools}
+
+
+% Seitenlayout (Ränder)
+\usepackage[top=2.5cm, bottom=2.5cm, outer=4cm, inner=2.5cm, heightrounded, marginparwidth=2.5cm, marginparsep=0.5cm]{geometry}
+
+% Bildunterschriftdesign
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{caption}
+
+
+
+\usepackage{graphicx}
+
+
+
+% Benutzerdefinierte Farben
+\usepackage{color}
+\definecolor{light-gray}{gray}{0.95}
+
+
+
+
+
+
+% Schriftart für SourceCodeListings
+%\usepackage{sourcecodepro}
+
+% Programmcode Formatierung
+\usepackage{listings}
+\lstset{
+	backgroundcolor=\color{light-gray},
+	breaklines=true,
+	captionpos=b,
+	frame=none, % zB leftline oder single
+	keepspaces=true,
+	keywordstyle=\color{olive},
+	%numbers=left,
+	numbersep=5pt,
+	tabsize=4,
+	%numberstyle=\tiny,
+    basicstyle=\footnotesize %\ttyfamily
+}
+
+% Kopf- und Fußzeile
+\usepackage[headsepline,footsepline]{scrpage2}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+
+% Kopfzeile
+%\ihead{Hochschule München - Segway}
+\ohead{\headmark}
+\automark[subsection]{section}
+
+%Fußzeile
+\ifoot{\autoren}
+\ofoot{\pagemark}
+
+
+% hiermit kann man später angeben, wer welche Seite geschrieben hat
+\newcommand{\autoren}{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\usepackage{wrapfig, ragged2e}
+
+\usepackage{float}
+\usepackage{fontspec,xunicode}  % dadurch kann man auch äöü direkt im text eingeben
+
+
+
+\usepackage[utf8]{inputenc}
+
+
+
+% sollte eigentlich Gleichungen linksbündig ausrichten
+%\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+%\let\endchangemargin=\endlist
+
+%\newfontfamily\codefont[]{Hack}
+%\lstset{basicstyle=\codefont,breaklines=true}
+
+% sorgt dafür, dass nicht so viel Platz über und unter Gleichungen eingefügt wird
+\newenvironment{mathezeug}
+ {\setlength{\abovedisplayskip}{00pt}\setlength{\belowdisplayskip}{\baselineskip}}%
+ %\csname flalign*\endcsname}
+ %{\csname endflalign*\endcsname\ignorespacesafterend}
+
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+
+\setmainfont{Arial}
+
+\setcounter{secnumdepth}{4} % erlaubt Unter-Unter-Kapitel
+
+% folgendes macht automatisch Links im Inhaltsverzeichnis des Pdfs, die direkt zum Unterkapitel führen
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH,bookmarksopen = true,
+bookmarksnumbered = true,linkcolor = black,plainpages = false,hypertexnames = false,
+citecolor = black] {hyperref}
+
+
+% für Zitate
+\usepackage[style=numeric, backend=bibtex]{biblatex}
+\addbibresource{Quellenverzeichnis}  % Bibtex-Datei wird schon in der Preambel eingebunden
+
+% Sachen wegen Literaturverzeichnis
+\usepackage{url}
+\newcommand*\oldurlbreaks{}
+\let\oldurlbreaks=\UrlBreaks
+\renewcommand{\UrlBreaks}{\oldurlbreaks\do\\}
+%\renewcommand{\UrlBreaks}{\oldurlbreaks\do\a\do\b\do\c\do\d\do\e%
+%  \do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q%
+%  \do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\?\do\&}
+\usepackage{hyperref}
+
+
+\usepackage[disable]{todonotes}
+
+%\raggedright % verhindert Blocksatz
+
+% Zeilenabstand = 1.5
+\usepackage{setspace}
+\onehalfspacing
+
+
+
+
+
+
+
+
+
+\begin{document}
+\setlength{\parindent}{0pt} % kein Einzug bei Absatzanfang
+\captionsetup{singlelinecheck=false}
+\input{Titelseite.tex}
+
+
+
+%\pdfbookmark[1]{Inhaltsverzeichnis}{toc}
+
+% verhindert die Fußzeile für die aktuelle Seite
+\thispagestyle{empty}
+
+\tableofcontents
+\newpage
+\thispagestyle{empty}
+\listoffigures
+\newpage
+\setcounter{page}{1}
+
+
+% hier werden alle Extradateien eingebunden
+\input{RoboterKSys.tex}
+\input{Navigation.tex}
+
+
+
+
+
+
+\renewcommand{\autoren}{}
+\newpage
+\thispagestyle{empty}
+\renewcommand\refname{Literaturverzeichnis}
+\printbibliography
+\newpage
+
+\appendix
+%\thispagestyle{empty}
+\renewcommand{\autoren}{Anhang}
+\setcounter{page}{1}
+
+
+\end{document}
