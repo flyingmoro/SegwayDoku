@@ -1,30 +1,27 @@
 \documentclass[12pt,a4paper,ngerman]{article}
-\usepackage[german,ngerman]{babel} % sorgt dafÃ¼r, dass "Inhaltsverzeichnis" auf deutsch angezeigt wird, und wahrscheinlich noch ein paar andere Sachen auch
+\usepackage[german,ngerman]{babel} % sorgt dafür, dass "Inhaltsverzeichnis" auf deutsch angezeigt wird, und wahrscheinlich noch ein paar andere Sachen auch
 
 
-
-% alles bezÃ¼glich Matheformeln
+% alles bezüglich Matheformeln
 
 % Gleichungen linksbÃ¼ndig
 \usepackage[fleqn]{amsmath}
 
-% wieweit Gleichungen vom linken Rand aus abgerÃ¼ckt werden
+% wieweit Gleichungen vom linken Rand aus abgerückt werden
 \setlength\mathindent{20pt}
 
 \usepackage{amsmath}
-
 \usepackage{amsfonts}
-
 \usepackage{amssymb}
 
-% Schriftart ohne Serifen fÃ¼r Formeln
+% Schriftart ohne Serifen für Formeln
 \usepackage{cmbright}
 \SetSymbolFont{largesymbols}{normal}{OMX}{iwona}{m}{n}
 
 \usepackage{mathtools}
 
 
-% Seitenlayout (RÃ¤nder)
+% Seitenlayout (Ränder)
 \usepackage[top=2.5cm, bottom=2.5cm, outer=4cm, inner=2.5cm, heightrounded, marginparwidth=2.5cm, marginparsep=0.5cm]{geometry}
 
 % Bildunterschriftdesign
@@ -44,6 +41,11 @@
 
 
 
+
+
+% Schriftart für SourceCodeListings
+%\usepackage{sourcecodepro}
+
 % Programmcode Formatierung
 \usepackage{listings}
 \lstset{
@@ -57,24 +59,25 @@
 	numbersep=5pt,
 	tabsize=4,
 	%numberstyle=\tiny,
+    basicstyle=\footnotesize %\ttyfamily
 }
 
-% Kopf- und FuÃzeile
+% Kopf- und Fußzeile
 \usepackage[headsepline,footsepline]{scrpage2}
 \pagestyle{scrheadings}
 \clearscrheadfoot
 
 % Kopfzeile
-\ihead{Hochschule MÃ¼nchen - Segway}
+\ihead{Hochschule München - Segway}
 \ohead{\headmark}
 \automark[subsection]{section}
 
-%FuÃzeile
+%Fußzeile
 \ifoot{\autoren}
 \ofoot{\pagemark}
 
 
-% hiermit kann man spÃ¤ter angeben, wer welche Seite geschrieben hat
+% hiermit kann man später angeben, wer welche Seite geschrieben hat
 \newcommand{\autoren}{}
 
 
@@ -95,7 +98,7 @@
 \usepackage{wrapfig, ragged2e}
 
 \usepackage{float}
-\usepackage{fontspec,xunicode}  % dadurch kann man auch Ã¤Ã¶Ã¼ direkt im text eingeben
+\usepackage{fontspec,xunicode}  % dadurch kann man auch äöü direkt im text eingeben
 
 
 
@@ -103,14 +106,14 @@
 
 
 
-% sollte eigentlich Gleichungen linksbÃ¼ndig ausrichten
+% sollte eigentlich Gleichungen linksbündig ausrichten
 %\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
 %\let\endchangemargin=\endlist
 
 %\newfontfamily\codefont[]{Hack}
 %\lstset{basicstyle=\codefont,breaklines=true}
 
-% sorgt dafÃ¼r, dass nicht so viel Platz Ã¼ber und unter Gleichungen eingefÃ¼gt wird
+% sorgt dafür, dass nicht so viel Platz über und unter Gleichungen eingefügt wird
 \newenvironment{mathezeug}
  {\setlength{\abovedisplayskip}{00pt}\setlength{\belowdisplayskip}{\baselineskip}}%
  %\csname flalign*\endcsname}
@@ -124,13 +127,13 @@
 
 \setcounter{secnumdepth}{4} % erlaubt Unter-Unter-Kapitel
 
-% folgendes macht automatisch Links im Inhaltsverzeichnis des Pdfs, die direkt zum Unterkapitel fÃ¼hren
+% folgendes macht automatisch Links im Inhaltsverzeichnis des Pdfs, die direkt zum Unterkapitel führen
 \usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH,bookmarksopen = true,
 bookmarksnumbered = true,linkcolor = black,plainpages = false,hypertexnames = false,
 citecolor = black] {hyperref}
 
 
-% fÃ¼r Zitate
+% für Zitate
 \usepackage[style=numeric, backend=bibtex]{biblatex}
 \addbibresource{Quellenverzeichnis}  % Bibtex-Datei wird schon in der Preambel eingebunden
 
@@ -170,7 +173,7 @@ citecolor = black] {hyperref}
 
 %\pdfbookmark[1]{Inhaltsverzeichnis}{toc}
 
-% verhindert die FuÃzeile fÃ¼r die aktuelle Seite
+% verhindert die Fußzeile für die aktuelle Seite
 \thispagestyle{empty}
 
 \tableofcontents
@@ -182,8 +185,8 @@ citecolor = black] {hyperref}
 
 
 % hier werden alle Extradateien eingebunden
-\input{motivation.tex}
-\input{unterdokument.tex}
+\input{Motivation.tex}
+\input{Unterdokument.tex}
 
 \renewcommand{\autoren}{}
 \newpage
@@ -197,8 +200,5 @@ citecolor = black] {hyperref}
 \renewcommand{\autoren}{Anhang}
 \setcounter{page}{1}
 
-\section{Besprechungsprotokolle}
-\input{besprechung_2018_10_12.tex}
-\input{besprechung_2018_10_20.tex}
 
 \end{document}
