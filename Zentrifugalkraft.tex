@@ -1,11 +1,11 @@
 % !TEX root = SegwayDoku.tex
 \renewcommand{\autoren}{Timo Veit}
 \newpage
-\section{Physikalischer Zusammenhang zwischen Geschwindigkeit und Radius}
+\section{Auslegung Kurvengeschwindigkeit}
 
 \begin{figure}[h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
-\centering\includegraphics[width=0.6\textwidth]{images/SegwayFliehkraft.png}
-\caption{Kräfte bei der Kurvenfahrt \newline}
+\centering\includegraphics[width=0.6\textwidth]{images/SegwayFliehkraft.eps}
+\caption{Kräfte bei der Kurvenfahrt \newline (Quelle: eigene Darstellung)}
 \label{zentripetal}
 \end{figure}
 
@@ -30,13 +30,13 @@ Es gilt:
 	\label{eq:moment}
 \end{flalign}
 
-Aus \eqref{eq:bogenmaß_1}, \eqref{eq:bogenmaß_2}, \eqref{eq:achsZuMomentanpol}, \eqref{eq:arcsDef} und \eqref{eq:r_s} folgen:
+Hieraus folgt:
 % hier keine Leerzeile machen, sonst wird der Abstand ganz groÃ
 \begin{flalign}
     \ddot x & = \frac{v^{2}}{r}
 	\label{eq:xpp} \\
     \frac{1}{4} m \cdot g \cdot b & = m \cdot \frac{v^{2}}{r} \cdot h
-	\label{eq:lsg_1} \\
+	\label{eq:lsg_1} 
 \end{flalign}
 
 Und daraus die Zusammenhänge von Geschwindigkeit zu Radius
@@ -44,14 +44,14 @@ Und daraus die Zusammenhänge von Geschwindigkeit zu Radius
     v & = \sqrt{\dfrac{gb}{4h} \cdot r}
 	\label{eq:lsg_v} \\
     r & = \dfrac{4h}{gb} \cdot v^2
-	\label{eq:lsg_r} \\
+	\label{eq:lsg_r} 
 \end{flalign}
 
-Der notwendige Reibwert \mu zwischen Reifen und Boden ergibt sich aus der Haftbedingung.
+Der notwendige Reibwert \(\mu\) zwischen Reifen und Boden ergibt sich aus der Haftbedingung.
 
 \begin{flalign}
-    \(\mu\) \cdot mg & = m \cdot \frac{v^{2}}{r}
+    \mu \cdot mg & = m \cdot \frac{v^{2}}{r}
 	\label{eq:mu_1} \\
-    \(\mu\) & = \frac{v^{2}}{rg}
-	\label{eq:mu_2} \\
+    \mu & = \frac{v^{2}}{rg}
+	\label{eq:mu_2} 
 \end{flalign}
