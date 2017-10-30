@@ -1,0 +1,88 @@
+% !TEX root = SegwayDoku.tex
+\renewcommand{\autoren}{Stephan Morongowski}
+\newpage
+\section{Eigenbau eines Motortreibers}
+Aufgrund der schlechten Verfügbarkeit eines zur feldorientierten Regelung von Synchronmotoren geeigneten Motortreibers wurde überlegt, einen solchen Treiber innerhalb der Projektarbeit zu entwickeln und zu bauen. Zur Eruierung des zeitlichen und kostenmäßigen Aufwandes wurden zunächst wahrscheinliche Anforderungen festeglegt und dann bereits im Internet frei verfügbare Lösungen untereinander verglichen.
+
+\subsection{Anforderungen an den zu entwickelnden Treiber}
+Einfaches Design, Erweiterbarkeit, quelloffen.
+\par\bigskip
+
+Technische Daten:
+\par\bigskip
+\begin{tabularx}{\textwidth} {@{\hspace{1cm}}lX@{}}
+    Motorspannung & bis 25V \\
+    Strom & dauerhaft 30A, Spitze 50A \\
+    Schnittstellen & I2C, USB, PWM \\
+\end{tabularx}
+
+\par\bigskip
+Die Herstellungskosten sollten 80,- € nicht übersteigen.
+
+\subsection{Vergleich quelloffener Treiber}
+
+\subsubsection{VESC}
+Der VESC - vector electronic speed control \cite{vesc} ist ein openSource Projekt von Benjamin Vedder. Der Treiber wurde ausgelegt, um ein Skateboard mit einem bürstenlosen Gleichstrommotor anzutreiben und ist in der Lage, 240A Spitzenstrom und 50A Dauerstrom bei bis zu 60V Versorgungsspannung zu liefern. Er verfügt über eine umfangreiche Konfigurationssoftware, über die vom PC aus alle nötigen Voreinstellungen vorgenommen werden können. Das ganze Projekt wirkt auf den ersten Eindruck sehr ausgereift.
+\par\bigskip
+
+Technische Daten:
+\par\bigskip
+\begin{tabularx}{\textwidth} {@{\hspace{1cm}}lX@{}}
+    Microcontroller & STM34F4 \\
+    MOSFET Treiber & DRV8302 \\
+    MOSFETS & 6 IRFS7530 \\
+    Motorspannung & 8V - 60V \\
+    Strom & dauerhaft 50A, Spitze 240A \\
+    Schnittstellen & PPM signal (RC servo), analog, UART, I2C, USB, CAN-Bus \\
+    Größe & 40mm mal 60mm \\
+\end{tabularx}
+
+\par\bigskip
+Kosten im Eigenbau für zwei Stück:
+\par\bigskip
+
+
+\begin{tabularx}{\textwidth} {@{\hspace{1cm}}lX@{}}
+    Bauteile & ca. 120,- € \\
+    Platinen & ca. 100,- €\\
+    Lötzubehör & ca. 20,- € \\
+    \textbf{Summe} & \textbf{ca. 240,- €} \\
+\end{tabularx}
+
+\par\bigskip
+Beschaffungskosten für zwei fertig aufgebaute Platinen: \textbf{ca. 280,-€}
+
+\subsubsection{oDrive}
+Der ODrive ist eine Entwicklung verschiedener Personen, da grundsätzlich jeder an der Entwicklung des Treibers teilnehmen kann. Dieser Treiber steuert bis zu zwei Motoren mit je ca. 100A Spitzenstrom. Das Projekt befindet sich noch in der Entwicklungsphase. Die Konfiguration des Treibers muss in die Firmware kompiliert werden.
+
+\par\bigskip
+
+
+
+Technische Daten:
+\par\bigskip
+\begin{tabularx}{\textwidth} {@{\hspace{1cm}}lX@{}}
+    Microcontroller & STM34F4 \\
+    MOSFET Treiber & DRV8301 \\
+    MOSFETS & 28 NTMFS4935NT1G \\
+    Motorspannung & 8V - 30V \\
+    Strom & dauerhaft ?, Spitze > 100A \\
+    Schnittstellen & USB, CAN, UART, PWM, and step/dir interface \\
+    Größe & 110mm mal 50mm \\
+\end{tabularx}
+
+
+\par\bigskip
+Kosten im Eigenbau pro Stück:
+\par\bigskip
+
+
+\begin{tabularx}{\textwidth} {@{\hspace{1cm}}lX@{}}
+    Bauteile & ca. ???,- € \\
+    Platinen & ca. ???,- €\\
+    Lötzubehör & ca. 20,- € \\
+    \textbf{Summe} & \textbf{ca. ???,- €} \\
+\end{tabularx}
+
+\par\bigskip
+Beschaffungskosten als fertig aufgebaute Platine: \textbf{ca. 120,-€}
