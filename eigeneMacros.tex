@@ -20,17 +20,22 @@
 \usepackage{xparse}
 
 \ExplSyntaxOn
-\NewDocumentEnvironment{benannteAuflistung} { o }
+\NewDocumentEnvironment{benannteAuflistung} { oo }
 	{
-		\IfNoValueTF{#1} 
-      	{ 
-			\tabularx{\textwidth} {@{\hspace{0.0cm}}lX@{}} 
-      	}
-      	{ 
-	    	\textbf{#1}
+		\IfValueTF{#1}
+    	{
+		   	\textbf{#1}
 	    	\par\smallskip
-	    	\tabularx{\textwidth} {@{\hspace{0.0cm}}lX@{}} 
-	    }
+     	} 
+		{
+		}
+		\IfValueTF{#2}
+		{
+			\tabularx{\textwidth} {@{\hspace{0.0cm}} #2 @{}} 
+		}
+		{
+			\tabularx{\textwidth} {@{\hspace{0.0cm}} lX @{}} 
+		}
     }
     {
     	\endtabularx

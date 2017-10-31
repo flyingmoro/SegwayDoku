@@ -20,7 +20,7 @@ Zur Bestimmung der Position des Roboters in einem festen Koordinatensystem könn
 
 \begin{figure}[h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 \centering\includegraphics[width=0.8\textwidth]{images/Kurvenkinematic.eps}
-\caption{Rotation um den Momentanpol \newline (Quelle: eigene Darstellung)}
+\caption{Rotation um den Momentanpol \newline (Quelle: eigene Darstellung, SM)}
 \label{kurvenkinematik}
 \end{figure}
 
@@ -61,27 +61,6 @@ Zur Bestimmung des Schwerpunktes in xy-Koordinaten wird die Verschiebung von
         \end{pmatrix}
 	\label{eq:S_1}
 \end{flalign}
-
-Die Berechnung im Mikrocontroller wurde wie in Listing \ref{lst:deadReackon} umgesetzt.
-
-\begin{lstlisting}[language=C++, caption=deadReckonTotalPhi, label={lst:deadReackon}]
-float deadReckonTotalPhi(int inkLeft, int inkRight) {
-	static float totalGamma = 0.0f;
-    static int fullTurns = 0;
-	totalGamma = totalGamma + 1/l_a * (inkRight - inkLeft);
-
-    // adjust for -2pi < totalGamma < +2pi
-    if (totalGamma > 6.283185307) {
-        totalGamma -= 6.283185307;
-        fullTurns += 1;
-    }
-    else if (totalGamma < -6.283185307){
-        totalGamma += 6.283185307;
-        fullTurns -= 1;
-    }
-	return totalGamma;
-}
-\end{lstlisting}
 
 
 

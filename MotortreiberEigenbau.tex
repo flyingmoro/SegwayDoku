@@ -86,7 +86,6 @@ Der ODrive ist eine Entwicklung verschiedener Personen, da grundsätzlich jeder 
 
 \par\bigskip
 
-\par\bigskip
 
 
 \begin{benannteAuflistung}[Kosten im Eigenbau pro Stück:]
@@ -98,3 +97,42 @@ Der ODrive ist eine Entwicklung verschiedener Personen, da grundsätzlich jeder 
 
 \par\bigskip
 Beschaffungskosten als fertig aufgebaute Platine: \textbf{ca. 120,-€}
+
+\subsubsection{Predriver}
+Zur effizienteren Nutzung der MosFET wird von verschiedenen Herstellern ein Predriver angeboten. Zur Verfügung steht z.B. der DRV8305 von TI. Er stellt als Funktionen die nötige Ladepumpe, eine Möglichkeit zur Strommessung, optimierte Schaltung der FETs und andere Funktionen zur Verfügung.
+
+\subsubsection{fertige Halbbrücke als Smd-Bauteil}
+Infineon hat fertige Halbbrücken im Programm, die einige der benötigten Anforderungen bereits ohne externe Komponenten erfüllen. Als Beispiel sei hier der BTN8962TA vorgestellt:
+
+\par\bigskip
+\begin{benannteAuflistung}[BTN8962TA]
+    Strom & dauerhaft 30A, Spitze 70A \\
+    Spannung & bis 40V \\
+	Ladepumpe & integriert \\
+	Strommessung & integriert \\
+	PWM & bis 25kHz \\
+	Ansteuerung & logic level \\
+	benötigte Menge & 6 Stück \\
+	Einzelpreis & ca. 4,22€ \\
+	\textbf{Gesamtkosten} & \textbf{ca. 25,-€} \\
+\end{benannteAuflistung}
+
+\subsubsection{Aufbau der Halbbrücken aus Einzelkompoenten}
+\begin{benannteAuflistung}[Benötigte Komponenten][llX]
+    MosFETs & 6 n-FETs  & ca. 3,-€ \\
+	& 6 p-FETs & ca. 3,-€ \\
+	Predriver & zB & ca. 5,-€ \\
+	Strommessung & 4 Shuntwiderstände & ca. 3,-€ \\
+	\textbf{Gesamtkosten} & & \textbf{ca. 14,-€} \\
+\end{benannteAuflistung}
+
+\subsubsection{Auswahl eines Microcontrollers}
+\begin{benannteAuflistung}[Benötigte Eigenschaften pro Motor]
+    6 Pwm-Ausgänge pro Motor bei min. 20kHz \\
+    6 digitale Ausgänge pro Motor \\
+    2-3 digitale Eingänge für Quadraturencoder \\
+    2 digitale Eingänge für Sollmomentvorgabe (Moment und Richtung) \\
+    2 analoge Eingänge für Strommessung pro Motor \\
+\end{benannteAuflistung}
+\par\bigskip
+

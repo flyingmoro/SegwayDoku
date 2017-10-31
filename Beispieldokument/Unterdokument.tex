@@ -70,28 +70,27 @@ float deadReckonTotalPhi(int inkLeft, int inkRight) {
 	static float totalGamma = 0.0f;
     static int fullTurns = 0;
 	totalGamma = totalGamma + 1/l_a * (inkRight - inkLeft);
-
-    // adjust for -2pi < totalGamma < +2pi
-    if (totalGamma > 6.283185307) {
-        totalGamma -= 6.283185307;
-        fullTurns += 1;
-    }
-    else if (totalGamma < -6.283185307){
-        totalGamma += 6.283185307;
-        fullTurns -= 1;
-    }
 	return totalGamma;
 }
 \end{lstlisting}
 
 \par\bigskip
 
+% erstellt eine zweispaltige Tabelle mit fett gedruckter Überschrift
 \begin{benannteAuflistung}[Gewünschte Technische Daten:]
     Motorspannung & bis 25V \\
     Strom & dauerhaft 30A, Spitze 50A \\
     Schnittstellen & I2C, USB, PWM \\
 \end{benannteAuflistung}
 
+\par\bigskip
+% es können auch mehr Spalten definiert werden wie im tabularx-Paket (siehe zweites Argument [llX])
+\begin{benannteAuflistung}[Gewünschte Technische Daten:][llX]
+    Motorspannung & bis 25V & 10,- €\\
+    Strom & dauerhaft 30A, Spitze 50A & 5,- € \\
+    Schnittstellen & I2C, USB, PWM & 3,- €\\
+    \textbf{Summe} &  & \textbf{300,- €}\\
+\end{benannteAuflistung}
 
 
 
