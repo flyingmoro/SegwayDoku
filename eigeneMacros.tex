@@ -1,0 +1,38 @@
+% !TEX root = SegwayDoku.tex
+\usepackage{xstring}
+\usepackage{ifthen}
+
+
+%\newcommand{emptyHeader}{}
+%\newenvironment{benannteAuflistung}[1][]
+%{ %
+%	\ifthenelse{ \greater{\StrLen{#1}}{0} }{ %
+%		\textbf{#1}
+%		\par
+%	}{
+%	  % nothing
+%	}
+%	\tabularx{\textwidth} {@{\hspace{0.0cm}}lX@{}}
+%}
+%{
+%	\endtabularx
+%}
+\usepackage{xparse}
+
+\ExplSyntaxOn
+\NewDocumentEnvironment{benannteAuflistung} { o }
+	{
+		\IfNoValueTF{#1} 
+      	{ 
+			\tabularx{\textwidth} {@{\hspace{0.0cm}}lX@{}} 
+      	}
+      	{ 
+	    	\textbf{#1}
+	    	\par
+	    	\tabularx{\textwidth} {@{\hspace{0.0cm}}lX@{}} 
+	    }
+    }
+    {
+    	\endtabularx
+    }
+\ExplSyntaxOff
