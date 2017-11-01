@@ -22,14 +22,13 @@ Wie in Abbildung \ref{kurvenkinematik} zu sehen ist,...
 
 \begin{figure}[h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 % mit width=... wird die Größe des Bildes in Prozent der Seitenbreite eingestellt
-\centering\includegraphics[width=0.3\textwidth]{images/Kurvenkinematic.eps}
+\centering\includegraphics[width=0.5\textwidth]{images/Kurvenkinematic.eps}
 % caption ist die Bildunterschrift, taucht auch im Abbildungsverzeichnis auf
 \caption{Rotation um den Momentanpol \newline (Quelle: eigene Darstellung)}
-% über das label kann man aus dem Text auf das Bild verweisen
-\label{kurvenkinematik}
+\label{kurvenkinematik} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
 
-Mathematische Sonderzeichen wie \(v_1\) oder \(\mu\) können so eingegeben werden.
+Mathematische Sonderzeichen wie \(v_1\) oder \(\mu\) können so auch im Text eingegeben werden. Nennt sich inline-math-mode.
 
 Jetzt kommen ein paar Matheformeln:
 \begin{flalign}
@@ -45,15 +44,17 @@ So verweist man auf Formeln: Aus \eqref{eq:bogenmaß_1} und \eqref{eq:achsZuMome
 	\vec{S_1} = \vec{S_0} +
         \begin{pmatrix}
             -\sin{(\Delta \gamma)} \cdot r_S \cdot \sin{(\gamma_0)}
-            - (r_S - \cos{(\Delta \gamma)} \cdot r_S) \cdot \cos{(\gamma_0}) \\
+            - (r_S - \cos{(\Delta \gamma)} \cdot r_S) \cdot \cos{(\gamma_0)} \\
             \sin{(\Delta \gamma)} \cdot r_S \cdot \cos{(\gamma_0)}
-            - (r_S - \cos{(\Delta \gamma)} \cdot r_S) \cdot \sin{(\gamma_0})
+            - (r_S - \cos{(\Delta \gamma)} \cdot r_S) \cdot \sin{(\gamma_0)}
         \end{pmatrix}
 	\label{eq:S_1}
 \end{flalign}
 
-So kann das Listing \ref{lst:deadReackon}, also ein Codebeispiel, im Text eingebettet werden:
 
+
+\newpage
+So kann das Listing \ref{lst:deadReackon}, also ein Codebeispiel, im Text eingebettet werden:
 \begin{lstlisting}[language=C++, caption=deadReckonTotalPhi, label={lst:deadReackon}]
 float deadReckonTotalPhi(int inkLeft, int inkRight) {
 	static float totalGamma = 0.0f;
