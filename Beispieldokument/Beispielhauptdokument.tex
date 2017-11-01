@@ -38,7 +38,32 @@
 \usepackage{color}
 \definecolor{light-gray}{gray}{0.95}
 
+% ermöglicht eine Ausrichtung von Text am & Zeichen
+\usepackage{tabularx}
 
+\usepackage{xparse}
+\ExplSyntaxOn
+\NewDocumentEnvironment{benannteAuflistung} { oo }
+	{
+		\IfValueTF{#1}
+    	{
+		   	\textbf{#1}
+	    	\par\smallskip
+     	} 
+		{
+		}
+		\IfValueTF{#2}
+		{
+			\tabularx{\textwidth} {@{\hspace{0.0cm}} #2 @{}} 
+		}
+		{
+			\tabularx{\textwidth} {@{\hspace{0.0cm}} lX @{}} 
+		}
+    }
+    {
+    	\endtabularx
+    }
+\ExplSyntaxOff
 
 
 
