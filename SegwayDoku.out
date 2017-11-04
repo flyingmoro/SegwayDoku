@@ -1,0 +1,12 @@
+\BOOKMARK [1][]{section.4}{1\040Eigenbau\040eines\040Motortreibers}{}% 1
+\BOOKMARK [2][]{subsection.5}{1.1\040Anforderungen\040an\040den\040zu\040entwickelnden\040Treiber}{section.4}% 2
+\BOOKMARK [2][]{subsection.6}{1.2\040Vergleich\040quelloffener\040Treiber}{section.4}% 3
+\BOOKMARK [3][]{subsubsection.7}{1.2.1\040VESC}{subsection.6}% 4
+\BOOKMARK [3][]{subsubsection.8}{1.2.2\040oDrive}{subsection.6}% 5
+\BOOKMARK [1][]{section.9}{2\040Regelung\040von\040Schrittmotoren}{}% 6
+\BOOKMARK [2][]{subsection.10}{2.1\040Resume}{section.9}% 7
+\BOOKMARK [1][]{section.11}{3\040Definition\040eines\040roboterfesten\040Koordinatensystems}{}% 8
+\BOOKMARK [1][]{section.13}{4\040Navigation}{}% 9
+\BOOKMARK [2][]{subsection.14}{4.1\040Sensorik}{section.13}% 10
+\BOOKMARK [2][]{subsection.15}{4.2\040Inkrementalgeber}{section.13}% 11
+\BOOKMARK [1][]{section.42}{5\040Auslegung\040Kurvengeschwindigkeit}{}% 12

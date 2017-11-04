@@ -1,0 +1,27 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {german}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Eigenbau eines Motortreibers}{1}{section.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1}Anforderungen an den zu entwickelnden Treiber}{1}{subsection.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2}Vergleich quelloffener Treiber}{1}{subsection.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {1.2.1}VESC}{1}{subsubsection.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {1.2.2}oDrive}{2}{subsubsection.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Regelung von Schrittmotoren}{3}{section.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1}Resume}{3}{subsection.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Definition eines roboterfesten Koordinatensystems}{4}{section.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Navigation}{5}{section.13}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1}Sensorik}{5}{subsection.14}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2}Inkrementalgeber}{5}{subsection.15}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Auslegung Kurvengeschwindigkeit}{8}{section.42}
