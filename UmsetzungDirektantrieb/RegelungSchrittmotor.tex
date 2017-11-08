@@ -1,7 +1,7 @@
-% !TEX root = SegwayDoku.tex
+% !TEX root = ../SegwayDoku.tex
 \renewcommand{\autoren}{Timo Veit}
 \newpage
-\section{Regelung von Schrittmotoren}
+\subsection{Regelung von Schrittmotoren}
 Da das Verwenden eines Schrittmotors zur Debatte stand, wurde hierzu eine Recherche angestellt.
 Die Unterschiede zwischen einem BLDC-Motor und einem Schrittmotor sind im wesentlichen:
 \par\bigskip
@@ -20,7 +20,7 @@ Schrittmotor
     hohe Polpaarzahl \\
 \end{tabularx}
 
-\subsection{Auftrettende Schwierigkeiten}
+\subsubsection{Auftrettende Schwierigkeiten}
 Zur feldorienierten Vektorregelung bei BLDC Motoren wurden einige Erklärungen und die zugehörigen Berechnungen gefunden. Bei Schrittmotoren wird üblicherweise der Winkel geregelt, zur genauen Realisierung wird das sogenannte Microstepping verwendet. Dabei entstehen aber schwankende Momente. Eine Vorgehensweise um die Vektorregelung beim Schrittmotor mit 2 Phasen umzusetzen wurde nicht gefunden, ist aber grundsätzlich möglich.
 Ein weiteres Problem ergibt sich aus der hohen Polpaarzahl. Bei 50 Polpaaren und einer einigermaßen guten Nachbildung des elektrischen Winkels mit 50 Stützstellen ergibt sich eine notwendige Decoderauflösung von 2500 Impulsen pro Umdrehung. Entsprechende Decoder sind wiederum teurer, dies macht den Preisvorteil des kostengünstigeren Schrittmotors zu nichte.
 Die notwendige, hohe Auflösung führt ebenfalls dazu, dass zur Steuerung schon bei geringen Drehzahlen sehr hohe Frequenzen gebraucht werden.
@@ -34,7 +34,7 @@ Die notwendige, hohe Auflösung führt ebenfalls dazu, dass zur Steuerung schon 
     f = U / 60 * p * s = 20,8 kHz \\
 \end{tabularx}
 
-\subsection{Fazit}
+\subsubsection{Fazit}
 Die Regelung des BLDC Motors ist einfacher Umzusetzen und der geringere Preis des Schrittmotors wird durch die teureren Decoder wieder marginalisiert.
 
 
