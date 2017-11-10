@@ -1,3 +1,13 @@
+.build
+*.aux
+*.lof
+*.log
+*.out
+*.pdf
+*.xml
+*.gz
+*.toc
+
 .DS_Store
 
 *.sav
@@ -76,3 +86,5 @@ test-blx.bib
 
 SegwayDoku-blx.bib
 SegwayDoku.synctex(busy)
+
+.project

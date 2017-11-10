@@ -1,0 +1,13 @@
+% !TEX root = ../SegwayDoku.tex
+\renewcommand{\autoren}{Stephan Morongowski}
+\newpage
+\subsection{Auswahl der Motoren}
+
+Grundsätzlich soll der Roboter mit einem Synchronmotor mit feldorientierter Regelung angetrieben werden, um diesen per Solldrehmoment regeln zu können.
+
+In Abhängigkeit des verfügbaren Stromes von \(100 A\) (begrenzt durch den Motortreiber, siehe Abschnitt \ref{sssec:odrive}) ergibt sich für das gewünschte Spitzenmoment von ca. \(1 Nm\) eine Mindestdrehmomentkonstante von \(k_d \approx 0,01 \frac{Nm}{A}\) bzw. eine Drehzahlkonstante von \(k_v \approx  820 \frac{rpm}{V}\). Die Untergrenze für die Drehzahlkonstante ergibt sich aus der Maximalgeschwindigkeit des Roboters von \(5 \frac{km}{h}\) und damit ca. \(330 \frac{U}{min}\) zu ca. \(15 \frac{rpm}{V}\) bei \(U_{bat} = 22,2 V\). Dabei darf die maximal erlaubte Spannung des Motors \(22,2 V\) nicht überschreiten, um mit der verfügbaren Batteriespannung das maximale Moment auch erreichen zu können. Um eine möglichst kleine Baugröße zu erhalten, wurde vornehmlich nach Außenläufern gesucht, da bei dieser Bauform das mögliche Moment grundsätzlich größer ist, als bei Innenläufern.
+
+Eine Liste der in Frage kommenden Motoren ist in Anhang ... beigefügt.
+
+Ausgewählt wurde der \glqq Roxxy BL Outrunner C50-55-45\grqq{}. Bei einem mittleren Preis bietet dieser Motor ein sehr hohes Moment von ca. \(1,5 Nm\) bei einer Nennspannung von nur \(12 V\) sowie einem ebenfalls geringen Spitzenstrom von \(16 A\). Damit werden alle Anforderungen erfült. Des Weiteren entstehen Vorteile wie geringere Kabelquerschnitte bei der Stromzuführung und geringere thermische Belastung des Motortreibers.
+\newpage
