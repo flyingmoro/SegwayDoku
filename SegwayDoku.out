@@ -1,25 +1,29 @@
-\BOOKMARK [1][]{section.4}{1\040Eigenbau\040eines\040Motortreibers}{}% 1
-\BOOKMARK [2][]{subsection.5}{1.1\040Anforderungen\040an\040den\040zu\040entwickelnden\040Treiber}{section.4}% 2
-\BOOKMARK [2][]{subsection.7}{1.2\040Marktanalyse}{section.4}% 3
-\BOOKMARK [3][]{subsubsection.8}{1.2.1\040VESC}{subsection.7}% 4
-\BOOKMARK [3][]{subsubsection.9}{1.2.2\040ODrive}{subsection.7}% 5
-\BOOKMARK [3][]{subsubsection.10}{1.2.3\040Predriver}{subsection.7}% 6
-\BOOKMARK [3][]{subsubsection.11}{1.2.4 fertige Halbbrücke als Smd-Bauteil}{subsection.7}% 7
-\BOOKMARK [3][]{subsubsection.12}{1.2.5 Aufbau der Halbbrücken aus Einzelkompoenten}{subsection.7}% 8
-\BOOKMARK [3][]{subsubsection.13}{1.2.6\040Auswahl\040eines\040Microcontrollers}{subsection.7}% 9
-\BOOKMARK [3][]{subsubsection.14}{1.2.7 Komplettlösungen als integrierter Schaltkreis}{subsection.7}% 10
-\BOOKMARK [2][]{subsection.15}{1.3\040Fazit}{section.4}% 11
-\BOOKMARK [1][]{section.16}{2\040Definition\040eines\040roboterfesten\040Koordinatensystems}{}% 12
-\BOOKMARK [1][]{section.18}{3\040Navigation}{}% 13
-\BOOKMARK [2][]{subsection.19}{3.1\040Sensorik}{section.18}% 14
-\BOOKMARK [2][]{subsection.20}{3.2\040Inkrementalgeber}{section.18}% 15
-\BOOKMARK [1][]{section.31}{4\040Auslegung\040Kurvengeschwindigkeit}{}% 16
-\BOOKMARK [1][]{section.46}{5\040Vergleich\040der\040Antriebsarten}{}% 17
-\BOOKMARK [2][]{subsection.47}{5.1 Bürstenloser Gleichstrommotor}{section.46}% 18
-\BOOKMARK [2][]{subsection.49}{5.2\040Schrittmotoren}{section.46}% 19
-\BOOKMARK [3][]{subsubsection.50}{5.2.1\040Allgemeines}{subsection.49}% 20
-\BOOKMARK [3][]{subsubsection.51}{5.2.2\040Arten\040des\040Schrittmotors}{subsection.49}% 21
-\BOOKMARK [3][]{subsubsection.54}{5.2.3\040Arten\040der\040Ansteuerung}{subsection.49}% 22
-\BOOKMARK [1][]{section.56}{6\040Regelung\040von\040Schrittmotoren}{}% 23
-\BOOKMARK [2][]{subsection.57}{6.1\040Auftrettende\040Schwierigkeiten}{section.56}% 24
-\BOOKMARK [2][]{subsection.58}{6.2\040Fazit}{section.56}% 25
+\BOOKMARK [1][]{section.2}{1\040Definition\040eines\040roboterfesten\040Koordinatensystems}{}% 1
+\BOOKMARK [1][]{section.4}{2\040Umsetzung\040eines\040Direktantriebes}{}% 2
+\BOOKMARK [2][]{subsection.5}{2.1\040Vergleich\040der\040Antriebsarten}{section.4}% 3
+\BOOKMARK [3][]{subsubsection.6}{2.1.1 Bürstenloser Gleichstrommotor}{subsection.5}% 4
+\BOOKMARK [3][]{subsubsection.8}{2.1.2\040Schrittmotoren}{subsection.5}% 5
+\BOOKMARK [4][]{paragraph.9}{2.1.2.1\040Allgemeines}{subsubsection.8}% 6
+\BOOKMARK [4][]{paragraph.10}{2.1.2.2\040Arten\040des\040Schrittmotors}{subsubsection.8}% 7
+\BOOKMARK [4][]{paragraph.12}{2.1.2.3\040Hybridschrittmotor}{subsubsection.8}% 8
+\BOOKMARK [4][]{paragraph.13}{2.1.2.4\040Arten\040der\040Ansteuerung}{subsubsection.8}% 9
+\BOOKMARK [4][]{paragraph.14}{2.1.2.5\040Mikroschritt\040Betrieb}{subsubsection.8}% 10
+\BOOKMARK [2][]{subsection.15}{2.2\040Regelung\040von\040Schrittmotoren}{section.4}% 11
+\BOOKMARK [3][]{subsubsection.16}{2.2.1\040Auftrettende\040Schwierigkeiten}{subsection.15}% 12
+\BOOKMARK [3][]{subsubsection.17}{2.2.2\040Fazit}{subsection.15}% 13
+\BOOKMARK [2][]{subsection.18}{2.3\040Auswahl\040der\040Motoren}{section.4}% 14
+\BOOKMARK [2][]{subsection.19}{2.4\040Eigenbau\040eines\040Motortreibers}{section.4}% 15
+\BOOKMARK [3][]{subsubsection.20}{2.4.1\040Anforderungen\040an\040den\040zu\040entwickelnden\040Treiber}{subsection.19}% 16
+\BOOKMARK [3][]{subsubsection.22}{2.4.2\040Marktanalyse}{subsection.19}% 17
+\BOOKMARK [4][]{paragraph.23}{2.4.2.1\040VESC}{subsubsection.22}% 18
+\BOOKMARK [4][]{paragraph.24}{2.4.2.2\040ODrive}{subsubsection.22}% 19
+\BOOKMARK [4][]{paragraph.25}{2.4.2.3\040Predriver}{subsubsection.22}% 20
+\BOOKMARK [4][]{paragraph.26}{2.4.2.4 fertige Halbbrücke als Smd-Bauteil}{subsubsection.22}% 21
+\BOOKMARK [4][]{paragraph.27}{2.4.2.5 Aufbau der Halbbrücken aus Einzelkompoenten}{subsubsection.22}% 22
+\BOOKMARK [4][]{paragraph.28}{2.4.2.6\040Auswahl\040eines\040Microcontrollers}{subsubsection.22}% 23
+\BOOKMARK [4][]{paragraph.29}{2.4.2.7 Komplettlösungen als integrierter Schaltkreis}{subsubsection.22}% 24
+\BOOKMARK [3][]{subsubsection.30}{2.4.3\040Fazit}{subsection.19}% 25
+\BOOKMARK [1][]{section.31}{3\040Navigation}{}% 26
+\BOOKMARK [2][]{subsection.32}{3.1\040Sensorik}{section.31}% 27
+\BOOKMARK [2][]{subsection.33}{3.2\040Inkrementalgeber}{section.31}% 28
+\BOOKMARK [1][]{section.44}{4\040Auslegung\040Kurvengeschwindigkeit}{}% 29
