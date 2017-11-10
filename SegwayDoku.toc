@@ -1,0 +1,75 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {german}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Definition eines roboterfesten Koordinatensystems}{1}{section.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Umsetzung eines Direktantriebes}{2}{section.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1}Vergleich der Antriebsarten}{2}{subsection.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.1}Bürstenloser Gleichstrommotor}{2}{subsubsection.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.2}Schrittmotoren}{3}{subsubsection.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.1.2.1}Allgemeines}{3}{paragraph.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.1.2.2}Arten des Schrittmotors}{3}{paragraph.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.1.2.3}Hybridschrittmotor}{3}{paragraph.12}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.1.2.4}Arten der Ansteuerung}{4}{paragraph.13}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.1.2.5}Mikroschritt Betrieb}{4}{paragraph.14}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2}Regelung von Schrittmotoren}{5}{subsection.15}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.1}Auftrettende Schwierigkeiten}{5}{subsubsection.16}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2}Fazit}{5}{subsubsection.17}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3}Auswahl der Motoren}{6}{subsection.18}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4}Auswahl eines Drehencoders}{7}{subsection.19}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.4.1}Anforderungen an die Encoder}{7}{subsubsection.20}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.4.2}Marktanalyse}{7}{subsubsection.22}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.4.2.1}Broadcom Encoder}{8}{paragraph.23}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.4.2.2}Bourns Encoder}{8}{paragraph.24}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.4.2.3}Renishaw Encoder}{8}{paragraph.25}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.4.3}Fazit}{9}{subsubsection.26}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5}Eigenbau eines Motortreibers}{10}{subsection.27}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.5.1}Anforderungen an den zu entwickelnden Treiber}{10}{subsubsection.28}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.5.2}Marktanalyse}{11}{subsubsection.30}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.5.2.1}VESC}{11}{paragraph.31}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.5.2.2}ODrive}{12}{paragraph.32}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.5.2.3}Predriver}{12}{paragraph.33}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.5.2.4}fertige Halbbrücke als Smd-Bauteil}{12}{paragraph.34}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.5.2.5}Aufbau der Halbbrücken aus Einzelkompoenten}{13}{paragraph.35}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.5.2.6}Auswahl eines Microcontrollers}{13}{paragraph.36}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {2.5.2.7}Komplettlösungen als integrierter Schaltkreis}{14}{paragraph.37}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.5.3}Fazit}{14}{subsubsection.38}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Navigation}{15}{section.39}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1}Sensorik}{15}{subsection.40}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2}Inkrementalgeber}{15}{subsection.41}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Auslegung Kurvengeschwindigkeit}{17}{section.52}
