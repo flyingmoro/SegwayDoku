@@ -1,0 +1,78 @@
+% !TEX root = SegwayDoku.tex
+\renewcommand{\autoren}{Timo Veit}
+\newpage
+\section{Auswahl eines Drehencoders}
+Zur genauen Regelung des Roboters sowie zur Bestimmung der zurückgelegten Strecke werden zwei Drehencoder benötigt. Die Auswahl konnte erst nach der Festlegung auf einen Motor erfolgen, da die Anzahl der Polpaare direkt mit der benötigten Genauigkeit des Encoders zusammenhängt.
+\subsection{Anforderungen an die Encoder}
+Die Auflösung des elektrischen Winkels soll eine maximale Abweichung von 5° betragen. Der gewählte Motor hat 14 Pole, also 7 Polpaare.
+\begin{flalign}
+    % durch das & Zeichen werden alle Gleichungen an diesem Punkt ausgerichtet
+	\frac{360°}{5°}\cdot 7 &  = 504
+	\label{eq:impulse} 
+\end{flalign}
+Es werden also 504 Signale pro Umdrehung benötigt. Da Messungenauigkeiten zu einer noch größeren Abweichung des Winkels führen, wurde sich auf 1000 CPR (Counts per Revolution) geeinigt. 
+
+\par\bigskip
+
+Die zweite Anforderung bestand darin, dass auch die Drehrichtung der Welle von entscheidender Bedeutung ist. Dies muss also durch die Ausgabe des Encoders erkennbar sein.
+
+\par\bigskip
+
+\begin{benannteAuflistung}[Anforderungen an den Encoder:]
+    Auflösung von 1000 CPR \\
+    Ausgabe der Drehrichtung \\
+    einfache Montage \\
+    geringe Kosten \\
+    schnelle Verfügbarkeit
+\end{benannteAuflistung}
+
+\subsection{Marktanalyse}
+
+Bei der Suche nach einem passenden Produkt traten diverse Probleme auf. Zunächst wurden nur sehr teure Modelle gefunden, welche in keinem akzeptablen Verhältnis zu den anderen Komponenten standen. Dann wurde bemerkt, dass bei der Auflösung der Encoder gleiche Abkürzungen teils verschiedene Bedeutungen haben. CPR stand bei manchen Angaben für Counts Per Revolution, bei anderen Herstellern war die Bedeutung allerdings Cycles per Revolution, entsprach also bei gleichem Wert der vierfachen Auflösung. Außerdem gibt es auch die Bezeichnungen PPR (Pulse per Revolution) und LPR (Lines per Revolution), die mit Cycles per Revolution übereinstimmen. Als relevante Optionen wurden folgende gefunden:
+
+\subsubsection{Broadcom Encoder}
+\label{sssec:broadcom}
+Die Encoder  HEDS-5500/5540, HEDS-5600/5640, HEDM-5500/5540 und HEDM-5600 sind optische Inkrementaldrehgeber mit bis zu 1024 CPR(CountsPR). Die eigentliche Auswahl HEDM-5640 J12 war auf Grund der Verfügbarkeit nicht möglich. Der HEDM 5500 B12 wurde daraufhin gewählt.
+
+\par\bigskip
+\begin{benannteAuflistung}[Technische Daten:]
+    2-Channel Output \\
+    1000 CPR \\
+    Wellendurchmesser 6mm \\
+    Supply Voltage V_{CC} = 5V \\
+    High Level Output Voltage V_{OH} \geq 2,4V \\
+    Low Level Output Voltage V_{OL} \leq 0,4V \\
+    Preis \approx 40€
+\end{benannteAuflistung}
+
+\subsubsection{Bourns Encoder}
+\label{sssec:bourns}
+Die infrage kommenden Drehgeber sind aus der Reihe EMS22 mit Magnetsensoren. Hier gibt es verschiedene Ausgaben, entweder A und B oder Direction und Step. An den Encoder ist eine Welle vormontiert. Ausgewählt wurde der EMS22Q.
+
+\par\bigskip
+\begin{benannteAuflistung}[Technische Daten:]
+    2-Channel Output \\
+    1024 CPR \\
+    Wellendurchmesser 6mm montiert \\
+    Supply Voltage V_{CC} = 5V oder 3,3V \\
+    High Level Output Voltage V_{dd}-0.5 V minimum \\
+    Low Level Output Voltage V_{ss}+0.4 V maximum \\
+    Preis \approx 32€
+\end{benannteAuflistung}
+
+\subsubsection{Renishaw Encoder}
+\label{sssec:renishaw}
+Der Inkrementalgeber RMC22 ist ein berührungsloser Magnetsensor. Er ist erhältlich mit bis zu 4096 CPR. Die herausforderung hierbei ist, dass der Magnet mit der Welle befestigt und dann mit hoher Genauigkeit im Sensor platziert werden muss. Der Encoder hat eine Vielzahl an Ausgängen \pm A, \pm B, \pm Z, U, V und W. Bestellbar ist der Encoder in einem slowenischen Onlineshop.
+
+\par\bigskip
+\begin{benannteAuflistung}[Technische Daten:]
+    9-Channel Output \\
+    bis zu 4096 CPR \\
+    Magnetdurchmesser 6mm ohne Anschluss \\
+    Supply Voltage V_{CC} = 5V \\
+    High/Low Level Output Voltage ohne Angabe \\
+    Preis \approx 32,5€
+\end{benannteAuflistung}
+
+\subsection{Fazit}
+Auf Grund der leichteren Montage und schnelleren Verfügbarkeit wurde sich trotz des höheren Preises und des 2-Channel Outputs für den HEDM 5500 B12 (siehe \ref{sssec:broadcom}) entschieden. Die Bestellung erfolgt über den Onlineshop Mouser.
