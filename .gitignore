@@ -1,3 +1,17 @@
+.build
+*.aux
+*.lof
+*.log
+*.out
+*.pdf
+*.xml
+*.gz
+*.toc
+
+.DS_Store
+
+*.sav
+
 *.yaml
 *.lof
 *.bbl
@@ -69,3 +83,8 @@ Mkfile.old
 dkms.conf
 
 test-blx.bib
+
+SegwayDoku-blx.bib
+SegwayDoku.synctex(busy)
+
+.project

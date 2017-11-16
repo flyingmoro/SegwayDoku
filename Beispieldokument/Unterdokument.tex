@@ -1,70 +1,60 @@
 % !TEX root = Beispielhauptdokument.tex
+
+% in der ersten Zeile steht ein "magischer Kommentar". Dadurch weiß das Editierprogramm immer, welche Datei die Hauptdatei ist.
+
+% die folgenden Zeilen werden benötigt, damit der richtige Author in der Fußzeile der Seite auftaucht.
 \renewcommand{\autoren}{Stephan Morongowski}
 \newpage
-\section{Navigation}
 
-Wie navigiert man in der Ebene? Hier ein Beispiel für ein Zitat: Wie in \cite{bildungAtmosphaere} beschrieben, ...
+\section{eine Überschrift}
 
-\subsection{Sensorik}
-Zur Verfügung stehen folgende Sensoren:
+% Das Zitat mit der Referenz "bildungAtmosphaere" muss im Quellenverzeichnis stehen. Das kann zB mit JabRef bearbeitet werden oder einfach per Hand.
+Hier ein Beispiel für ein Zitat: Wie in \cite{bildungAtmosphaere} beschrieben, ... das steht dann im Literaturverzeichnis
+
+\subsection{eine Unterüberschrift}
+eine kleine Aufzählung:
 \begin{itemize}
-\item Gyros in allen drei Raumachsen
-\item Beschleunigungssensoren in allen drei Raumachsen
-\item Inkrementalgeber der Räder
-\item Ultraschallsensoren
+\item Punkt 1
+\item Punkt 2
 \end{itemize}
 
-\subsection{Inkrementalgeber}
-
-Zur Bestimmung der Position des Roboters in einem festen Koordinatensystem können die Inkrementalgeber der Antriebsmotoren benutzt werden.
-Sie liefern pro Umdrehung 1024 Impulse. Das ergibt bei einem Raddurchmesser von 8 cm eine Auflösung von ca. 0,5 mm pro Strich.
+Wie in Abbildung \ref{kurvenkinematik} zu sehen ist,...
 
 \begin{figure}[h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
-\centering\includegraphics[width=0.8\textwidth]{images/Kurvenkinematic.eps}
+% mit width=... wird die Größe des Bildes in Prozent der Seitenbreite eingestellt
+\centering\includegraphics[width=0.5\textwidth]{images/Kurvenkinematic.eps}
+% caption ist die Bildunterschrift, taucht auch im Abbildungsverzeichnis auf
 \caption{Rotation um den Momentanpol \newline (Quelle: eigene Darstellung)}
-\label{kurvenkinematik}
+\label{kurvenkinematik} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
 
-Zur Ermittlung der aktuellen Position ist in Abbildung \ref{kurvenkinematik} die Kinematik einer Kurvenfahrt dargestellt, betrachtet für einen gedanklich sehr kleinen Zeitabschnitt. In diesem wird angenommen, dass die Geschwindigkeiten \(v_1\) und \(v_2\) beider Räder konstant bleiben. Dies sorgt für die Vereinfachung, dass der Roboter sich auf einer Kreisbahn um einen für die betrachtete Zeitspanne konstanten Momentanpol bewegt. Im Folgenden sind die durch den Inkrementalgeber erfassten Bogenlängen mit arc bezeichnet.
-Es gilt:
+Mathematische Sonderzeichen wie \(v_1\) oder \(\mu\) können so auch im Text eingegeben werden. Nennt sich inline-math-mode.
+
+Jetzt kommen ein paar Matheformeln:
 \begin{flalign}
     % durch das & Zeichen werden alle Gleichungen an diesem Punkt ausgerichtet
 	arc_{R1} &  = \Delta\gamma\cdot r_{R1}
 	\label{eq:bogenmaß_1} \\
-	arc_{R2} & = \Delta\gamma\cdot r_{R2}
-	\label{eq:bogenmaß_2} \\
 	r_{R1} & = r_{R2}  + l_a
-	\label{eq:achsZuMomentanpol} \\
-	\Delta arcs & = arc_{R2} - arc_{R1}
-	\label{eq:arcsDef} \\
-    r_S & = r_{R2} - \frac{1}{2} l_a
-	\label{eq:r_s}
+	\label{eq:achsZuMomentanpol}     % hier keine \\ einbauen, sonst kommt eine Formelnummer zuviel.
 \end{flalign}
 
-Aus \eqref{eq:bogenmaß_1}, \eqref{eq:bogenmaß_2}, \eqref{eq:achsZuMomentanpol} und \eqref{eq:arcsDef} folgen:
-% hier keine Leerzeile machen, sonst wird der Abstand ganz groß
-\begin{flalign}
-    \Delta\gamma & = \frac{1}{l_a} \cdot \Delta arcs
-	\label{eq:deltaPhi} \\
-    r_S & = \frac{arc_{R2}}{\Delta\gamma} - \frac{1}{2} l_a
-\end{flalign}
-Durch Aufsummieren von \(\Delta\gamma\) nach jeder Auswertung der Inkrementalgeber kann somit ein ungefährer Absolutwinkel der Roboterachse zu einem festen KS berechnet werden.
-\par\bigskip
-Zur Bestimmung des Schwerpunktes in xy-Koordinaten wird die Verschiebung von
-\(S_0\) zu \(S_1\) mit trigonometrischen Funktionen berechnet und anschließend aufsummiert. Es gilt:
+So verweist man auf Formeln: Aus \eqref{eq:bogenmaß_1} und \eqref{eq:achsZuMomentanpol} folgt zB diese ganz abgefahrene Formel mit der Nummer \eqref{eq:S_1}: % hier keine Leerzeile machen, sonst wird der Abstand ganz groß
 \begin{flalign}
 	\vec{S_1} = \vec{S_0} +
         \begin{pmatrix}
             -\sin{(\Delta \gamma)} \cdot r_S \cdot \sin{(\gamma_0)}
-            - (r_S - \cos{(\Delta \gamma)} \cdot r_S) \cdot \cos{(\gamma_0}) \\
+            - (r_S - \cos{(\Delta \gamma)} \cdot r_S) \cdot \cos{(\gamma_0)} \\
             \sin{(\Delta \gamma)} \cdot r_S \cdot \cos{(\gamma_0)}
-            - (r_S - \cos{(\Delta \gamma)} \cdot r_S) \cdot \sin{(\gamma_0})
+            - (r_S - \cos{(\Delta \gamma)} \cdot r_S) \cdot \sin{(\gamma_0)}
         \end{pmatrix}
 	\label{eq:S_1}
 \end{flalign}
 
-Die Berechnung im Mikrocontroller wurde wie in Listing \ref{lst:deadReackon} umgesetzt.
 
+
+\newpage
+So kann das Listing \ref{lst:deadReackon}, also ein Codebeispiel, im Text eingebettet werden:
 \begin{lstlisting}[language=C++, caption=deadReckonTotalPhi, label={lst:deadReackon}]
 float deadReckonTotalPhi(int inkLeft, int inkRight) {
 	static float totalGamma = 0.0f;
@@ -76,6 +66,8 @@ float deadReckonTotalPhi(int inkLeft, int inkRight) {
 
 \par\bigskip
 
+Hier eine selbsterstellte Umgebung, mit der man eine 2-spaltige Tabelle mit Titel machen kann:
+\par\bigskip
 % erstellt eine zweispaltige Tabelle mit fett gedruckter Überschrift
 \begin{benannteAuflistung}[Gewünschte Technische Daten:]
     Motorspannung & bis 25V \\
@@ -84,7 +76,8 @@ float deadReckonTotalPhi(int inkLeft, int inkRight) {
 \end{benannteAuflistung}
 
 \par\bigskip
-% es können auch mehr Spalten definiert werden wie im tabularx-Paket (siehe zweites Argument [llX])
+Es können auch mehr Spalten definiert werden wie im tabularx-Paket (siehe zweites Argument [llX])
+\par\bigskip
 \begin{benannteAuflistung}[Gewünschte Technische Daten:][llX]
     Motorspannung & bis 25V & 10,- €\\
     Strom & dauerhaft 30A, Spitze 50A & 5,- € \\
@@ -93,5 +86,5 @@ float deadReckonTotalPhi(int inkLeft, int inkRight) {
 \end{benannteAuflistung}
 
 
-
+% das hier muss ganz ans Ende eines Unterdokumentes, damit die Autorangabe in der Fußzeile wieder stimmt.
 \newpage

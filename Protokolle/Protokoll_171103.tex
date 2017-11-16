@@ -1,0 +1,55 @@
+\documentclass[10pt]{scrartcl}
+\usepackage[german,ngerman]{babel}
+\usepackage{fontspec,xunicode}  % dadurch kann man auch äöü direkt im text eingeben
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage[top=2.5cm, bottom=2.5cm, outer=4cm, inner=2.5cm, heightrounded, marginparwidth=2.5cm, marginparsep=0.5cm]{geometry}
+\usepackage{enumitem}
+
+
+\begin{document}
+
+\section*{Protokoll zur Teambesprechung vom 03.11.2017}
+
+
+\begin{tabularx}{\textwidth} {@{\hspace{0.0cm}} lX @{}}
+Anwesend: & Chepil Valentyn, Stoiljkovic Aleksander, Morongowski Stephan, Schendel Severin, Veit Timo\\% Ändern bei Bedarf
+Abwesend: & \\
+Protokollführer: & Stephan Morongowski \\
+Projektleiter: & Prof. Nitzsche\\
+Nächstes Meeting: & ca. 10.11.17 \\%Ändern
+&\\
+\end{tabularx}
+
+\subsection*{Themen}
+	\begin{enumerate}
+		\item \textbf{Vektorregelung bei Schrittmotoren} \\
+        Es wurde festgestellt, dass eine Vektorregelung bei Schrittmotoren sehr aufwendig ist und schnell an die technischen Grenzen üblicher Hardware (Taktrate PWM, Encoderauflösung) führt. Durch den zusätzlich notwendigen Aufwand wird der niedrigere Anschaffungspreis des Motors nachteilig kompensiert und bringt daher in Summe keine Kostenvorteile zum Synchronmotor mit Vektorregelung mit sich.
+		\item \textbf{Hinderniserkennung} \\
+        Als mögliche Alternative oder Ergänzung zu den Ultraschallsensoren wurde die Möglichkeit erwähnt, Infrarotsensoren zur Kollisionserkennung zu verwenden.
+        \item \textbf{Gehäuse} \\
+		Von Prof. Nitzsche wurde der Vorschlag eingebracht, das neue Gehäuse in Rahmenbauweise (ähnlich 8 (oder 10) -Zoll-Schrank) auszuführen. In diesen Schrank bzw. dieses Regal sollen dann alle Komponenten eingeschraubt werden können. Des Weiteren soll der Rahmen als Träger für eine Karosserie dienen. Als großer Vorteil wurde vorgebracht, dass eine Vorabversion eines solchen Schrankes in kürzerer Zeit zur Verfügung steht, als eine lasergesinterte Variante.
+        \item \textbf{Motortreiber} \\
+        Es wurde diskutiert, einen Motortreiber zu kaufen oder ihn selbst zu entwickeln.
+	\end{enumerate}
+
+\subsection*{Beschlüsse}
+	\begin{enumerate}
+        \item \textbf{Der Projektzeitplan soll an die neuen Aufgaben angepasst werden.}
+        \item \textbf{Vektorregelung bei Schrittmotoren} \\
+        Die Idee, Schrittmotoren zu verwenden wurde verworfen.
+        \item \textbf{Gehäuse} \\
+        Ab sofort soll ein Gehäuse entwickelt werden.
+        \item \textbf{Motortreiber} \\
+        Es soll nach einer weiteren Prüfung der Leistungsfähigkeiten bis Freitag, den 10.11.17 ein ODrive bestellt werden. Gegebenfalls fehlende Features der Motortreibersoftware sollen hinzugefügt werden. Die Motoren und Encoder sollen ausgewählt und ebenfalls bestellt werden.
+        \item \textbf{Verteilung der personellen Kapazitäten}
+        \begin{itemize}%[noitemsep, topsep=0pt]
+            \item Die Hinderniserkennung soll weiter von Valentyn Chepil bearbeitet werden.
+            \item 2 Personen sollen sich ab sofort um die Anschaffung und Ansteuerung der Motoren kümmern.
+            \item Eine Person soll sich ab sofort um die Verbesserung der Kippwinkelbestimmung kümmern.
+            \item Eine Person soll ab sofort ein neues Dynamikmodell des Roboters mit zwei Freiheitsgraden entwerfen.
+            \item Das Gehäuse soll parallel von den beiden letzt genannten Personen entwickelt werden.
+        \end{itemize}
+	\end{enumerate}
+
+\end{document}

@@ -4,7 +4,7 @@
 
 % alles bezüglich Matheformeln
 
-% Gleichungen linksbÃ¼ndig
+% Gleichungen linksbündig
 \usepackage[fleqn]{amsmath}
 
 % wieweit Gleichungen vom linken Rand aus abgerückt werden
@@ -16,7 +16,7 @@
 
 % Schriftart ohne Serifen für Formeln
 \usepackage{cmbright}
-\SetSymbolFont{largesymbols}{normal}{OMX}{iwona}{m}{n}
+%\SetSymbolFont{largesymbols}{normal}{OMX}{iwona}{m}{n}
 
 \usepackage{mathtools}
 
@@ -38,7 +38,7 @@
 \usepackage{color}
 \definecolor{light-gray}{gray}{0.95}
 
-% ermöglicht eine Ausrichtung von Text am & Zeichen
+% ermöglicht Tabellen
 \usepackage{tabularx}
 
 
@@ -127,7 +127,19 @@
 %\usepackage{mathpazo}
 %\setmainfont{Palatino}
 
-\setcounter{secnumdepth}{4} % erlaubt Unter-Unter-Kapitel
+% hiermit kann die Verschachtelungstiefe des Inhaltsverzeichnisses angepasst werden
+\setcounter{tocdepth}{4}
+
+% erlaubt Unter-Unter-Kapitel
+\setcounter{secnumdepth}{4}
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+
+% Indent des Inhaltsverzeichnisses
+\usepackage{tocloft}
+\cftsetindents{section}{0cm}{0.5cm}
+\cftsetindents{subsection}{0.5cm}{1.0cm}
+\cftsetindents{subsubsection}{1cm}{1.5cm}
+\cftsetindents{paragraph}{1.5cm}{2cm}
 
 % folgendes macht automatisch Links im Inhaltsverzeichnis des Pdfs, die direkt zum Unterkapitel führen
 \usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH,bookmarksopen = true,
@@ -186,13 +198,10 @@ citecolor = black] {hyperref}
 \setcounter{page}{1}
 
 
+
+% hier werden alle Extradateien eingebunden
 \input{ListeAllerUnterdokumente.tex}
 \newpage
-
-
-
-
-
 
 
 \renewcommand{\autoren}{}
