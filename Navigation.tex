@@ -44,6 +44,21 @@ Aus \eqref{eq:bogenmaß_1}, \eqref{eq:bogenmaß_2}, \eqref{eq:achsZuMomentanpol}
 	\label{eq:deltaPhi} \\
     r_S & = \frac{arc_{R2}}{\Delta\gamma} - \frac{1}{2} l_a
 \end{flalign}
+
+Timo Veit:
+Die Verschiebungen aus den Geschwindigkeiten nenne ich erstmal $x_*$.
+%In Simulink verwende ich erstmal die Geschwindigkeiten und integriere dann danach, um auf die richtige Einheit zu kommen. Da aus Geschwindigkeit mal Zeit wieder Strecke wird funktioniert das auch.
+
+\begin{flalign}
+	x_S &= \frac{x_2-x_1}{2}+x_1	\\
+	r_S &=  \frac{l_a}{ \frac{x_2}{x_1}-1} +  \frac{l_a}{2}\\
+	\Delta\gamma &= atan( \frac{x_S}{r_S})\\
+	\vec{S_1} &= \vec{S_0} +
+        \begin{pmatrix}
+            r_S [\cos{(\gamma_0 + \Delta\gamma)}]  \\
+            r_S [\sin{(\gamma_0 + \Delta\gamma)}]
+        \end{pmatrix}	
+\end{flalign}
 Durch Aufsummieren von \(\Delta\gamma\) nach jeder Auswertung der Inkrementalgeber kann somit ein ungefährer Absolutwinkel der Roboterachse zu einem festen KS berechnet werden.
 \par\bigskip
 Zur Bestimmung des Schwerpunktes in xy-Koordinaten wird die Verschiebung von
