@@ -52,12 +52,7 @@ Die Verschiebungen aus den Geschwindigkeiten nenne ich erstmal $x_*$.
 \begin{flalign}
 	x_S &= \frac{x_2-x_1}{2}+x_1	\\
 	r_S &=  \frac{l_a}{ \frac{x_2}{x_1}-1} +  \frac{l_a}{2}\\
-	\Delta\gamma &= atan( \frac{x_S}{r_S})\\
-	\vec{S_1} &= \vec{S_0} +
-        \begin{pmatrix}
-            r_S [\cos{(\gamma_0 + \Delta\gamma)}]  \\
-            r_S [\sin{(\gamma_0 + \Delta\gamma)}]
-        \end{pmatrix}	
+	\Delta\gamma &= atan( \frac{x_S}{r_S})	
 \end{flalign}
 Durch Aufsummieren von \(\Delta\gamma\) nach jeder Auswertung der Inkrementalgeber kann somit ein ungefährer Absolutwinkel der Roboterachse zu einem festen KS berechnet werden.
 \par\bigskip
