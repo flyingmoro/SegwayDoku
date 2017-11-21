@@ -11,8 +11,10 @@ Zur Verfügung stehen folgende Sensoren:
 \item Ultraschallsensoren
 \end{itemize}
 
-\subsection{Inkrementalgeber}
+\subsection{Bestimmung der Position im Welt-KS}
 
+\subsubsection{Drehung um den Momentanpol}
+\label{turningVelocityPole}
 Zur Bestimmung der Position des Roboters in einem festen Koordinatensystem können die Inkrementalgeber der Antriebsmotoren benutzt werden.
 
 \begin{figure}[h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
@@ -79,9 +81,29 @@ bzw. vereinfacht:
 	\label{eq:S_1_easy}
 \end{flalign}
 
+\subsubsection{Vereinfachung}
+\label{easyDeadReckoning}
+Nachteilig an der in \ref{turningVelocityPole} beschriebenen Methode sind folgende zwei Punkte: Zum Einen muss eine Geradeausfahrt des Roboters als Spezialfall behandelt werden, da sonst eine Division durch Null erfolgen würde. Zum Zweiten finden die Berechnungen immer nahe einer Singularität statt. Für eine annähernde Geradeausfahrt wird $r_S$ sehr groß und $\Delta \gamma$ sehr klein, was zu großen Berechnungsfehlern führen kann.
 
+Reagiert man nun auf jedes Pulssignal der Inkrementalgeber, wird eine der beiden Größen $arc_{Ri}$ zu Null und der Momentanpol liegt auf diesem Rad, welches sich annähernd nicht bewegt hat. So müssen nur vier Fälle bei der Summation der Lageänderungen beachtet werden:
 
+\begin{itemize}
+\item $R_l$ dreht sich vorwärts
+\item $R_r$ dreht sich vorwärts
+\item $R_l$ dreht sich rückwärts
+\item $R_r$ dreht sich rückwärts
+\end{itemize}
 
-
-
+Für jeden dieser Fälle können nun die Positionsänderungen $\Delta\gamma$, $\Delta x$, $\Delta y$ im roboterfesten KS vorberechnet werden.
+\begin{flalign}
+    arc_{Ri} & = \frac{2\pi\cdot r_R}{n_{Enc}}  \\
+	\Delta\gamma & = \frac{arc_{Ri}}{l_a}  \\
+	\Delta x & = \frac{1}{2}l_a ( \cos{\Delta\gamma} - 1)  \\
+	\Delta y & = \sin{\Delta\gamma}\frac{1}{2}l_a  
+\end{flalign}
+mit der Anzahl der Encoderimpulse pro Umdrehung $n_{Enc}$  \\ und dem Radumfang $r_R$. \\ \\
+Bei jedem Impuls der Encoder werden nun die vorberechneten Positionsänderungen in das Welt-KS transformiert und aufsummiert.
+\begin{flalign}
+    Todo & = Todo
+\end{flalign}
 \newpage
