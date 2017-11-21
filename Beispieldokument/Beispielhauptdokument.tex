@@ -45,19 +45,24 @@
 \ExplSyntaxOn
 \NewDocumentEnvironment{benannteAuflistung} { oo }
 	{
-		\IfValueTF{#1}
-    	{
-		   	\textbf{#1}
-	    	\par\smallskip
-     	}
-		{
-		}
 		\IfValueTF{#2}
 		{
 			\tabularx{\textwidth} {@{\hspace{0.0cm}} #2 @{}}
+			\IfValueTF{#1}
+	    	{
+			   	\multicolumn{2}{@{\hspace{0.0cm}}l}{\textbf{#1}}  \\
+	     	}
+			{
+			}
 		}
 		{
 			\tabularx{\textwidth} {@{\hspace{0.0cm}} lX @{}}
+			\IfValueTF{#1}
+	    	{
+			   	\multicolumn{2}{@{\hspace{0.0cm}}l}{\textbf{#1}}  \\
+	     	}
+			{
+			}
 		}
     }
     {
