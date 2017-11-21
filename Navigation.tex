@@ -42,9 +42,10 @@ Es gilt:
 Aus \eqref{eq:bogenmaß_1}, \eqref{eq:bogenmaß_2}, \eqref{eq:achsZuMomentanpol}, \eqref{eq:arcsDef} und \eqref{eq:r_s} folgen:
 % hier keine Leerzeile machen, sonst wird der Abstand ganz groÃ
 \begin{flalign}
-    \Delta\gamma & = \frac{1}{l_a} \cdot \Delta arcs
+    \Delta\gamma & = \frac{\Delta arcs}{l_a}
 	\label{eq:deltaPhi} \\
-    r_S & = \frac{arc_{R2}}{\Delta\gamma} - \frac{1}{2} l_a
+    r_S & = \frac{arc_{Rr}}{\Delta\gamma} - \frac{1}{2} l_a =
+    l_a\left(\frac{arc_{Rr}}{\Delta arcs}-\frac{1}{2}\right)
 \end{flalign}
 
 Timo Veit:
@@ -94,14 +95,24 @@ Reagiert man nun auf jedes Pulssignal der Inkrementalgeber, wird eine der beiden
 
 Für jeden dieser Fälle können nun die Positionsänderungen $\Delta\gamma$, $\Delta x$, $\Delta y$ im roboterfesten KS vorberechnet werden.
 \begin{flalign}
-    arc_{Ri} & = \frac{2\pi\cdot r_R}{n_{Enc}}  \\
-	\Delta\gamma & = \frac{arc_{Ri}}{l_a}  \\
-	\Delta x & = \frac{1}{2}l_a ( \cos{\Delta\gamma} - 1)  \\
-	\Delta y & = \sin{\Delta\gamma}\frac{1}{2}l_a
+    arc_{Rn} & = \frac{2\pi\cdot r_R}{n_{Enc}}  \\
+	\Delta\gamma & = \frac{arc_{Rn}}{l_a}  \\
+	\Delta x & = \frac{1}{2}l_a\sin{(\Delta\gamma)}  \\
+	\Delta y & = \frac{1}{2}l_a ( \cos{(\Delta\gamma)} - 1) 
 \end{flalign}
-mit der Anzahl der Encoderimpulse pro Umdrehung $n_{Enc}$  \\ und dem Radumfang $r_R$. \\ \\
-Bei jedem Impuls der Encoder werden nun in Abhängigkeit von $\gamma_0$ die vorberechneten Positionsänderungen per Drehmatrix in das Welt-KS transformiert und zu $S_0$ hinzuaddiert.
+mit der Anzahl der Encoderimpulse pro Umdrehung $n_{Enc}$  \\ und dem Radius der Räder $r_R$. \\ \\
+Bei jedem Impuls der Encoder werden nun in Abhängigkeit von $\gamma_0$ die vorberechneten Positionsänderungen mit Hilfe einer Drehmatrix in das Welt-KS transformiert und zu $S_0$ hinzuaddiert. Zu $\gamma_0$ wird jedes Mal nur der konstante Wert $\Delta\gamma$ addiert.
 \begin{flalign}
-    S_1 &= S_0 + \prescript{0}{}{T}_1  
+    \prescript{0}{}{S_1} &= \prescript{0}{}{S_0} + \prescript{0}{}{T}_1  \prescript{1}{}{\vec{\Delta s}}
+    = \prescript{0}{}{S_0} + 
+        \begin{pmatrix}
+            \cos{\Delta\gamma} & -\sin{\Delta\gamma}  \\
+            \sin{\Delta\gamma} & \cos{\Delta\gamma}
+        \end{pmatrix}
+        \begin{pmatrix}
+            \Delta x  \\
+            \Delta y  
+        \end{pmatrix} \\
+    \gamma_1 &= \gamma_0 + \Delta\gamma
 \end{flalign}
 \newpage
