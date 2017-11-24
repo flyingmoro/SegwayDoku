@@ -115,4 +115,23 @@ Bei jedem Impuls der Encoder werden nun in Abhängigkeit von $\gamma_0$ die vorb
         \end{pmatrix} \\
     \gamma_1 &= \gamma_0 + \Delta\gamma
 \end{flalign}
+
+\subsubsection{Berücksichtigung des Kippwinkels}
+Obiger Algorithmus setzt voraus, dass der Roboter aufrecht steht. Kippt der Roboter um seine y-Achse, werden alleine durch das Kippen die Encoder verdreht, was zu einer berechneten Positionsänderung führt, die gar nicht stattgefunden hat. Um dies zu kompensieren, reichen die Encoder als alleinige Information nicht aus. Da der Roboter einen Sensor zur Bestimmung des Kippwinkels besitzt, kann nun eine laufende Korrektur vorgenommen werden. Dabei ist zu beachten, dass der Fehler durch das Kippen auch von dem aktuellen Winkel $\gamma$ abhängig ist. Kippt der Roboter z.B. bei einem $\gamma$ von $0°$, entsteht ein Fehler in x-Richtung. Würde er sich nun auf der Stelle drehen auf ein $\gamma$ von $90\degree$ und der bei einem $\gamma$ von $0\degree$ entstandene Fehler weiterhin einfach abgezogen, würde die Position nun einen Ort mit einem Fehler in y-Richtung anzeigen. Deshalb wird bei jedem Encoderimpuls die Änderung des Kippwinkels im Vergleich zur letzten Encoderauswertung umgerechnet in einen Weg in x-Richtung des roboterfesten KS, anschließend in das Welt-KS transformiert und gleichzeitig mit der durch in Abschnitt \ref{easyDeadReckoning} falsch berechneten Welt-Position aufsummiert.
+
+\begin{flalign}
+    \prescript{0}{}{S_1} &= \prescript{0}{}{S_0} + \prescript{0}{}{T}_1  \prescript{1}{}{\vec{\Delta s}}
+    = \prescript{0}{}{S_0} + 
+        \begin{pmatrix}
+            \cos{\gamma_0} & -\sin{\gamma_0}  \\
+            \sin{\gamma_0} & \cos{\gamma_0}
+        \end{pmatrix}
+        \begin{pmatrix}
+            \Delta x  \\
+            \Delta y  
+        \end{pmatrix} \\
+    \gamma_1 &= \gamma_0 + \Delta\gamma
+\end{flalign}
+
+
 \newpage
