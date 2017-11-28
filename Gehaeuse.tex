@@ -1,4 +1,5 @@
 % !TEX root = SegwayDoku.tex
+\newpage
 \renewcommand{\autoren}{Valentyn Chepil, Alexsander Stoiljkovic}
 \newpage
 \section{Die Gehäuse}
@@ -27,7 +28,8 @@ Modul Aufbau: ....
 
 
 Modul, Motorhalter Ansichten zeigen und Text.
-
+\renewcommand{\autoren}{Valentyn Chepil}
+\newpage
 
 \subsection{Die Gehäusen - V.3}
 
@@ -43,11 +45,24 @@ Modul Aufbau: ....
 	\label{gehaeuse-v3} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
 
-%\begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
-	% mit width=... wird die Größe des Bildes in Prozent der Seitenbreite eingestellt
-%	\centering\includegraphics[width=0.5\textwidth]{images/123.png}
-	% caption ist die Bildunterschrift, taucht auch im Abbildungsverzeichnis auf
-%	\caption{Endgültige Gehäuse - V.3 \newline (Quelle: eigene Darstellung)}
-%	\label{MH123} % über das label kann man aus dem Text auf das Bild verweisen
-%\end{figure}
+\subsubsection{ Berechnung vom Motorhalter}
 
+Alle Berechnungen wurden mit Hilfe von FEM - Programmierung gemacht und beweise die Festigkeit nur von dem Motorhalter. Es wurden an den Räder feste Punkte definiert und als Lastkraft habe ich 100N auf die Oberfläche eingeprägt. 
+
+\begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
+	% mit width=... wird die Größe des Bildes in Prozent der Seitenbreite eingestellt
+	\centering\includegraphics[width=0.9\textwidth]{images/FEM.png}
+	% caption ist die Bildunterschrift, taucht auch im Abbildungsverzeichnis auf
+	\caption{FEM-Berechnung \newline (Quelle: eigene Darstellung)}
+	\label{FEM1} % über das label kann man aus dem Text auf das Bild verweisen
+\end{figure}
+
+Die Materialeigenschaften kann man auf der Abbildung \ref{FEM2}
+
+\begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
+	% mit width=... wird die Größe des Bildes in Prozent der Seitenbreite eingestellt
+	\centering\includegraphics[width=0.9\textwidth]{images/FEM2.png}
+	% caption ist die Bildunterschrift, taucht auch im Abbildungsverzeichnis auf
+	\caption{Kunststoffeigenschaften - Nylon (PA) \newline (Quelle: eigene Darstellung)}
+	\label{FEM2} % über das label kann man aus dem Text auf das Bild verweisen
+\end{figure}
