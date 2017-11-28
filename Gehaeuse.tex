@@ -47,7 +47,19 @@ Modul Aufbau: ....
 
 \subsubsection{ Berechnung vom Motorhalter}
 
-Alle Berechnungen wurden mit Hilfe von FEM - Programmierung gemacht und beweise die Festigkeit nur von dem Motorhalter. Es wurden an den Räder feste Punkte definiert und als Lastkraft habe ich 100N auf die Oberfläche eingeprägt. 
+Alle Berechnungen wurden mit Hilfe von FEM - Programmierung gemacht und beweise die Festigkeit nur von dem Motorhalter. Es wurden an den Stellen vom Motoren und Räder das Moment laut der Berechnung %\ref{ber}
+ verwendet und als Lastkraft wurde 50N auf die Oberfläche eingeprägt. 
+
+Bild einfügen mit %\ref{ber}
+
+Die Materialeigenschaften kann man auf der Abbildung \ref{FEM2}
+
+\begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
+	\centering\includegraphics[width=0.7\textwidth]{images/FEM2.png}
+	% caption ist die Bildunterschrift, taucht auch im Abbildungsverzeichnis auf
+	\caption{Kunststoffeigenschaften - Nylon (PA) \newline (Quelle: eigene Darstellung)}
+	\label{FEM2} % über das label kann man aus dem Text auf das Bild verweisen
+\end{figure}
 
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	% mit width=... wird die Größe des Bildes in Prozent der Seitenbreite eingestellt
@@ -57,12 +69,17 @@ Alle Berechnungen wurden mit Hilfe von FEM - Programmierung gemacht und beweise 
 	\label{FEM1} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
 
-Die Materialeigenschaften kann man auf der Abbildung \ref{FEM2}
+
 
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
-	% mit width=... wird die Größe des Bildes in Prozent der Seitenbreite eingestellt
-	\centering\includegraphics[width=0.9\textwidth]{images/FEM2.png}
+	\centering\includegraphics[width=0.9\textwidth]{images/FEM3.png}
 	% caption ist die Bildunterschrift, taucht auch im Abbildungsverzeichnis auf
-	\caption{Kunststoffeigenschaften - Nylon (PA) \newline (Quelle: eigene Darstellung)}
-	\label{FEM2} % über das label kann man aus dem Text auf das Bild verweisen
+	\caption{FEM - Verschiebungen \newline (Quelle: eigene Darstellung)}
+	\label{FEM3} % über das label kann man aus dem Text auf das Bild verweisen
+\end{figure}
+\begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
+	\centering\includegraphics[width=0.9\textwidth]{images/FEM4.png}
+	% caption ist die Bildunterschrift, taucht auch im Abbildungsverzeichnis auf
+	\caption{FEM - Spannungen \newline (Quelle: eigene Darstellung)}
+	\label{FEM4} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
