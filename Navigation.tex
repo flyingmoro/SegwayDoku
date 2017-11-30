@@ -85,22 +85,24 @@ bzw. vereinfacht:
 \label{easyDeadReckoning}
 Nachteilig an der in \ref{turningVelocityPole} beschriebenen Methode sind folgende zwei Punkte: Zum Einen muss eine Geradeausfahrt des Roboters als Spezialfall behandelt werden, da sonst eine Division durch Null erfolgen würde. Zum Zweiten finden die Berechnungen immer nahe einer Singularität statt. Für eine annähernde Geradeausfahrt wird $r_S$ sehr groß und $\Delta \gamma$ sehr klein, was zu großen Berechnungsfehlern führen kann.
 
-Reagiert man nun auf jedes Pulssignal der Inkrementalgeber, wird eine der beiden Größen $x_n$ zu Null und der Momentanpol liegt auf diesem Rad, welches sich annähernd nicht bewegt hat. So müssen nur vier Fälle bei der Summation der Lageänderungen beachtet werden:
+Reagiert man nun auf jedes Pulssignal der Inkrementalgeber, wird eine der beiden Größen $x_n$ zu Null und der Momentanpol liegt auf dem Rad, welches sich annähernd nicht bewegt hat. So müssen nur vier Fälle bei der Summation der Lageänderungen beachtet werden:
 
 \begin{itemize}
 \item $R_l$ dreht sich vorwärts oder rückwärts
 \item $R_r$ dreht sich vorwärts oder rückwärts
 \end{itemize}
 
-Für jeden dieser Fälle können nun die Positionsänderungen $\Delta\gamma$, $\Delta x_0$, $\Delta y_0$ im roboterfesten KS vorberechnet werden.
+Für jeden dieser Fälle können nun die Positionsänderungen $\Delta\gamma$, $\prescript{0}{}{\Delta x}$, $\prescript{0}{}{\Delta y}$ im roboterfesten KS vorberechnet werden.
 \begin{flalign}
-    arc_{Rn} & = \frac{2\pi\cdot r_R}{n_{Enc}}  \\
-	\Delta\gamma & = \frac{arc_{Rn}}{l_a}  \\
-	\Delta x_0 & = \frac{1}{2}l_a\sin{(\Delta\gamma)}  \\
-	\Delta y_0 & = \frac{1}{2}l_a ( \cos{(\Delta\gamma)} - 1) 
+    x_n & = \frac{2\pi\cdot r_R}{n_{Enc}}  \\
+	\Delta\gamma & = \frac{x_n}{l_a}  \\
+	\prescript{0}{}{\Delta x} & = \frac{1}{2}l_a\sin{(\Delta\gamma)}  \\
+	\prescript{0}{}{\Delta y} & = \frac{1}{2}l_a ( \cos{(\Delta\gamma)} - 1) 
 \end{flalign}
-mit der Anzahl der Encoderimpulse pro Umdrehung $n_{Enc}$  \\ und dem Radius der Räder $r_R$. \\ \\
-Bei jedem Impuls der Encoder werden nun in Abhängigkeit von $\gamma_0$ die vorberechneten Positionsänderungen mit Hilfe einer Drehmatrix in das Welt-KS transformiert und zu $S_0$ hinzuaddiert. Zu $\gamma_0$ wird jedes Mal nur der konstante Wert $\Delta\gamma$ addiert.
+mit der Weglänge zwischen zwei Encoderimpulsen $x_n$,  \\
+der Anzahl der Encoderimpulse pro Umdrehung $n_{Enc}$  \\ 
+und dem Radius der Räder $r_R$. \\ \\
+Bei jedem Impuls der Encoder werden nun in Abhängigkeit von $\gamma_0$ die vorberechneten Positionsänderungen mit Hilfe einer Drehmatrix in das Welt-KS transformiert und zu $S_0$ hinzuaddiert. Zu $\gamma_0$ wird jedes Mal der konstante Wert $\Delta\gamma$ addiert.
 \begin{flalign}
     \prescript{0}{}{S_1} &= \prescript{0}{}{S_0} + \prescript{0}{}{T}_1  \prescript{1}{}{\vec{\Delta s}}
     = \prescript{0}{}{S_0} + 
@@ -109,22 +111,23 @@ Bei jedem Impuls der Encoder werden nun in Abhängigkeit von $\gamma_0$ die vorb
             \sin{\gamma_0} & \cos{\gamma_0}
         \end{pmatrix}
         \begin{pmatrix}
-            \Delta x  \\
-            \Delta y  
+            \prescript{0}{}{\Delta y}  \\
+            \prescript{0}{}{\Delta y}  
         \end{pmatrix}
         \label{eq:transformation} \\
     \gamma_1 &= \gamma_0 + \Delta\gamma
 \end{flalign}
 Nachteilig ist hier insbesondere bei hohen Fahrtgeschwindigkeiten des Roboters eine starke Prozessorauslastung.
 \subsubsection{Berücksichtigung des Kippwinkels}
+\label{duKipper}
 Obiger Algorithmus setzt voraus, dass der Roboter aufrecht steht. Kippt der Roboter um seine y-Achse, werden alleine durch das Kippen die Encoder verdreht, was zu einer berechneten Positionsänderung führt, die gar nicht stattgefunden hat. Um dies zu kompensieren, reichen die Encoder als alleinige Information nicht aus. Da der Roboter einen Sensor zur Bestimmung des Kippwinkels besitzt, kann nun eine laufende Korrektur vorgenommen werden. Dabei ist zu beachten, dass der Fehler durch das Kippen auch von dem aktuellen Winkel $\gamma$ abhängig ist. Kippt der Roboter z.B. bei einem $\gamma$ von $0°$, entsteht ein Fehler in x-Richtung. Würde er sich nun auf der Stelle drehen auf ein $\gamma$ von $90\degree$ und der bei einem $\gamma$ von $0\degree$ entstandene Fehler weiterhin einfach abgezogen, würde die Position nun einen Ort mit einem Fehler in y-Richtung anzeigen. Deshalb wird bei jedem Encoderimpuls die Änderung des Kippwinkels im Vergleich zur letzten Encoderauswertung umgerechnet in einen Weg in x-Richtung des roboterfesten KS, anschließend in das Welt-KS transformiert und gleichzeitig mit der durch in Abschnitt \ref{easyDeadReckoning} falsch berechneten Welt-Position aufsummiert. Problematisch ist hier ein Kippen des Roboters, bei dem die Räder sich mit ebenfalls mit der gleichen Winkelgeschwindigkeit des Roboterkörpers drehen. In diesem Fall werden keine Encoderimpulse erzeugt und die Berechnung der Position nicht durchgeführt, was kurzzeitig zu falschen Angaben und Sprüngen in der Position führen kann.
 
 \subsubsection{Reduktion des Berechnungsaufwandes}
-Die Berechnung der Positionsänderung kann mit Hilfe weiterer Vereinfachungen in festgelegten Zeitabständen entsprechend der Zeitkonstante des mechanischen Systems mit einem deutlich geringeren Aufwand berechnet werden, als oben angegeben. Dabei wird die Änderung des Winkels $\Delta\gamma$ nach Gleichung \ref{eq:deltaGamma}	durchgeführt, und die Lageänderung im roboterfesten KS durch 
+Um eine deutlich geringere Prozessorbelastung zu erreichen, kann die Position z.B. nur nach bestimmten Zeitintervallen oder nach einer bestimmten Anzahl Encoderimpulse aktualisiert werden. Dafür ist eine weitere Anpassung des Algorithmus nötig. Dabei wird die Änderung des Winkels $\Delta\gamma$ nach Gleichung \ref{eq:deltaGamma}	durchgeführt, und die Lageänderung im roboterfesten KS durch 
 \begin{flalign}
     \prescript{0}{}{\Delta x_0} & = \frac{x_r-x_l}{2} \\
     \prescript{0}{}{\Delta y_0} & \approx 0
 {}\end{flalign}
-angenähert und anschließend mit Hilfe Gleichung \ref{eq:transformation} aufsummiert.
+angenähert und anschließend mit Hilfe Gleichung \ref{eq:transformation} aufsummiert. Möglich wäre auch eine getrennte Auswertung der Encodersignale und der Winkelkorrektur, wobei z.B. nur jeder zehnte Encoderimpuls eine Neuberechnung auslöst und die Winkelkorrektur unabhängig von den Impulsen in festen Zeitabständen berechnet wird. Letzteres würde dazu dienen, das in \ref{duKipper} beschriebene Problem des gleichschnellen Drehens der Räder und des Roboterkörpers zu lösen.
 
 \newpage
