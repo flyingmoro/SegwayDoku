@@ -19,44 +19,43 @@ Zur Bestimmung der Position des Roboters in einem festen Koordinatensystem könn
 
 \begin{figure}[h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 \centering\includegraphics[width=0.8\textwidth]{images/Kurvenkinematic.eps}
-\caption{Rotation um den Momentanpol \newline (Quelle: eigene Darstellung, SM)}
+\caption[Rotation um den Momentanpol]{Rotation um den Momentanpol, hierbei gilt die Annahme, dass die Geschwindigkeiten der Räder während des betrachteten Zeitraumes konstant sind. \newline(Quelle: eigene Darstellung, SM)}
 \label{kurvenkinematik}
 \end{figure}
 
-Zur Ermittlung der aktuellen Position ist in Abbildung \ref{kurvenkinematik} die Kinematik einer Kurvenfahrt dargestellt, betrachtet für einen gedanklich sehr kleinen Zeitabschnitt. In diesem wird angenommen, dass die Geschwindigkeiten \(v_1\) und \(v_2\) beider Räder konstant bleiben. Dies sorgt für die Vereinfachung, dass der Roboter sich auf einer Kreisbahn um einen für die betrachtete Zeitspanne konstanten Momentanpol bewegt. Im Folgenden sind die durch den Inkrementalgeber erfassten Bogenlängen mit arc bezeichnet.
+Zur Ermittlung der aktuellen Position ist in Abbildung \ref{kurvenkinematik} die Kinematik einer Kurvenfahrt dargestellt, betrachtet für einen gedanklich sehr kleinen Zeitabschnitt. In diesem wird angenommen, dass die Geschwindigkeiten \(v_1\) und \(v_2\) beider Räder konstant bleiben. Dies sorgt für die Vereinfachung, dass der Roboter sich auf einer Kreisbahn um einen für die betrachtete Zeitspanne konstanten Momentanpol bewegt. Im Folgenden sind die durch den Inkrementalgeber erfassten Bogenlängen mit $x_l$  und $x_r$ bezeichnet.
 Es gilt:
 \begin{flalign}
     % durch das & Zeichen werden alle Gleichungen an diesem Punkt ausgerichtet
-	arc_{Rl} &  = \Delta\gamma\cdot r_{Rl}
+	x_l &  = \Delta\gamma\cdot r_l
 	\label{eq:bogenmaß_1} \\
-	arc_{Rr} & = \Delta\gamma\cdot r_{Rr}
+	x_r & = \Delta\gamma\cdot r_r
 	\label{eq:bogenmaß_2} \\
-	r_{Rr} & = r_{Rl}  + l_a
+	r_r & = r_l  + l_a
 	\label{eq:achsZuMomentanpol} \\
-	\Delta arcs & = arc_{Rr} - arc_{Rl}
+	\Delta x_{rl} & = x_r - x_l
 	\label{eq:arcsDef} \\
-    r_S & = r_{Rr} - \frac{1}{2} l_a
+    r_S & = r_r - \frac{1}{2} l_a
 	\label{eq:r_s}
 \end{flalign}
 
 Aus \eqref{eq:bogenmaß_1}, \eqref{eq:bogenmaß_2}, \eqref{eq:achsZuMomentanpol}, \eqref{eq:arcsDef} und \eqref{eq:r_s} folgen:
 % hier keine Leerzeile machen, sonst wird der Abstand ganz groÃ
 \begin{flalign}
-    \Delta\gamma & = \frac{\Delta arcs}{l_a}
+    \Delta\gamma & = \frac{\Delta x_{rl}}{l_a}
 	\label{eq:deltaPhi} \\
-    r_S & = \frac{arc_{Rr}}{\Delta\gamma} - \frac{1}{2} l_a =
-    l_a\left(\frac{arc_{Rr}}{\Delta arcs}-\frac{1}{2}\right)
+    r_S & = \frac{x_r}{\Delta\gamma} - \frac{1}{2} l_a =
+    l_a\left(\frac{x_r}{\Delta x_{rl}}-\frac{1}{2}\right)
 \end{flalign}
-
-Timo Veit:
-Die Verschiebungen aus den Geschwindigkeiten nenne ich erstmal $x_*$.
-%In Simulink verwende ich erstmal die Geschwindigkeiten und integriere dann danach, um auf die richtige Einheit zu kommen. Da aus Geschwindigkeit mal Zeit wieder Strecke wird funktioniert das auch.
-
+Alternative nach Timo Veit:
 \begin{flalign}
 	x_S &= \frac{x_2-x_1}{2}+x_1	\\
-	r_S &=  \frac{l_a}{ \frac{x_2}{x_1}-1} +  \frac{l_a}{2}\\
-	\Delta\gamma &= atan( \frac{x_S}{r_S})	
+	r_S &=  \frac{l_a}{ \frac{x_2}{x_1}-1} +  \frac{l_a}{2} = 0.5l_a \frac{x_l+x_r}{x_l-x_r}\\
+	\Delta\gamma &= atan( \frac{x_S}{r_S})
+	\label{eq:deltaGamma}	
 \end{flalign}
+Ende der Alternative \\\\
+
 Durch Aufsummieren von \(\Delta\gamma\) nach jeder Auswertung der Inkrementalgeber kann somit ein ungefährer Absolutwinkel der Roboterachse zu einem festen KS berechnet werden.
 \par\bigskip
 Zur Bestimmung des Schwerpunktes in xy-Koordinaten wird die Verschiebung von
@@ -82,23 +81,23 @@ bzw. vereinfacht:
 	\label{eq:S_1_easy}
 \end{flalign}
 
-\subsubsection{Vereinfachung}
+\subsubsection{Algorithmus zur Verwendung in Interrupt-Service-Routinen (ISR)}
 \label{easyDeadReckoning}
 Nachteilig an der in \ref{turningVelocityPole} beschriebenen Methode sind folgende zwei Punkte: Zum Einen muss eine Geradeausfahrt des Roboters als Spezialfall behandelt werden, da sonst eine Division durch Null erfolgen würde. Zum Zweiten finden die Berechnungen immer nahe einer Singularität statt. Für eine annähernde Geradeausfahrt wird $r_S$ sehr groß und $\Delta \gamma$ sehr klein, was zu großen Berechnungsfehlern führen kann.
 
-Reagiert man nun auf jedes Pulssignal der Inkrementalgeber, wird eine der beiden Größen $arc_{Ri}$ zu Null und der Momentanpol liegt auf diesem Rad, welches sich annähernd nicht bewegt hat. So müssen nur vier Fälle bei der Summation der Lageänderungen beachtet werden:
+Reagiert man nun auf jedes Pulssignal der Inkrementalgeber, wird eine der beiden Größen $x_n$ zu Null und der Momentanpol liegt auf diesem Rad, welches sich annähernd nicht bewegt hat. So müssen nur vier Fälle bei der Summation der Lageänderungen beachtet werden:
 
 \begin{itemize}
 \item $R_l$ dreht sich vorwärts oder rückwärts
 \item $R_r$ dreht sich vorwärts oder rückwärts
 \end{itemize}
 
-Für jeden dieser Fälle können nun die Positionsänderungen $\Delta\gamma$, $\Delta x$, $\Delta y$ im roboterfesten KS vorberechnet werden.
+Für jeden dieser Fälle können nun die Positionsänderungen $\Delta\gamma$, $\Delta x_0$, $\Delta y_0$ im roboterfesten KS vorberechnet werden.
 \begin{flalign}
     arc_{Rn} & = \frac{2\pi\cdot r_R}{n_{Enc}}  \\
 	\Delta\gamma & = \frac{arc_{Rn}}{l_a}  \\
-	\Delta x & = \frac{1}{2}l_a\sin{(\Delta\gamma)}  \\
-	\Delta y & = \frac{1}{2}l_a ( \cos{(\Delta\gamma)} - 1) 
+	\Delta x_0 & = \frac{1}{2}l_a\sin{(\Delta\gamma)}  \\
+	\Delta y_0 & = \frac{1}{2}l_a ( \cos{(\Delta\gamma)} - 1) 
 \end{flalign}
 mit der Anzahl der Encoderimpulse pro Umdrehung $n_{Enc}$  \\ und dem Radius der Räder $r_R$. \\ \\
 Bei jedem Impuls der Encoder werden nun in Abhängigkeit von $\gamma_0$ die vorberechneten Positionsänderungen mit Hilfe einer Drehmatrix in das Welt-KS transformiert und zu $S_0$ hinzuaddiert. Zu $\gamma_0$ wird jedes Mal nur der konstante Wert $\Delta\gamma$ addiert.
@@ -112,26 +111,20 @@ Bei jedem Impuls der Encoder werden nun in Abhängigkeit von $\gamma_0$ die vorb
         \begin{pmatrix}
             \Delta x  \\
             \Delta y  
-        \end{pmatrix} \\
-    \gamma_1 &= \gamma_0 + \Delta\gamma
-\end{flalign}
-
-\subsubsection{Berücksichtigung des Kippwinkels}
-Obiger Algorithmus setzt voraus, dass der Roboter aufrecht steht. Kippt der Roboter um seine y-Achse, werden alleine durch das Kippen die Encoder verdreht, was zu einer berechneten Positionsänderung führt, die gar nicht stattgefunden hat. Um dies zu kompensieren, reichen die Encoder als alleinige Information nicht aus. Da der Roboter einen Sensor zur Bestimmung des Kippwinkels besitzt, kann nun eine laufende Korrektur vorgenommen werden. Dabei ist zu beachten, dass der Fehler durch das Kippen auch von dem aktuellen Winkel $\gamma$ abhängig ist. Kippt der Roboter z.B. bei einem $\gamma$ von $0°$, entsteht ein Fehler in x-Richtung. Würde er sich nun auf der Stelle drehen auf ein $\gamma$ von $90\degree$ und der bei einem $\gamma$ von $0\degree$ entstandene Fehler weiterhin einfach abgezogen, würde die Position nun einen Ort mit einem Fehler in y-Richtung anzeigen. Deshalb wird bei jedem Encoderimpuls die Änderung des Kippwinkels im Vergleich zur letzten Encoderauswertung umgerechnet in einen Weg in x-Richtung des roboterfesten KS, anschließend in das Welt-KS transformiert und gleichzeitig mit der durch in Abschnitt \ref{easyDeadReckoning} falsch berechneten Welt-Position aufsummiert.
-
-\begin{flalign}
-    \prescript{0}{}{S_1} &= \prescript{0}{}{S_0} + \prescript{0}{}{T}_1  \prescript{1}{}{\vec{\Delta s}}
-    = \prescript{0}{}{S_0} + 
-        \begin{pmatrix}
-            \cos{\gamma_0} & -\sin{\gamma_0}  \\
-            \sin{\gamma_0} & \cos{\gamma_0}
         \end{pmatrix}
-        \begin{pmatrix}
-            \Delta x  \\
-            \Delta y  
-        \end{pmatrix} \\
+        \label{eq:transformation} \\
     \gamma_1 &= \gamma_0 + \Delta\gamma
 \end{flalign}
+Nachteilig ist hier insbesondere bei hohen Fahrtgeschwindigkeiten des Roboters eine starke Prozessorauslastung.
+\subsubsection{Berücksichtigung des Kippwinkels}
+Obiger Algorithmus setzt voraus, dass der Roboter aufrecht steht. Kippt der Roboter um seine y-Achse, werden alleine durch das Kippen die Encoder verdreht, was zu einer berechneten Positionsänderung führt, die gar nicht stattgefunden hat. Um dies zu kompensieren, reichen die Encoder als alleinige Information nicht aus. Da der Roboter einen Sensor zur Bestimmung des Kippwinkels besitzt, kann nun eine laufende Korrektur vorgenommen werden. Dabei ist zu beachten, dass der Fehler durch das Kippen auch von dem aktuellen Winkel $\gamma$ abhängig ist. Kippt der Roboter z.B. bei einem $\gamma$ von $0°$, entsteht ein Fehler in x-Richtung. Würde er sich nun auf der Stelle drehen auf ein $\gamma$ von $90\degree$ und der bei einem $\gamma$ von $0\degree$ entstandene Fehler weiterhin einfach abgezogen, würde die Position nun einen Ort mit einem Fehler in y-Richtung anzeigen. Deshalb wird bei jedem Encoderimpuls die Änderung des Kippwinkels im Vergleich zur letzten Encoderauswertung umgerechnet in einen Weg in x-Richtung des roboterfesten KS, anschließend in das Welt-KS transformiert und gleichzeitig mit der durch in Abschnitt \ref{easyDeadReckoning} falsch berechneten Welt-Position aufsummiert. Problematisch ist hier ein Kippen des Roboters, bei dem die Räder sich mit ebenfalls mit der gleichen Winkelgeschwindigkeit des Roboterkörpers drehen. In diesem Fall werden keine Encoderimpulse erzeugt und die Berechnung der Position nicht durchgeführt, was kurzzeitig zu falschen Angaben und Sprüngen in der Position führen kann.
 
+\subsubsection{Reduktion des Berechnungsaufwandes}
+Die Berechnung der Positionsänderung kann mit Hilfe weiterer Vereinfachungen in festgelegten Zeitabständen entsprechend der Zeitkonstante des mechanischen Systems mit einem deutlich geringeren Aufwand berechnet werden, als oben angegeben. Dabei wird die Änderung des Winkels $\Delta\gamma$ nach Gleichung \ref{eq:deltaGamma}	durchgeführt, und die Lageänderung im roboterfesten KS durch 
+\begin{flalign}
+    \prescript{0}{}{\Delta x_0} & = \frac{x_r-x_l}{2} \\
+    \prescript{0}{}{\Delta y_0} & \approx 0
+{}\end{flalign}
+angenähert und anschließend mit Hilfe Gleichung \ref{eq:transformation} aufsummiert.
 
 \newpage
