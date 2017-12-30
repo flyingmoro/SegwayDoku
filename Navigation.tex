@@ -43,7 +43,7 @@ Aus \eqref{eq:bogenmaß_1}, \eqref{eq:bogenmaß_2}, \eqref{eq:achsZuMomentanpol}
 % hier keine Leerzeile machen, sonst wird der Abstand ganz groÃ
 \begin{flalign}
     \Delta\gamma & = \frac{\Delta x_{rl}}{l_a}
-	\label{eq:deltaPhi} \\
+	\label{eq:deltaGamma}	 \\
     r_S & = \frac{x_r}{\Delta\gamma} - \frac{1}{2} l_a =
     l_a\left(\frac{x_r}{\Delta x_{rl}}-\frac{1}{2}\right)
 \end{flalign}
@@ -52,7 +52,6 @@ Alternative nach Timo Veit:
 	x_S &= \frac{x_2-x_1}{2}+x_1	\\
 	r_S &=  \frac{l_a}{ \frac{x_2}{x_1}-1} +  \frac{l_a}{2} = 0.5l_a \frac{x_l+x_r}{x_l-x_r}\\
 	\Delta\gamma &= atan( \frac{x_S}{r_S})
-	\label{eq:deltaGamma}	
 \end{flalign}
 Ende der Alternative \\\\
 
@@ -92,12 +91,12 @@ Reagiert man nun auf jedes Pulssignal der Inkrementalgeber, wird eine der beiden
 \item $R_r$ dreht sich vorwärts oder rückwärts
 \end{itemize}
 
-Für jeden dieser Fälle können nun die Positionsänderungen $\Delta\gamma$, $\prescript{0}{}{\Delta x}$, $\prescript{0}{}{\Delta y}$ im roboterfesten KS vorberechnet werden.
+Für jeden dieser Fälle können nun die Positionsänderungen $\Delta\gamma$, $\prescript{1}{}{\Delta x}$, $\prescript{1}{}{\Delta y}$ im roboterfesten KS vorberechnet werden.
 \begin{flalign}
     x_n & = \frac{2\pi\cdot r_R}{n_{Enc}}  \\
 	\Delta\gamma & = \frac{x_n}{l_a}  \\
-	\prescript{0}{}{\Delta x} & = \frac{1}{2}l_a\sin{(\Delta\gamma)}  \\
-	\prescript{0}{}{\Delta y} & = \frac{1}{2}l_a ( \cos{(\Delta\gamma)} - 1) 
+	\prescript{1}{}{\Delta x} & = \frac{1}{2}l_a\sin{(\Delta\gamma)}  \\
+	\prescript{1}{}{\Delta y} & = \frac{1}{2}l_a ( \cos{(\Delta\gamma)} - 1) 
 \end{flalign}
 mit der Weglänge zwischen zwei Encoderimpulsen $x_n$,  \\
 der Anzahl der Encoderimpulse pro Umdrehung $n_{Enc}$  \\ 
@@ -111,8 +110,8 @@ Bei jedem Impuls der Encoder werden nun in Abhängigkeit von $\gamma_0$ die vorb
             \sin{\gamma_0} & \cos{\gamma_0}
         \end{pmatrix}
         \begin{pmatrix}
-            \prescript{0}{}{\Delta y}  \\
-            \prescript{0}{}{\Delta y}  
+            \prescript{1}{}{\Delta y}  \\
+            \prescript{1}{}{\Delta y}  
         \end{pmatrix}
         \label{eq:transformation} \\
     \gamma_1 &= \gamma_0 + \Delta\gamma
