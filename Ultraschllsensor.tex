@@ -74,13 +74,11 @@ Oberflächenerkennung erfasst das Sensor auch schleicht. Das kann man in der Abb
 	\caption{Öffnungswinkel (Quelle: eigene Darstellung)}
 	\label{bild_7} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
+
 Wird das Winkel des Schallkegels größer seinem Öffnungswinkel auf eine ebene Wand, so erreicht die Reflektion den aussendenden Sensor nicht. Kann man am Abbildung \ref{bild_7} sehen.
 
-
-
-
-
 \subsection{Laser Sensor - Variante 1}
+
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.6\textwidth]{images/laser-sensor.png}
 	\caption{Laser-Sensor (Quelle: waveshare.com)}
@@ -143,8 +141,8 @@ Wird das Winkel des Schallkegels größer seinem Öffnungswinkel auf eine ebene 
 \textbf{Parameter:}  %fett 
 
 \begin{itemize}
-\item Modul: 
-\item Preis: 1,53 Doller
+\item Modul: GP2Y0A21YK0F
+\item Preis: 3,11 Doller
 \item Kommunikation: Analog Output Voltage (typischerweise 0,4 bis 2,3 V Range)
 \item Betriebstemperatur:-10 bis + 60 °C
 \item Minimale Messdistanz = 10 cm
@@ -158,5 +156,24 @@ Wird das Winkel des Schallkegels größer seinem Öffnungswinkel auf eine ebene 
 \par\bigskip %leere zeile
 \textbf{Nachteile:}  %fett 
 
-Datenblatt – > http://makertreeebayimages.azurewebsites.net/ebayimages/ebaycontent/gp2y0 a21yk-data-sheet.pdf 
+Durch die Anwendung der Triangulatio haben das Reflexionsverhalten des Gegenstands, die Umgebungstemperatur und die Betriebsdauer einen sehr geringen Einfluss auf die Abweichung der Messung. Die analoge Ausgangsspannung des Abstandssensors hängt von der gemessenen Entfernung ab. Somit kann der Sensor auch als Näherungssensor genutzt werden.
+
+Produktinformationen:
+
+Abstandsmessbereich 10cm – 80cm
+Betriebsspannung 5V DC
+Stromaufnahme 40 mA
+Sensorausgang: alnaloge Spannung
+Ausgangsspannung: ca. 0.4V bei 80cm, ca. 2.3V bei 10cm
+Ansprechzeit: 39ms
+Betriebstemperatur: -10°C bis +60°C
+Abmessung: 29,5*13*13,5mm
+Lieferumfang:
+
+1 SHARP IR-GP2Y0A21YK0F Distanz Sensor
+1 Anschlusskabel mit Stecker
+Einfache Verwendung durch Mikrocontroller, so wie Arduino , 8051, AVR, PIC, DSP, ARM, MSP430, PLC,TTL-Logik
+
+%Weitere Details zum Sensor im Datenblatt: %http://www.sharpsma.com/webfm_send/1489
+
 Dieses Sensor sendet ein Strahl des Infrarot-Licht auf ein Objekt und wartet  reflektierte Licht zurück kommt.
