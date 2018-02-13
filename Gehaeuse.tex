@@ -1,5 +1,5 @@
 % !TEX root = SegwayDoku.tex
-\renewcommand{\autoren}{Valentyn Chepil, Alexsander Stoiljkovic}
+\renewcommand{\autoren}{Valentyn Chepil}
 \newpage
 \section{Die Gehäuse}
 \subsection{Die Gehäusen - V.1}
@@ -47,27 +47,31 @@ Im Bild \ref{gehaeuse-v2} ist eine modulare Darstellung des Roboters zu sehen. D
 
 \subsection{Die Gehäusen - V.4}
 
-
-%\begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
-	% mit width=... wird die Größe des Bildes in Prozent der Seitenbreite eingestellt
-%	\centering\includegraphics[width=0.5\textwidth]{images/gehaeuse-v4.png}
-	% caption ist die Bildunterschrift, taucht auch im Abbildungsverzeichnis auf
-%	\caption{Gehäuse - V.4 \newline (Quelle: eigene Darstellung)}
-%	\label{gehaeuse-v4} % über das label kann man aus dem Text auf das Bild verweisen
-%\end{figure}
-
-
+\begin{figure}[htb]
+	\centering
+	\begin{minipage}{0.45\linewidth}
+		\centering
+		\includegraphics[scale=0.48]{images/4.1_vorne.jpg}
+		\caption{Endgültige Gehäuse V4.1 \newline(Quelle: Eigene Darstellung)}
+		\label{gehaeuse-v4}
+	\end{minipage}
+	%\hfill
+	\begin{minipage}{0.45\linewidth}
+		\centering
+		\includegraphics[scale=0.48]{images/4.1_hinten.jpg}
+		\caption{ mit Deckels \newline (Quelle: Eigene Darstellung)}
+	\end{minipage}
+\end{figure}
 
 
 
 \subsubsection{ Berechnung vom Motorhalter}
 
-Alle Berechnungen wurden mit Hilfe von FEM - Programmierung gemacht und beweise die Festigkeit nur von dem Motorhalter. Es wurden an den Stellen vom Motoren und Räder das Moment laut der Berechnung %\ref{ber}
- verwendet und als Lastkraft wurde 50N auf die Oberfläche eingeprägt. 
+Alle Berechnungen wurden mit Hilfe von FEM - Programmierung gemacht und beweise die Festigkeit nur von dem Motorhalter. Es wurden an den Stellen vom Motoren und Räder das Moment laut der Berechnung \ref{ber} verwendet und als Lastkraft wurde 50N auf die Oberfläche eingeprägt. 
 
-Bild einfügen mit %\ref{ber}
+!!!!!!!!   Bild einfügen mit \ref{ber}
 
-Die Materialeigenschaften kann man auf der Abbildung \ref{FEM2}
+Die Materialeigenschaften kann man aus der Abbildung \ref{FEM2} ablesen.
 
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.7\textwidth]{images/FEM2.png}
@@ -84,17 +88,18 @@ Die Materialeigenschaften kann man auf der Abbildung \ref{FEM2}
 	\label{FEM1} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
 
-
-
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.9\textwidth]{images/FEM3.png}
 	% caption ist die Bildunterschrift, taucht auch im Abbildungsverzeichnis auf
 	\caption{FEM - Verschiebungen \newline (Quelle: eigene Darstellung)}
 	\label{FEM3} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
+
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.9\textwidth]{images/FEM4.png}
 	% caption ist die Bildunterschrift, taucht auch im Abbildungsverzeichnis auf
 	\caption{FEM - Spannungen \newline (Quelle: eigene Darstellung)}
 	\label{FEM4} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
+
+\pagebreak
