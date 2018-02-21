@@ -23,31 +23,34 @@ In der Abbildung sind zwei prinzipielle Teilschritte abgebildet und durch zwei F
 
 
 
-\subsection{PID-Regler}
+%\subsection{PID-Regler}
 
-Der PID-Regler besteht aus den Anteilen des P-Gliedes, des I-Gliedes und des D-Gliedes. Er kann sowohl aus der Parallelstruktur oder der Reihenstruktur definiert werden.
+%Der PID-Regler besteht aus den Anteilen des P-Gliedes, des I-Gliedes und des D-Gliedes. Er kann sowohl aus der Parallelstruktur oder der Reihenstruktur definiert werden.
 
-\begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
-	\centering\includegraphics[width=0.6\textwidth]{images/PID.jpg}
-	\caption{ \ PID-Regeler (Quelle:Wikipedia)}
-	\label{pid} % über das label kann man aus dem Text auf das Bild verweisen
-\end{figure}
+%\begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
+%	\centering\includegraphics[width=0.6\textwidth]{images/PID.jpg}
+%	\caption{ \ PID-Regeler (Quelle:Wikipedia)}
+%	\label{pid} % über das label kann man aus dem Text auf das Bild verweisen
+%\end{figure}
 
-Beide Darstellungsformen der parallel- und reihenstrukturierten PID-Regler, die sich mathematisch völlig identisch umrechnen lassen, haben unterschiedliche Vorteile in der Anwendung:
+%Beide Darstellungsformen der parallel- und reihenstrukturierten PID-Regler, die sich mathematisch völlig identisch umrechnen lassen, haben unterschiedliche Vorteile in der Anwendung:
 
-- Die Reihenstruktur des PID-Reglers und die zugehörige Übertragungsfunktion erlauben für den Reglerentwurf die einfache Pol-Nullstellen-Kompensation von Regler und Regelstrecke.
+%- Die Reihenstruktur des PID-Reglers und die zugehörige Übertragungsfunktion erlauben für den Reglerentwurf die einfache Pol-Nullstellen-Kompensation von Regler und Regelstrecke.
  
-- Die Parallelstruktur des PID-Reglers ermöglicht das Verhindern des Wind-up-Effekts. Sehr häufig wird die Stellgröße des Reglers u(t) in Regelkreisen durch die Regelstrecke begrenzt. Dadurch entsteht das ungewollte Verhalten des I-Gliedes, bis zu seiner eigenen Begrenzung weiter zu integrieren. Verschwindet die Stellgrößenbegrenzung, weil die Regelabweichung gegen Null läuft, hat das I-Glied einen zu hohen Wert und verursacht eine schlechte Einschwingdynamik der Regelgröße y(t). 
+%- Die Parallelstruktur des PID-Reglers ermöglicht das Verhindern des Wind-up-Effekts. Sehr häufig wird die Stellgröße des Reglers u(t) in Regelkreisen durch die Regelstrecke begrenzt. Dadurch entsteht das ungewollte Verhalten des I-Gliedes, bis zu seiner eigenen Begrenzung weiter zu integrieren. Verschwindet die Stellgrößenbegrenzung, weil die Regelabweichung gegen Null läuft, hat das I-Glied einen zu hohen Wert und verursacht eine schlechte Einschwingdynamik der Regelgröße y(t). 
 
-\textbf{Software Darstellung:} 
+%\textbf{Software Darstellung:} 
 
-esum = esum + e
+%esum = esum + e
 
-y = Kp * e + Ki * Ta * esum + Kd * (e – ealt)/Ta
+%y = Kp * e + Ki * Ta * esum + Kd * (e – ealt)/Ta
 
-ealt = e
-
-\textbf{Mit:}  Kp-Proportionalbeiwert, Ki-Integralbeiwert, Kd-Differenzialbeiwert, e-Regelabweichung, Ta-Zeitkonstante.
+%ealt = e
+%
+%\textbf{Mit:}  Kp-Proportionalbeiwert, Ki-Integralbeiwert, Kd-Differenzialbeiwert, e-Regelabweichung, Ta-Zeitkonstante.
 
 % für Weiterinfo link:http://rn-wissen.de/wiki/index.php?title=Regelungstechnik
-\pagebreak
+
+%\subsection{}
+
+%\pagebreak
