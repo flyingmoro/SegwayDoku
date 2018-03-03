@@ -54,33 +54,35 @@ Bei mehrere Objekten vor Schallwelle wird der Abstand zum nächstliegenden Hinde
 
 Als Nachteil kann man nennen die geringe Reichweite (ca. 3m) des Ultraschalls und  der geringen Ausbreitungsgeschwindigkeit des Schalls.
 
-Große Probleme bekommt man auch aus den Reflektionseigenschaften der Schallwellen. Besonders bei weichen Materialien und spitzen-förmigen Oberflächen,
-Oberflächenerkennung erfasst das Sensor auch schleicht. Das kann man in der Abbildung \ref{bild_4} sehen.
-
+Große Probleme bekommt man auch aus den Reflektionseigenschaften der Schallwellen. Besonders bei weichen Materialien und spitzen-förmigen Oberflächen, Oberflächenerkennung erfasst das Sensor auch schleicht. Das kann man in der Abbildung \ref{bild_4} sehen.
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.8\textwidth]{images/Bild-4-5.png}
 	\caption{Weiche und spitzen-förmige-weiche Oberflächen \newline(Quelle: eigene Darstellung,Frauen-Halsschal und Teppich)}
 	\label{bild_4}
 \end{figure}
-
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.\textwidth]{images/Bild-6.png}
 	\caption{Spitzen-förmige Oberflächen\newline(Quelle: eigene Darstellung, z.B: Kanten)}
 	\label{bild_6}
 \end{figure}
-
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.5\textwidth]{images/Bild-7.png}
 	\caption{Öffnungswinkel (Quelle: eigene Darstellung)}
 	\label{bild_7} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
-
 Wird das Winkel des Schallkegels größer seinem Öffnungswinkel auf eine ebene Wand, so erreicht die Reflektion den aussendenden Sensor nicht. Kann man am Abbildung \ref{bild_7} sehen.
 
-\pagebreak
-	
-\subsection{ Infrarot Sensor  }
+Aus der Fähigkeiten des Sensors wurde folgenden Modul konstruiert und angepasst. Auf der Abbildung \ref{H-Mod} ist das Öffnungswinkel von drei US-Sensoren zu sehen.
 
+\begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
+	\centering\includegraphics[width=0.7\textwidth]{images/H-Mod.jpg}
+	\caption{Modul zur Hinderniserkennung (Quelle: eigene Darstellung)}
+	\label{H-Mod} % über das label kann man aus dem Text auf das Bild verweisen
+\end{figure}
+
+
+\pagebreak
+\subsection{ Infrarot Sensor  }
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.6\textwidth]{images/infrarot.png}
 	\caption{ \ Infrarot-Sensor  (Quelle: amazon.de)}
@@ -99,12 +101,15 @@ Wird das Winkel des Schallkegels größer seinem Öffnungswinkel auf eine ebene 
 \end{itemize}
 
 Durch die Anwendung der Triangulatio haben das Reflexionsverhalten des Gegenstands, die Umgebungstemperatur und die Betriebsdauer einen sehr geringen Einfluss auf die Abweichung der Messung. Die analoge Ausgangsspannung des Abstandssensors hängt von der gemessenen Entfernung ab. Somit kann der Sensor auch als Näherungssensor genutzt werden.
-Das Sensor sendet ein Strahl des Infrarot-Licht auf ein Objekt und wartet  reflektierte Licht zurück kommt.
-Aufbau des Sensor kann man auf dem Bild \ref{laser-sensor1} anschauen.
+Das Sensor sendet ein Strahl des Infrarot-Licht auf ein Objekt und wartet  reflektierte Licht zurück kommt. 
+ 
+Aufbau des Sensors kann man auf dem Bild \ref{laser-sensor1} anschauen.
 
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
-	\centering\includegraphics[width=0.8\textwidth]{images/laser-sensor1.png}
+	\centering\includegraphics[width=0.6\textwidth]{images/laser-sensor1.png}
 	\caption{ \ Aufbau der Sensors (Quelle:philohome.com)}
 	\label{laser-sensor1} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
 
+
+Aus zeitlichen Gründen wurde den Sensor ins Wackelroboter nicht verbaut.
