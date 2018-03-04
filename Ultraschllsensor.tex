@@ -1,6 +1,7 @@
 % !TEX root = SegwayDoku.tex
-\renewcommand{\autoren}{Valentyn Chepil}
 \newpage
+\renewcommand{\autoren}{Valentyn Chepil}
+
 \section{Die Hinderniserkennung}
 \subsection{Ultraschallsensor}
 % \ref{bild_3} zuweisung auf Bild in Text.
@@ -13,14 +14,8 @@
 	\label{bild_1.1} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
 
-\textbf{Parameter:}  %fett 
-\begin{itemize} 
-	\item Modul: HC-SR04 
-	\item Preis:  2,00 Doller
-\end{itemize}
+Die Erkennung vom Hindernis erfolgt über ausgehenden Schallwellen, die sich in kegelförmig Form  ausbreiten. Bei Erreichung des Ziels werden die reflektierende Schallwellen aufgenommen und das Zeit des Reflektion wird ausgemessen. Dadurch erkennt man das Hindernis und den Abstand zu dem. Die Ausbreitung und die reflektierende Schallwellen hängt von verschiedenen Faktoren ab. Sie werden vom Luftdruck, der Umgebungstemperatur, der Luftfeuchtigkeit sowie vom Sende-/Empfangswinkel und der Oberfläche des im Schallkegel befindlichen Objekts beeinflusst.
 
-Die Erkennung vom Hindernis erfolgt über ausgehenden Schallwellen, die sich in kegelförmig Form  ausbreiten. Bei Erreichung des Ziels werden die reflektierende Schallwellen aufgenommen und das Zeig des Reflektion wird ausgemessen. Dadurch erkennt man das Hindernis und den Abstand zu dem. Die Ausbreitung und die reflektierende Schallwellen hängt von verschiedenen Faktoren ab. Sie werden vom Luftdruck, der Umgebungstemperatur, der Luftfeuchtigkeit sowie vom Sende-/Empfangswinkel und der Oberfläche des im Schallkegel befindlichen Objekts
-beeinflusst.
 
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.6\textwidth]{images/Bild-1.jpg}
@@ -30,12 +25,12 @@ beeinflusst.
 
 \textbf{Vorteile:}  %fett 
 
-Ein größter Vorteil des Ultraschallsensors ist günstiger Preis. Dies ermöglicht die Verwendung von vielen Sensoren bei der Modellbau, was zur präzisen Erfassung der Entfernung zu Hindernissen und Objekten in der Umgebung führt. Kann man in der Abbildung \ref{bild_1} sehen.
+Ein größter Vorteil des Ultraschallsensors ist günstiger Preis. Dies ermöglicht die Verwendung von vielen Sensoren bei der Modellbau, was zur präzisen Erfassung der Entfernung zu Hindernissen und Objekten in der Umgebung führt. Die Abbildung \ref{bild_1} stellt ein Versuchsaufbau für Hinderniserkennen. 
 
 \par\bigskip %leere zeile
 \textbf{Nachteile:}  %fett 
 
-Ein Hindernis oder Objekt kann nicht genau geortet werden, sondern man kann nur feststellen, dass es sich in der gemessenen Entfernung innerhalb des Schallkegels befindet. Kann man in der Abbildung \ref{bild_2} sehen.
+Ein Hindernis oder Objekt kann nicht genau geortet werden, sondern man kann nur feststellen, dass es sich in der gemessenen Entfernung innerhalb des Schallkegels befindet. Kann man in der Abbildung \ref{bild_2} anschauen.
 
 \begin{figure}[ht]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.6\textwidth]{images/Bild-2.png}
@@ -43,8 +38,7 @@ Ein Hindernis oder Objekt kann nicht genau geortet werden, sondern man kann nur 
 	\label{bild_2} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
 
-Bei mehrere Objekten vor Schallwelle wird der Abstand zum nächstliegenden Hindernis gemessen und die weit liegender Objekte werde einfach nicht erkannt. Kann man in der Abbildung \ref{bild_3} sehen.
-
+Bei mehrere Objekten vor Schallwelle wird der Abstand zum nächstliegenden Hindernis gemessen und die weit liegender Objekte werde einfach nicht erkannt. Das ist in der Abbildung \ref{bild_3} zu sehen.
 
 \begin{figure}[ht]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.6\textwidth]{images/Bild-3.png}
@@ -52,64 +46,43 @@ Bei mehrere Objekten vor Schallwelle wird der Abstand zum nächstliegenden Hinde
 	\label{bild_3} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
 
-Als Nachteil kann man nennen die geringe Reichweite (ca. 3m) des Ultraschalls und  der geringen Ausbreitungsgeschwindigkeit des Schalls.
+Als Nachteil kann man auch nennen, die geringe Reichweite (ca. 3m) des Ultraschalls und  der geringen Ausbreitungsgeschwindigkeit des Schalls, was bei  bewegenden Maschinen (im Unserem Fall, Wackelroboter) zur Kollision mit Hindernis führen kann.
 
-Große Probleme bekommt man auch aus den Reflektionseigenschaften der Schallwellen. Besonders bei weichen Materialien und spitzen-förmigen Oberflächen, Oberflächenerkennung erfasst das Sensor auch schleicht. Das kann man in der Abbildung \ref{bild_4} sehen.
+Große Probleme bekommt man auch aus den Reflektionseigenschaften der Schallwellen. Besonders bei weichen Materialien und spitzen-förmigen Oberflächen erkennt  der Sensor auch schleicht. Beispiel der Oberfläche kann man in der Abbildung \ref{bild_4} und \ref{bild_6} betrachten.
+
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
-	\centering\includegraphics[width=0.8\textwidth]{images/Bild-4-5.png}
+	\centering\includegraphics[width=0.7\textwidth]{images/Bild-4-5.png}
 	\caption{Weiche und spitzen-förmige-weiche Oberflächen \newline(Quelle: eigene Darstellung,Frauen-Halsschal und Teppich)}
 	\label{bild_4}
 \end{figure}
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
-	\centering\includegraphics[width=0.\textwidth]{images/Bild-6.png}
+	\centering\includegraphics[width=0.6\textwidth]{images/Bild-6.png}
 	\caption{Spitzen-förmige Oberflächen\newline(Quelle: eigene Darstellung, z.B: Kanten)}
 	\label{bild_6}
 \end{figure}
+
+Wird das Winkel des Hindernis größer dem Öffnungswinkel des Wandes , so erreicht die Reflektion den aussendenden Sensor nicht (Bild \ref{bild_7}). 
+
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
-	\centering\includegraphics[width=0.5\textwidth]{images/Bild-7.png}
+	\centering\includegraphics[width=0.6\textwidth]{images/Bild-7.png}
 	\caption{Öffnungswinkel (Quelle: eigene Darstellung)}
 	\label{bild_7} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
-Wird das Winkel des Schallkegels größer seinem Öffnungswinkel auf eine ebene Wand, so erreicht die Reflektion den aussendenden Sensor nicht. Kann man am Abbildung \ref{bild_7} sehen.
 
 Aus der Fähigkeiten des Sensors wurde folgenden Modul konstruiert und angepasst. Auf der Abbildung \ref{H-Mod} ist das Öffnungswinkel von drei US-Sensoren zu sehen.
 
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
-	\centering\includegraphics[width=0.7\textwidth]{images/H-Mod.jpg}
-	\caption{Modul zur Hinderniserkennung (Quelle: eigene Darstellung)}
-	\label{H-Mod} % über das label kann man aus dem Text auf das Bild verweisen
+	\centering\includegraphics[width=0.95\textwidth]{images/H-Mod.jpg}
+	\caption{Modul zur Hinderniserkennung mit Ultraschallsensoren (US1, US2, US22, US3, US33); mit US1 - Mitte, US2, US3 - rechte Seite und US22, US33 - linke Seite  (Quelle: eigene Darstellung)}
+	\label{H-Mod} 
 \end{figure}
 
+\subsection{Infrarot}
+Als Alternative kann man Infrarot-Sensor zusammen mit Ultraschallsensor verwenden, da der Sensor höherer Reaktionszeit hat. Das Sensor kann man auf dem  Bild \ref{infrarot} betrachten.
 
-\pagebreak
-\subsection{ Infrarot Sensor  }
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.6\textwidth]{images/infrarot.png}
 	\caption{ \ Infrarot-Sensor  (Quelle: amazon.de)}
 	\label{infrarot} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
-
-\textbf{Parameter:}  %fett 
-
-\begin{itemize}
-	\item Modul: GP2Y0A21YK0F
-	\item Kommunikation: Analog Output Voltage 
-	\item Ausgangsspannung: ca. 0.4V bei 80cm, ca. 2.3V bei 10cm
-	\item Betriebstemperatur:-10 bis + 60 °C
-	\item Min. = 10 cm und max. = 80 cm
-	\item Reaktionszeit = 38 ± 10 ms
-\end{itemize}
-
-Durch die Anwendung der Triangulatio haben das Reflexionsverhalten des Gegenstands, die Umgebungstemperatur und die Betriebsdauer einen sehr geringen Einfluss auf die Abweichung der Messung. Die analoge Ausgangsspannung des Abstandssensors hängt von der gemessenen Entfernung ab. Somit kann der Sensor auch als Näherungssensor genutzt werden.
-Das Sensor sendet ein Strahl des Infrarot-Licht auf ein Objekt und wartet  reflektierte Licht zurück kommt. 
- 
-Aufbau des Sensors kann man auf dem Bild \ref{laser-sensor1} anschauen.
-
-\begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
-	\centering\includegraphics[width=0.6\textwidth]{images/laser-sensor1.png}
-	\caption{ \ Aufbau der Sensors (Quelle:philohome.com)}
-	\label{laser-sensor1} % über das label kann man aus dem Text auf das Bild verweisen
-\end{figure}
-
-
-Aus zeitlichen Gründen wurde den Sensor ins Wackelroboter nicht verbaut.
+\pagebreak
