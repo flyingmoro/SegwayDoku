@@ -20,12 +20,12 @@ Die Beschleunigungs- und Drehraterohwerte werden mit folgenden Befehlen ausgeles
 int16_t accY, accX, accZ, gyroY, gyroZ, gyroX;
 MPU6050 mpu;
 
-void loop() 
+void loop()
 {
   accX = mpu.getAccelerationX();
   accY = mpu.getAccelerationY();
-  accZ = mpu.getAccelerationZ(); 
-  
+  accZ = mpu.getAccelerationZ();
+
   gyroX = mpu.getRotationX();
   gyroY = mpu.getRotationY();
   gyroZ = mpu.getRotationZ();
@@ -41,10 +41,10 @@ Der Neigungswinkel \(\beta\) wird einmal über den Beschleunigungssensor mit der
 #define sampleTime  0.005
 
 ISR(TIMER1_COMPA_vect)
- 	{   
+ 	{
  	gyroRate = map(gyroZ, -32768, 32767, -250, 250);
 	Acc_Pitch = atan2(accZ, accX)*RAD_TO_DEG;
-	Gyro_Pitch =(float)gyroRate*sampleTime; 
+	Gyro_Pitch =(float)gyroRate*sampleTime;
 	}
 \end{lstlisting}
 
@@ -55,14 +55,14 @@ Folgende zwei Möglichkeiten wurden untersucht:
 \begin{itemize}
 	\item Komplementär Filter
 	\item Kalman Filter
-\end{itemize} 
+\end{itemize}
 
 \subsubsection{Komplementär Filter}
 Die Idee hinter dem Komplementär Filter ist, dass man die kurzzeitig hohe Genauigkeit des Gyroskop(abdriften) mit der langfristigen Genauigkeit des Beschleunigungssensors(kein driften) kombiniert.
 
 \begin{figure}[h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 % mit width=... wird die Größe des Bildes in Prozent der Seitenbreite eingestellt
-\centering\includegraphics[width=0.7\textwidth]{images/komplementärfilter.eps}
+\centering\includegraphics[width=0.7\textwidth]{images/komplementaerfilter.eps}
 % caption ist die Bildunterschrift, taucht auch im Abbildungsverzeichnis auf
 \caption{Schematischer Aufbau eines Komplementärfilter \newline (Quelle: eigene Darstellung)}
 \label{Komplementärfilter} % über das label kann man aus dem Text auf das Bild verweisen
@@ -70,7 +70,7 @@ Die Idee hinter dem Komplementär Filter ist, dass man die kurzzeitig hohe Genau
 
 \textbf{Formel Komplementär Filter}
 
-Formel zur Berechnung des neuen Winkels. 
+Formel zur Berechnung des neuen Winkels.
 
 \(\tau\) = Zeitkonstante des Filters.
 \begin{flalign}
@@ -81,9 +81,9 @@ Formel zur Berechnung des neuen Winkels.
 	\label{eq:Alpha }
 \end{flalign}
 
-  
+
 \subsubsection{Kalman Filter}
-Der Ansatz des Kalman Filter ist, dass man aus gemessenen fehlerbehafteten Werten eine möglichst genaue Schätzung bekommt über den tatsächlichen Zustand. 
+Der Ansatz des Kalman Filter ist, dass man aus gemessenen fehlerbehafteten Werten eine möglichst genaue Schätzung bekommt über den tatsächlichen Zustand.
 \begin{figure}[h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 % mit width=... wird die Größe des Bildes in Prozent der Seitenbreite eingestellt
 \centering\includegraphics[width=0.7\textwidth]{images/Kalman-Filterstruktur.png}
@@ -104,8 +104,8 @@ Bei der Auswahl des geeigneten Filters wurde auf verschieden Kriterien geachtet.
 & Komplementär Filter & Kalman Filter\\
 Winkel-Änderungsverhalten & +++& ++ \\
 Störsicherheit & +++ &++++\\
-Implementierung &++++ &+\\	
-&&\\	
+Implementierung &++++ &+\\
+&&\\
 \end{tabular}
 
 Aufgrund des besseren Winkel-Änderungsverhaltens haben wir uns für den Komplementär Filter entschieden. Jedoch hat der Filter für einen präzisen Winkel alleine nicht ausgereicht, sodass der Winkel nochmal über 10 aufeinanderfolgende Werte gemittelt wird.
