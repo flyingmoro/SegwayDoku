@@ -32,7 +32,7 @@ Name der Dateien: DynamicsLagrange und Dynamikmodell
 
 \newpage
 \subsection{Reglerauslegung}
-Folgende Regler wurden implementiert: 
+Folgende Regler wurden implementiert:
 \begin{itemize}
 	\item Kippregler
 	\item Geschwindigkeitsregler
@@ -49,7 +49,7 @@ Folgende Regler wurden implementiert:
 \end{figure}
 
 \subsubsection{Kippregler}
-Das System ist instabil, der Roboter würde einfach umfallen. Um dies zu verhindern wird ein Kippregler ausgelegt. 
+Das System ist instabil, der Roboter würde einfach umfallen. Um dies zu verhindern wird ein Kippregler ausgelegt.
 
 Das Wurzelortskurvenverfahren zum Entwerfen des Kippreglers bietet sich an, da das gegebene System an das Zeitverhalten des geschlossenen Kreises sowie der Lage des dominierenden Polpaares gebunden ist.  Dabei wird die Übertragungsfunktion des offenen Kreises $G_{Strecke}(s)\cdot G_{Regler}(s)$ gebildet und die entsprechende Wurzelortskurve betrachtet. Aus dem qualitativen Verlauf der Wurzelortskurve ist bekannt, wie sich die Pole, in Abhängigkeit der Reglerverstärkung k, verändern. Sie liegen für k=0 im Ursprung ihres Astes und bewegen sich für steigende Verstärkungen an ihm entlang, bis sich der Pol für k→ ∞ im Unendlichen befindet oder durch eine in der Nähe befindliche Nullstelle kompensiert wird. Letztendlich müssen dem Regler eine oder mehrere Nullstellen gegeben werden, welche die Äste der Wurzelortskurven des offenen Kreises verändern. Dadurch soll das dominierende Polpaar durch eine bewusste Wahl der Reglerverstärkung k in den gewünschten Bereich der komplexen Ebene gelangen und damit das System stabilisieren. Im Optimalfall werden dadurch die restlichen Polstellen so weit nach links verschoben, dass sie einen möglichst geringen Einfluss auf das System haben und das dominierende Polpaar alleine das Verhalten bestimmt.
 
@@ -89,3 +89,6 @@ Der Roboter fährt nur Vorwärts und dreht sich in die Richtung in welcher der W
 Der Roboter fährt bei einem Winkel von unter $\pm90^{\circ}$ vorwärts bei einem Winkel darüber rückwärts zum Ziel.
 \subsubsubsection{Vektorregelung}
 Der Roboter dreht sich wie bei der Vorwärtsfahrt. Die translatorische Geschwindigkeit wird über das Skalarprodukt zwischen Zielvektor und Robotervektor $[1;0]$ berechnet. Steht der Roboter also zu Beginn rückwärts zum Ziel, fährt der Roboter zunächst auch rückwärts bis er sich auf $\pm90^{\circ}$ gedreht hat.
+
+
+\newpage

@@ -4,5 +4,6 @@
 \section{Reglerumsetzung im Roboter}
 \subsection{Rauschen der zu regelnden Größen}
 Bei der Implementierung des Kippreglers fiel auf, dass der Kippwinkel $\beta$ zu sehr rauscht. Dies führte zu großen Schwankungen am Ausgang des Reglers, da der D-Anteil das Rauschen deutlich verstärkte. In der Folge wurde zur Glättung ein FIR Filter mit zirkularem Buffer einprogrammiert. Genauer gesagt wird über die letzen 30 Werte gemittelt.
-In der Folge konnten auch die Werte aus der Simulation übernommen werden. 
+In der Folge konnten auch die Werte aus der Simulation übernommen werden.
 
+\newpage
