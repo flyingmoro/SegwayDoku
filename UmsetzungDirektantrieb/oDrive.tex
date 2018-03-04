@@ -1,0 +1,85 @@
+% !TEX root = ../SegwayDoku.tex
+\renewcommand{\autoren}{Stephan Morongowski}
+\newpage
+\subsection{Inbetriebnahme des Motortreibers}
+
+Zur Anwendung als Treiber kommt der sogenannte oDrive, siehe \ref{sssec:odrive}.
+
+Für die Inbetriebnahme müssen einige Voraussetzungen geschaffen werden. Es wird hier auf die Dokumentation auf der Herstellerseite verwiesen. Lediglich einige Besonderheiten seien im Folgenden genannt.
+
+Die Firmware des Treibers ist als Quellcode über Github zu beziehen und in C++ verfasst. Kompiliert wird der Code z.B. mit dem frei verfügbaren \textit{arm-none-eabi-gcc}-Kompiler. Es besteht auch die Möglichkeit, während der Laufzeit über eine IDE zu debuggen. Dies funktioniert mithilfe des Programmes \textit{openocd}.
+
+Der oDrive verfügt derzeit über keine Möglichkeit, Einstellungen z.B. über ein Konfigurationsprogramm oder eine Konfigurationsdatei zu hinterlegen. Die benötigen Parameterwerte müssen direkt im Quellcode der Firmware eingetragen werden. Allerdings ist die Entwicklung des oDrive zur Zeit in vollem Gange und es gibt regelmäßig neue Features.
+
+\subsubsection{Notwendige Anpassungen der Firmware}
+Der oDrive ist bei Auslieferung eingestellt, um Motoren zu betreiben, die deutlich andere Eigenschaften besitzen, als der hier verbaute Motor (siehe \ref{sssec:RoxxyMotor}). Dies führt dazu, dass mit den Werkseinstellungen die Initialisierungsphase mit dem Fehler ERROR\_PHASE\_RESISTANCE\_OUT\_OF\_RANGE abbricht und der Treiber eine Ansteuerung nicht zulässt.
+Zu Beginn wird der Phasenwiderstand und die Induktivität des angeschlossenen Motors gemessen und die Werte des hier verwendeten Motors liegen außerhalb der erwarteten Bandbreite. Abhilfe bringt folgende Anpassung:
+
+\begin{lstlisting}[language=C++]
+resistance_calib_max_voltage = 6.0f;
+calibration_current = 3.0f;
+\end{lstlisting}
+zu finden in der Datei low\_level.c in dem jeweiligen Konfigurationsstruct der Motoren. Diese Werte müssen bei beiden Motorkonfigurationen, also an zwei verschiedenen Stellen im Code, angepasst werden.
+
+Des Weiteren sind die Regler für Strom, Geschwindigkeit und Position für deutlich andere Motoren eingestellt. In Kombination mit dem hier verwendeten Motor sind starke Vibrationen die Folge. Werte mit akzeptablen, aber sicherlich noch verbesserungswürdigen Ergebnissen sind
+\begin{lstlisting}[language=C++]
+pos_gain = 50.0f; // or 100.0f
+vel_gain = 1.0/10000.0f;
+\end{lstlisting}
+
+Da der hier verwendete Motor über deutlich mehr Moment als nötig verfügt, wurde in der Firmware eine Begrenzung für den zu stellenden Strom gewählt werden, die mit 5A ausreichend Spielraum lässt.
+\begin{lstlisting}[language=C++]
+current_control.current_lim = 5.0f;
+current_control.max_allowed_current = 5.0f;
+\end{lstlisting}
+
+Angepasst wurde des Weiteren die Suchgeschwindigkeit nach dem Index der Motoren.
+\begin{lstlisting}[language=C++]
+encoder.idx_search_speed = 50.0f, // [rad/s electrical]
+\end{lstlisting}
+
+Um die Dauer des Einschaltvorganges zu verkürzen, kann die Encoderkalibrierung einmalig durchgeführt und das Ergebnis ebenfalls fest im Quellcode eingetragen werden, solange sich die Encoderposition auf der Welle nicht verändert. Werden die Encoder ausgebaut, muss danach eine erneute Kalibirierung erfolgen. Die gefundenen Werte für den Projektaufbau sind:
+\begin{lstlisting}[language=C++]
+// motor0
+encoder.calibrated = true,
+encoder.encoder_offset = -678,
+encoder.motor_dir = -1,
+
+// motor1
+encoder.calibrated = true,
+encoder.encoder_offset = -960,
+encoder.motor_dir = -1,
+\end{lstlisting}
+
+Um eine Kommunikation mit dem oDrive zu ermöglichen, stehen verschiedene Protokolle zur Verfügung. Derzeit kommt das sog. UART\_PROTOCOL\_LEGACY zum Einsatz, welches eine einfache Kommunikation über eine serielle Schnittstelle ermöglicht. Die nötigen Anpassungen lauten:
+\begin{lstlisting}[language=C++]
+#define UART_PROTOCOL_LEGACY
+\end{lstlisting}
+in der Datei commands.h und, um eine akzeptable Totzeit bei der Übertragung zu Erreichen, die Wahl einer höheren Schnittstellengeschwindigkeit von
+\begin{lstlisting}[language=C++]
+huart4.Init.BaudRate = 921600;
+\end{lstlisting}
+einzustellen in der Datei usart.c im Ordner Src.
+
+Da der oDrive nur Strom als Stellgröße bekommt, ist es sinnvoll, dies auch in der Firmware einzugeben.
+\begin{lstlisting}[language=C++]
+control_mode = CTRL_MODE_CURRENT_CONTROL,
+\end{lstlisting}
+Diese Einstellung ist wieder in der low\_level.c im jeweiligen Motorstruct zu finden.
+
+\subsubsection{Rastmomentkompensation}
+Die Rastmomente des verwendeten Motors stören den Regler des Roboters deutlich, solange sich die Stellgrößen im Bereich der auftretenden Rastmomente bewegen. Dies ist der Fall, wenn der Roboter im Stillstand balanciert oder mit einer sehr niedrigen Geschwindigkeit vorwärts fahren soll oder eine Drehung um die Hochachse durchführt, also während des Großteils des Betriebes.
+Die Firmware des oDrive bietet eine Möglichkeit, die Rastmomente des Motors zu vermessen und per Vorsteuerung zu kompensieren. Laut Dokumentation dieses Features wurden Kompensationen von bis zu 90 Prozent erreicht. Aufgrund der nicht mehr zur Verfügung stehenden Zeit in der Endphase der Projektarbeit konnten hier nur wenige erste Versuche unternommen werden, die Kompensationsmethodik zu verwenden. Auch hier gilt, dass die Regler in der Firmware für Motoren mit anderen Betriebsparametern ausgelegt sind. Während der Vermessung des Rastmomentes kommt der Positionsregler des oDrive zum Einsatz. Dieser ist lediglich ein p-Regler und sorgt mit den Werkseinstellungen für starke Vibrationen. Dadurch können die voreingestellten Schwellwerte für die Positionsgenauigkeit und Geschwindigkeit, die für eine sinnvolle Messung des fließenden Stromes nötig sind, nicht unterschritten werden. Die Vermessung wird dadurch nicht durchlaufen, sondern bleibt an einem bestimmten Punkt stehen.
+Es wurde ein PID-Regler in die Firmware eingebaut, der zu  einer erfolgreichen Messung führte. Allerdings entsprach die Qualität der Kompensation nicht der erwarteten Güte. Ein weiteres Problem ist die dauerhafte Speicherung der Messwerte in der Firmware, was nicht abschliessend geklärt werden konnte.
+
+
+
+
+
+
+
+
+
+
+
+\newpage
