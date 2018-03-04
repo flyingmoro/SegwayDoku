@@ -1,0 +1,49 @@
+% !TEX root = SegwayDoku.tex
+\renewcommand{\autoren}{Stephan Morongowski}
+\newpage
+\section{Mikrokontrollerprogrammierung}
+\subsection{Besonderheiten}
+Die Software des verwendeten Microcontrollers (Nucleo-F746ZG) ist in C++ geschrieben und verwendet die Library \textit{mbed os}. Des Weiteren kommt für die Überprüfung der Algorithmen und Darstellung verschiedener Signale die Software \textit{microRay} zum Einsatz. Der Quellcode für den Controller muss mit dem \textit{mbed command line interface} kompiliert werden. Wahrscheinlich funktioniert auch der \textit{mbed online compiler}, dies wurde jedoch nicht getestet. Der Befehl zum Kompilieren der Software lautet \textit{mbed compile -t GCC\_ARM -m NUCLEO\_F746ZG -f} und muss im Quellcodeordner in der Kommandozeile eingegeben werden.
+
+Hier sollen nur einige Besonderheiten in der Umsetzung der Software Erwähnung finden. Der Quellcode steht auf Github zur Verfügung und lässt sich dort unter dem Benutzer \textit{flyingmoro} und Projektnamen \textit{SegwayControllerCode} finden. Der verwendete Code liegt dort im Ordner \textit{segway}.
+
+Es wurde darauf geachtet, alle Berechnungen möglichst effizient zu implementieren. Der Prozessor besitzt ein Fließkommarechenwerk, mit dem Datentyp float zu rechnen ist sehr effizient. Der Typ double sollte vermieden werden. Die gesamte Ausführungszeit eines Berechnungsdurchlaufes liegt derzeit bei ca. 0,2ms ohne MPU6050-Abfrage und bei ca. 0,6ms mit MPU-Abfrage und wird mit einer Frequenz von 1kHz wiederholt. Der Prozessor bietet somit noch einiges an Ressourcen, um weitere Features zu implementieren. Die MPU-Abfrage bietet ein großes Potential für die Freimachung zusätzlicher Prozessorzeit. Eine Möglichkeit wäre hier, den DMA-Controller des Mikrokontrollers zu verwenden. Dies muss mit Hilfe der Hardware-Abstraktionsschicht von ST oder per Setzen der Controllerregister konfiguriert werden. Ein mögliches Vorgehen ist dabei, den Interruptpin des Sensors zu verwenden. Liegen neue Messdaten vor, wird dieser Pin auf High gesetzt. Dann muss über I2C ein Kommando an den Sensor zur Übertragung der Messdaten erfolgen. Während die Antwort nun langsam über den I2C-Bus kommt, kann der Prozessor andere berechnungen druchführen. Die eingehenden Messdaten werden nun asynchron und ohne Prozessorbelastung automatisch mit Hilfe des DMA-Controllers in einen vordefinierten Speicherereich geschrieben und müssen nur noch aus dem Speicher ausgelesen werden.
+
+
+
+
+\par\bigskip
+Für die Positions- und Geschwindigkeitsbestimmung des Roboters werden die Motorencoder parallel zum oDrive mit ausgelesen. Dies erfolgt durch einen speziellen, von ST in den Controller eingebauten Hardwarecounter. Die mbed Library bietet keine Möglichkeit, diese Hardwarekomponenten einzubinden. Daher wurde die Konfiguration mit Hilfe der zur Verfügung stehenden Hardware-Abstraktionsschicht von ST erstellt. Dies ist in der Datei encoderHandling.cpp zu finden.
+
+
+\par\bigskip
+Es wurde eine eigene C++-Klasse zur Auswertung der Ultraschallsensoren entwickelt, die rein interruptbasiert arbeitet und verhindert, dass der Prozessor Leerlaufzeiten erfährt.
+
+\subsection{Übersicht über die verwendeten Dateien}
+Die main.cpp dient in erster Linie der groben Ablaufsteuerung und der Kommunikation mit microRay. Alle benötigten speziellen Funktionen werden über zusätzliche Dateien eingebunden.
+
+\par\bigskip
+In den \textbf{controllers.h} und \textbf{controllers.cpp} Dateien werden die Regler berechnet und die dort verwendeten structs definiert.
+
+\par\bigskip
+In \textbf{encoderHandling} wird zum einen das Einbinden des Hardwarecounters realisiert. Des Weiteren werden wird dort auch die Positionsberechnung des Roboters durchgeführt. Benötigte Konstanten wie z.B. Raddurchmesser und Encoderauflösung sind in der .h-Datei zu finden.
+
+\par\bigskip
+Die \textbf{Kalman.h}-Datei ist eine Klasse, die die Berechnung eines Kalman-Filters implementiert und wurde aus einer Quelle aus dem Internet übernommen. Der Filter war geplant zur Nutzung mit dem verbauten Beschleunigungssensor.
+
+\par\bigskip
+Die beiden \textbf{microRay}-Dateien werden automatisch von microRay generiert und sollten nur über diese Software und nicht direkt verändert werden.
+
+\par\bigskip
+Die \textbf{MPU6050}-Dateien sind fertige Libraries, die nur auf die speziellen Anforderungen des verwendeten Controllers angepasst wurden. Sie dienen der Abfrage der Roh-Sensordaten Beschleunigung und Winkelgeschwindigkeit. Der Sensor wird über eine I2C-Schnittstelle abgefragt. Um die
+
+\par\bigskip
+In \textbf{mpuHandler} wird die Sensorabfrage des MPU6050 durchgeführt und die erhaltenen Rohdaten weiterverarbeitet zu dem für die Regelung benötigten Kippwinkel. Das Signal wird dort auch gefiltert, letzter Stand war, dass ein komplementärer Filter verwendet wird.
+
+\par\bigskip
+\textbf{oDriveCommunicator} ist eine kurze Einheit, die auf Basis der Motorstellgrößen die passenden seriellen Befehle asynchron zu dem angeschlossenen Motortreiber übermittelt.
+
+\par\bigskip
+\textbf{ultraSonic} stellt eine speziell für das mbed Framework geschriebene Klasse zur Abfrage der Ultraschallsensoren zur Verfügung. Diese ist derzeit jedoch nicht in Verwendung, aber voll funktionsfähig. Dazu sei gesagt, dass nicht alle Pins des Controllers interruptfähig sind. Bei Bedarf muss diese Pineigenschaft entweder durch Probieren oder aus den Datenblättern von ST festgestellt werden. Zur Verwendung der Klasse mit einem Ultraschallsensor muss zumindest der Echo-Pin interruptfähig sein.
+
+\newpage

@@ -21,7 +21,12 @@ Das Nullniveau wurde auf die Radmittelachse gesetzt. Daraus folgt, dass sich die
 Für die Berechnungen wurde $\beta$ linearisiert.\newline
 Somit gilt im Folgendem: sin($\beta$) = $\beta$ und cos($\beta$) =1 \newline
 
+<<<<<<< HEAD
 Desweiteren gilt: ${\dot \beta}^2$ ist nicht linearisierbar. Jedoch ist der Wert sehr klein und kann somit als 0 angenommen werden und wird somit im weiteren Verlauf der Berechnungen nicht berücksichtigt.
+
+=======
+Desweiteren gilt: ${\beta}^2$ ist nicht linearisierbar. Jedoch ist der Wert sehr klein und kann somit als 0 angenommen werden und wird somit im weiteren Verlauf der Berechnungen nicht berücksichtigt.
+>>>>>>> temp
 \begin{flalign}
 L & = T_{Rad1} + T_{Rad2} - V_{Gehaeuse}
 \end{flalign}
@@ -68,6 +73,7 @@ Verwendet wurde ein PI - Regler. Ausgelegt wurde hier mittels der Einstellregeln
 \subsubsection{Rotationsgeschwindigkeitsregler}
 Um auch das Fahren von Kurven zu ermöglichen, wird ein Rotationsgeschwindigkeitsregler, ein einfacher P-Regler verwendet. Die Verstärkung $k_{P}=1$ muss in einem Experiment getestet werden und kann gegebenenfalls erhöht werden.
 \subsubsection{Positionsregler}
+<<<<<<< HEAD
 Der Roboter soll vorgegeben Koordinaten anfahren können und  diese auch halten. Dafür sorgt der Positionsregler. Ausgeführt wurden 3 Modi:
 \begin{itemize}
 	\item Vorwärtsfahrt
@@ -88,5 +94,10 @@ Der Roboter fährt bei einem Winkel von unter $\pm90^{\circ}$ vorwärts bei eine
 \subsubsubsection{Vektorregelung}
 Der Roboter dreht sich wie bei der Vorwärtsfahrt. Die translatorische Geschwindigkeit wird über das Skalarprodukt zwischen Zielvektor und Robotervektor $[1;0]$ berechnet. Steht der Roboter also zu Beginn rückwärts zum Ziel, fährt der Roboter zunächst auch rückwärts bis er sich auf $\pm90^{\circ}$ gedreht hat.
 
+=======
+Nachdem der Roboter seine vorgegeben Koordinaten erreicht hat, soll er diese auch halten und dafür sorgt der Positionsregler.
+Verwendet wurde ein
+
+>>>>>>> temp
 
 \newpage
