@@ -1,6 +1,6 @@
 % !TEX root = SegwayDoku.tex
 \newpage
-\renewcommand{\autoren}{alle}
+\renewcommand{\autoren}{Chepil Valentyn}
 \section{Die ausgewählte Komponentenliste}
 \subsection{Die Motoren}
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
@@ -9,7 +9,7 @@
 	\label{Motor Roxxy}
 \end{figure}
 Drehmomentstarker, langsamdrehender Brushless-Elektromotor zum Antrieb großer Schiffs- oder U-Boot-Modelle und Segway-Roboter.
-Anzahl : 2x
+
 \textbf{Technische Daten:} 
 \begin{itemize} 
 	\item Hersteller: Multiplex 
@@ -20,6 +20,7 @@ Anzahl : 2x
 	\item Dauerstrom [A]: 16,0
 	\item Gewicht [g]: 290,0
 \end{itemize}
+\pagebreak
 \subsection{Endcoder}
 \begin{figure}[htb]
 	\centering
@@ -42,6 +43,7 @@ Anzahl : 2x
 		\end{itemize}
 	\end{minipage}
 \end{figure}
+
 \subsection{oDriver}
 \begin{figure}[htb]
 	\centering
@@ -61,6 +63,7 @@ Anzahl : 2x
 	\end{itemize}
 \end{minipage}
 \end{figure}
+
 \begin{itemize} 
 \item Unterstützt Leistungsregeneration.
 \item Optional Verwendung einer hohe Leistungsdichte Batterie bedeutet, dass Sie erreichen können,> 1 kW Spitzenleistung mit nur einer bescheidenen Stromversorgung.
@@ -74,10 +77,11 @@ Positionsbefehle,
 Geschwindigkeitsbefehl, 
 Drehmomentbefehl.
 \end{itemize}
+
 \subsection{Steuerungsplatine}
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.7\textwidth]{images/nucleo.jpg}
-	\caption{Nucleo-F746ZG  \newline (Quelle: playmbedded.org)}
+	\caption{Nucleo-F746ZG   (Quelle: playmbedded.org)}
 	\label{Nucleo}
 \end{figure}
 \textbf{Technische Daten:}
@@ -101,111 +105,145 @@ Drehmomentbefehl.
 	\item Quarzoszillator, 32,768 KHz
 	\item ARM mbed-fähig (mbed.org)
 \end{itemize}
+
 \subsection{Die Räder}
-Es wurden die Reifen bestellt und die Felgen über selbst-erzeugte 3D-Modell gesintert.
+
 \begin{figure}[htb]
 	\centering
-	\begin{minipage}{0.45\linewidth}
+	\begin{minipage}{0.49\linewidth}
 		\centering
 		\includegraphics[scale=0.5]{images/reifen.png}
-		\caption{Felgen \newline (Quelle: Eigene Darstellung)}
+		\caption{Räder \newline (Quelle: conrad.de)}
 	\end{minipage}
-	%\hfill
-	\begin{minipage}{0.45\linewidth}
-		\centering
-		\includegraphics[scale=0.5]{images/reifen.png}
-		\caption{Felgen \newline (Quelle: Eigene Darstellung)}
-	\end{minipage}
-\end{figure}
-\begin{figure}[htb]
-	\centering
 	\begin{minipage}{0.4\linewidth}
 		\textbf{Technische Daten:} 
 		\begin{itemize} 
-			\item TAMIYA DB-01 Dual Block Reifen "C" hinten 62/35 Tuningversion
-			\item RC-Maßstab:  1:10 OffRoad
-			\item Reifendurchmesser: 87mm
-			\item Reifenbreite: 43mm
-			\item Modellbauartikel - kein Spielzeug!
-		\end{itemize}
-	\end{minipage}
-	\begin{minipage}[h]{0.4\textwidth}
-		\textbf{Technische Daten:} 
-		\begin{itemize} 
-			\item Material:
-			\item 
-			\item 
-			\item 
-			\item 
-			\item 
-			\item 
-		\end{itemize}
-	\end{minipage}
-\end{figure}
-Reifen-Quelle:
-https://www.haertle.de/RC+Modellbau/RC+Car+Zubehoer/Reifen+Felgen+Raeder/TAMIYA+54188+DB+01+Dual+Block+Reifen+C+hinten+62+35.html
-\subsection{Die Hinderniserkenner}
-\begin{figure}[htb]
-	\centering
-	\begin{minipage}{0.45\linewidth}
-		\centering
-		\includegraphics[scale=0.5]{images/Bild-1-1.png}
-		\caption{Ultraschallsensor \newline(Quelle: funduinoshop.com)}
-		\label{bild_1.2}
-	\end{minipage}
-	%\hfill
-	\begin{minipage}{0.45\linewidth}
-		\centering
-		\includegraphics[scale=0.5]{images/infrarot.png}
-		\caption{Infrarot-Sensor \newline (Quelle: ebay.de)}
-	\end{minipage}
-\end{figure}
-US-Sensor und Infrarot-Sensor
-\begin{figure}[htb]
-	\centering
-	\begin{minipage}{0.45\linewidth}
-		\textbf{Technische Daten:} 
-		\begin{itemize} 
-			\item 	
-			\item 	
-			\item 	
-			\item 	
-			\item 	Erkennen von Umfang: 2cm-4,5 m 
-			\item 	Hohe Genauigkeit: bis zu 0,3 cm
-			\item 	Sensorwel: Nicht mehr als 15 Grad
-			\item 	Versorgungsspannung: DC 5V
-			\item Stromverbrauch: 15mA		
-			\item Modus der Verbindung: VCC, trig(T), echo(R), 4. GND		
-			\item Masse: 4.6 x 2 x 1,3 cm
-		\end{itemize}
-	\end{minipage}
-	\begin{minipage}[h]{0.45\textwidth}
-		\textbf{Technische Daten:} 
-		\begin{itemize} 
-			\item SHARP IR-GP2Y0A21YK0F Distanz Sensor
-			\item Einfache Verwendung durch Mikrocontroller, so wie Arduino , 8051, AVR, PIC, DSP, ARM, MSP430, PLC,TTL-Logik
-			\item Abstandsmessbereich 10cm – 80cm
-			\item Betriebsspannung 5V DC
-			\item Stromaufnahme 40 mA
-			\item Sensorausgang: alnaloge Spannung
-			\item Ausgangsspannung: ca. 0.4V bei 80cm, ca. 2.3V bei 10cm
-			\item Ansprechzeit: 39ms
-			\item Abmessung: 29,5*13*13,5mm
-			
+			\item Felgen-Mitnehmer - 17 mm 6-Kant
+			\item Reifen-Breite - 42 mm
+			\item Kategorie - Kompletträder
+			\item Maßstab - 1:8 
+			\item Passend für Straßenmodell
+			\item Reifen-Ø - 100 mm
 		\end{itemize}
 	\end{minipage}
 \end{figure}
 \pagebreak
 
-\subsection{Bewegungs- und Beschleunigungsaufnehmer }
-Hyroskop Modul-Name und Bild
-\subsection{Netz (Akku)}
+\subsection{Die Hinderniserkenner}
+\begin{figure}[htb]
+	\centering
+	\begin{minipage}{0.49\linewidth}
+	\includegraphics[scale=0.49]{images/Bild-1-1.png}
+	\caption{Ultraschallsensor \newline(Quelle: conrad.de)}
+\end{minipage}
+\begin{minipage}{0.49\linewidth}
+\textbf{Technische Daten:} 
+\begin{itemize} 
+			\item 	Erkennen von Umfang: 1cm-4,5 m 
+			\item 	Hohe Genauigkeit: bis zu 0,2 cm
+			\item 	Sensorwel: Nicht mehr als 15 Grad
+			\item 	Versorgungsspannung: DC 5V
+			\item Stromverbrauch: 15mA		
+			\item Modus der Verbindung: VCC, trig(T), echo(R), 4. GND		
+			\item Masse: 4.6 x 2 x 1,3 cm
+\end{itemize}
+\end{minipage}
+\end{figure}
 
- Name und Bild
+\subsection{Bewegungs- und Beschleunigungsaufnehmer}
+
+\begin{figure}[htb]
+	\centering
+	\begin{minipage}{0.49\linewidth}
+		\centering
+		\includegraphics[scale=0.5]{images/bew.jpg}
+		\caption{Bewegungs- und Beschleunigungsaufnehmer \newline (Quelle: conrad.de)}
+	\end{minipage}
+	\begin{minipage}{0.4\linewidth}
+		\textbf{Technische Daten:} 
+		\begin{itemize} 
+			\item IC: MPU-6050
+			\item Betriebsspannung 3V - 5V
+			\item Protokoll: I2C
+			\item Abmessungen: 2,0cm x 1,6 cm
+		\end{itemize}
+	\end{minipage}
+\end{figure}
+\pagebreak
+
+\subsection{Akku}
+
+Modellbau-Akkupack (LiPo) 11.1 V 2400 mAh 
+
+\begin{figure}[htb]
+	\centering
+	\begin{minipage}{0.49\linewidth}
+		\centering
+		\includegraphics[scale=0.5]{images/akku.jpg}
+		\caption{Akku 2400 mAh \newline (Quelle: conrad.de)}
+	\end{minipage}
+	\begin{minipage}{0.45\linewidth}
+		\textbf{Technische Daten:} 
+		\begin{itemize} 
+			\item Technologie - LiPo 
+		    \item Zellen-Zahl - 3
+			\item Spannung - 11.1 V
+			\item Kapazität - 2400 mAh
+			\item Belastbarkeit - 20 C
+			\item Massen - 25x33x105
+			\item Gewicht - 187 g
+		\end{itemize}
+	\end{minipage}
+\end{figure}
+
+\subsection{WLAN Router}
+
+TP-LINK TL-WR802N WLAN Router 2.4 GHz 300 MBit/s
+
+\begin{figure}[htb]
+	\centering
+	\begin{minipage}{0.49\linewidth}
+		\centering
+		\includegraphics[scale=0.5]{images/WLAN.jpg}
+		\caption{WLAN Router \newline (Quelle: conrad.de)}
+	\end{minipage}
+	\begin{minipage}{0.4\linewidth}
+		\textbf{Technische Daten:} 
+		\begin{itemize} 
+			\item WLAN-Geschwindigkeit bis 300Mbit/s
+			\item WLAN-Frequenz - 2.4 GHz
+			\item LAN-Übertragungsrate - 100 MBit/s
+			\item Schnittstellen - LAN (10/100 MBit/s)/Micro USB
+			\item Typ - TL-WR802N 
+			\item Masse - 57x18x57
+			\item Kompatibel zu IEEE802.11b/g/n
+			\end{itemize}
+	\end{minipage}
+\end{figure}
+\pagebreak
+
+\subsection{Arduino - Uno}
+\begin{figure}[htb]
+	\centering
+	\begin{minipage}{0.49\linewidth}
+		\centering
+		\includegraphics[scale=0.5]{images/uno.jpg}
+		\caption{Arduino - Uno   \newline (Quelle: conrad.de)}
+	\end{minipage}
+	\begin{minipage}{0.45\linewidth}
+		\textbf{Technische Daten:} 
+		\begin{itemize} 
+			\item Mikrocontroller - ATMega328
+			\item Flash-Speicher - 32 kB
+			\item Stromaufnahme - Max. 50 mA
+			\item EEPROM - 1 kB
+			\item Betriebsspannung - 5 V/DC
+			\item Taktgeschwindigkeit - 16 MHz.
+			\item SRAM - 2 kB
+		\end{itemize}
+	\end{minipage}
+\end{figure}
+\pagebreak
+
  
- \subsection{...}
- 
- Name und Bild
- 
- \pagebreak
 

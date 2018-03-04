@@ -7,15 +7,15 @@ Die benötigten, reaktiven Fähigkeiten ”Hindernis umfahren”, (bzw. ”Hinde
 
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.6\textwidth]{images/Bild-HUR.jpg}
-	\caption{ \ Regelkreis "Hindernis umfahren" (Quelle:Eigene Darstellung)}
+	\caption{ \ Regelkreis "Hindernis umfahren" \newline (Quelle: Eigene Darstellung)}
 	\label{bild_HUR} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
 
-In der Abbildung sind zwei prinzipielle Teilschritte abgebildet und durch zwei Farben gekennzeichnet. Zuerst soll sich der Glied in Bezug auf das Hindernis entscheiden, siehe Teilschritt ”Fallauswahl” - Bild \ref{baum2} , anschließend entlang des Hindernisses fahren. Diese beiden Teilschritte werden noch weiter unterteilt. Der Schritt Drehen wird je nach vorgegebener Richtung in ”Drehen rechts” und ”Drehen links” aufgeteilt. Dieser Teilschritt wird als vorgegebene Konstante realisiert und da als Winkel (0 Grad, positiv oder negativ) definiert. ”Hindernis entlang fahren” wird in die Teilschritte "Hindernis rechts entlang Fahren" und "Hindernis links entlang Fahren". Dieser Teilschritt wird als vorgegebene Konstante realisiert
+Auf der Abbildung \ref{bild_HUR} sind zwei prinzipielle Teilschritte abgebildet und durch zwei Farben gekennzeichnet. Zuerst soll sich das Glied in Bezug auf das Hindernis entscheiden, siehe Teilschritt ”Fallauswahl” - Bild \ref{baum2} , anschließend entlang des Hindernisses fahren. Diese beiden Teilschritte werden noch weiter unterteilt. Der Schritt Drehen wird je nach vorgegebener Richtung in ”Drehen rechts” und ”Drehen links” aufgeteilt. Dieser Teilschritt wird als vorgegebene Konstante realisiert und da als Winkel (0 Grad, positiv oder negativ) definiert. ”Hindernis entlang fahren” wird in die Teilschritte "Hindernis rechts entlang Fahren" und  "Hindernis links entlang fahren". Dieser Teilschritt wird als vorgegebene Konstante realisiert
 
-\subsection{Ampelsysten}
+\subsection{Ampelsystem}
 
-Es wurde drei Zone (grün, gelb, rot) von mir definiert, die sich wie "Ampelsysten"  (Abbildung \ref{zone}) verhalten. Im grünen Bereich fährt den Roboter mit voller Geschwindigkeit \textcolor{green}{\textit{skal\_zone=1}}. Bei Erkennung des Hindernis in gelber Zone bremst dem Roboter langsam ab \textcolor{green}{\textit{skal\_zone=0.4}} und fängt manövrieren \textcolor{green}{\textit{drehwinkel=0 Grad, positiv oder negativ}}. Die Geschwindigkeit  des Roboters in roter Zone geht auf 0 \textcolor{green}{\textit{skal\_zone=0}}. Den Roboter im Stillstand sucht als weiterer Schritt einen freien Weg zum Ziel über Teilprogramm "Fallauswahl". In der Abbildung \ref{baum2} ist zu sehen.
+Es wurde drei Zonen (grün, gelb, rot) von mir definiert, die sich wie "Ampelsystem"  (Abbildung \ref{zone}) verhalten. Im grünen Bereich fährt den Roboter mit voller Geschwindigkeit \textcolor{green}{\textit{skal\_zone=1}}. Bei Erkennung des Hindernis in gelber Zone bremst dem Roboter langsam ab \textcolor{green}{\textit{skal\_zone=0.4}} und fängt manövrieren \textcolor{green}{\textit{drehwinkel=0 Grad, positiv oder negativ}}. Die Geschwindigkeit  des Roboters in roter Zone geht auf 0 \textcolor{green}{\textit{skal\_zone=0}}. Den Roboter im Stillstand sucht als weiterer Schritt einen freien Weg zum Ziel über Teilprogramm "Fallauswahl". In der Abbildung \ref{baum2} ist zu sehen.
 
 Aus der Fähigkeiten des US-Sensors wurde folgende Entfernung in einzelner Zonen definiert:
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
@@ -25,7 +25,7 @@ Aus der Fähigkeiten des US-Sensors wurde folgende Entfernung in einzelner Zonen
 
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.85\textwidth]{images/H-UMF.jpg}
-	\caption{ "Ampelsysten" zur Steuerung der Geschwindigkeit (Quelle:Eigene Darstellung)}
+	\caption{ "Ampelsystem" zur Steuerung der Geschwindigkeit \newline (Quelle: Eigene Darstellung)}
 	\label{zone} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
 
@@ -35,7 +35,7 @@ Es wurde unter sechs Fälle entschieden. Die alle Fälle sind auf Abbildung \ref
 
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.7\textwidth]{images/faelle.jpg}
-	\caption{ Entscheidungsmöglichkeiten (Quelle:Eigene Darstellung)}
+	\caption{ Entscheidungsmöglichkeiten \newline (Quelle: Eigene Darstellung)}
 	\label{faelle} % über das label kann man aus dem Text auf das Bild verweisen
 \end{figure}
 
@@ -49,7 +49,7 @@ Es wurde unter sechs Fälle entschieden. Die alle Fälle sind auf Abbildung \ref
 	\label{baum1} 
 \end{figure}
 
-Im Strukturgramm sieht man schön, wie der Roboter sich vor einem Hindernis verhalten soll. Um eine Prüfung des Hinderniserkennung zu starten muss man Zielkoordinaten eingeben. Danach fängt den Roboter scannen und die Ergebnisse zu bewerten. Für die Bewertung wurde hier wieder eine vereinfachte grafische Darstellung - Bild \ref{baum2} erstellt.
+Im Strukturgramm sieht man schön, wie der Roboter sich vor einem Hindernis verhalten soll. Um eine Prüfung des Hinderniserkennung zu starten, muss man Zielkoordinaten eingeben. Danach fängt den Roboter scannen und die Ergebnisse zu bewerten. Für die Bewertung wurde hier wieder eine vereinfachte grafische Darstellung - Bild \ref{baum2} erstellt.
 
 In nachfolgender Abbildung \ref{baum2} wird das Teilprogramm so lange aufgefordert ein Hindernis umzufahren, bis er nicht mehr stört.
 
