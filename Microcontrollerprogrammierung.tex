@@ -7,7 +7,7 @@ Die Software des verwendeten Microcontrollers (Nucleo-F746ZG) ist in C++ geschri
 
 Hier sollen nur einige Besonderheiten in der Umsetzung der Software Erwähnung finden. Der Quellcode steht auf Github zur Verfügung und lässt sich dort unter dem Benutzer \textit{flyingmoro} und Projektnamen \textit{SegwayControllerCode} finden. Der verwendete Code liegt dort im Ordner \textit{segway}.
 
-Es wurde darauf geachtet, alle Berechnungen möglichst effizient zu implementieren. Der Prozessor besitzt ein Fließkommarechenwerk, mit dem Datentyp float zu rechnen ist sehr effizient. Der Typ double sollte vermieden werden. Die gesamte Ausführungszeit eines Berechnungsdurchlaufes liegt derzeit bei ca. 0,2ms ohne MPU6050-Abfrage und bei ca. 0,6ms mit MPU-Abfrage und wird mit einer Frequenz von 1kHz wiederholt. Der Prozessor bietet somit noch einiges an Ressourcen, um weitere Features zu implementieren. Die MPU-Abfrage bietet ein großes Potential für die Freimachung zusätzlicher Prozessorzeit. Eine Möglichkeit wäre hier, den DMA-Controller des Mikrokontrollers zu verwenden. Dies muss mit Hilfe der Hardware-Abstraktionsschicht von ST oder per Setzen der Controllerregister konfiguriert werden. Ein mögliches Vorgehen ist dabei, den Interruptpin des Sensors zu verwenden. Liegen neue Messdaten vor, wird dieser Pin auf High gesetzt. Dann muss über I2C ein Kommando an den Sensor zur Übertragung der Messdaten erfolgen. Während die Antwort nun langsam über den I2C-Bus kommt, kann der Prozessor andere berechnungen druchführen. Die eingehenden Messdaten werden nun asynchron und ohne Prozessorbelastung automatisch mit Hilfe des DMA-Controllers in einen vordefinierten Speicherereich geschrieben und müssen nur noch aus dem Speicher ausgelesen werden.
+Es wurde darauf geachtet, alle Berechnungen möglichst effizient zu implementieren. Der Prozessor besitzt ein Fließkommarechenwerk, mit dem Datentyp float zu rechnen ist sehr effizient. Der Typ double sollte vermieden werden. Die gesamte Ausführungszeit eines Berechnungsdurchlaufes liegt derzeit bei ca. 0,2ms ohne MPU6050-Abfrage und bei ca. 0,6ms mit MPU-Abfrage und wird mit einer Frequenz von 1kHz wiederholt. Der Prozessor bietet somit noch einiges an Ressourcen, um weitere Features zu implementieren. Die MPU-Abfrage bietet ein großes Potential für die Freimachung zusätzlicher Prozessorzeit. Eine Möglichkeit wäre hier, den DMA-Controller des Mikrokontrollers zu verwenden. Dies muss mit Hilfe der Hardware-Abstraktionsschicht von ST oder per Setzen der Controllerregister konfiguriert werden. Ein mögliches Vorgehen ist dabei, den Interruptpin des Sensors zu verwenden. Liegen neue Messdaten vor, wird dieser Pin auf High gesetzt. Dann muss über I2C ein Kommando an den Sensor zur Übertragung der Messdaten erfolgen. Während die Antwort nun langsam über den I2C-Bus kommt, kann der Prozessor andere Berechnungen durchführen. Die eingehenden Messdaten werden nun asynchron und ohne Prozessorbelastung automatisch mit Hilfe des DMA-Controllers in einen vordefinierten Speicherereich geschrieben und müssen nur noch aus dem Speicher ausgelesen werden.
 
 
 
@@ -26,7 +26,7 @@ Die main.cpp dient in erster Linie der groben Ablaufsteuerung und der Kommunikat
 In den \textbf{controllers.h} und \textbf{controllers.cpp} Dateien werden die Regler berechnet und die dort verwendeten structs definiert.
 
 \par\bigskip
-In \textbf{encoderHandling} wird zum einen das Einbinden des Hardwarecounters realisiert. Des Weiteren werden wird dort auch die Positionsberechnung des Roboters durchgeführt. Benötigte Konstanten wie z.B. Raddurchmesser und Encoderauflösung sind in der .h-Datei zu finden.
+In \textbf{encoderHandling} wird zum einen das Einbinden des Hardwarecounters realisiert. Des Weiteren werden dort auch die Positionsberechnung des Roboters durchgeführt. Benötigte Konstanten wie z.B. Raddurchmesser und Encoderauflösung sind in der .h-Datei zu finden.
 
 \par\bigskip
 Die \textbf{Kalman.h}-Datei ist eine Klasse, die die Berechnung eines Kalman-Filters implementiert und wurde aus einer Quelle aus dem Internet übernommen. Der Filter war geplant zur Nutzung mit dem verbauten Beschleunigungssensor.
@@ -35,7 +35,7 @@ Die \textbf{Kalman.h}-Datei ist eine Klasse, die die Berechnung eines Kalman-Fil
 Die beiden \textbf{microRay}-Dateien werden automatisch von microRay generiert und sollten nur über diese Software und nicht direkt verändert werden.
 
 \par\bigskip
-Die \textbf{MPU6050}-Dateien sind fertige Libraries, die nur auf die speziellen Anforderungen des verwendeten Controllers angepasst wurden. Sie dienen der Abfrage der Roh-Sensordaten Beschleunigung und Winkelgeschwindigkeit. Der Sensor wird über eine I2C-Schnittstelle abgefragt. Um die
+Die \textbf{MPU6050}-Dateien sind fertige Libraries, die nur auf die speziellen Anforderungen des verwendeten Controllers angepasst wurden. Sie dienen der Abfrage der Roh-Sensordaten Beschleunigung und Winkelgeschwindigkeit. Der Sensor wird über eine I2C-Schnittstelle abgefragt.
 
 \par\bigskip
 In \textbf{mpuHandler} wird die Sensorabfrage des MPU6050 durchgeführt und die erhaltenen Rohdaten weiterverarbeitet zu dem für die Regelung benötigten Kippwinkel. Das Signal wird dort auch gefiltert, letzter Stand war, dass ein komplementärer Filter verwendet wird.

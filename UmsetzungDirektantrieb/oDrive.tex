@@ -27,7 +27,7 @@ pos_gain = 50.0f; // or 100.0f
 vel_gain = 1.0/10000.0f;
 \end{lstlisting}
 
-Da der hier verwendete Motor über deutlich mehr Moment als nötig verfügt, wurde in der Firmware eine Begrenzung für den zu stellenden Strom gewählt werden, die mit 5A ausreichend Spielraum lässt.
+Da der hier verwendete Motor über deutlich mehr Moment als nötig verfügt, wurde in der Firmware eine Begrenzung für den zu stellenden Strom gewählt, die mit 5A ausreichend Spielraum lässt.
 \begin{lstlisting}[language=C++]
 current_control.current_lim = 5.0f;
 current_control.max_allowed_current = 5.0f;
