@@ -1,5 +1,5 @@
 % !TEX root = SegwayDoku.tex
-\renewcommand{\autoren}{Timo Veit, Aleksandar Stoiljkovic}
+\renewcommand{\autoren}{Timo Veit}
 \newpage
 \section{Reglerumsetzung im Roboter}
 Bei der Implementierung des Kippreglers fiel auf, dass der Kippwinkel $\beta$ zu sehr rauscht. Dies führte zu großen Schwankungen am Ausgang des Reglers, da der D-Anteil das Rauschen deutlich verstärkte. In der Folge wurde zur Glättung ein FIR Filter mit zirkularem Buffer einprogrammiert. Genauer gesagt wird über die letzen 30 Werte gemittelt.
