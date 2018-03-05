@@ -76,7 +76,7 @@ Der Roboter soll vorgegeben Koordinaten anfahren können und  diese auch halten.
 	\item Vektorregelung
 \end{itemize}
 
-Der Zielvektor in Bezug auf den Roboter wird über Koordinatentransformation ermittelt. Mit dem atan2(y,x) wird dann die Winkeldifferenz berechnet. Die translatorische Geschwindigkeit wird über den Abstand skaliert.
+Der Zielvektor in Bezug auf den Roboter wird über Koordinatentransformation ermittelt. Mit dem atan2(y,x) wird dann die Winkeldifferenz berechnet. Die translatorische Geschwindigkeit wird über den Abstand skaliert und mit max $|0,5| \dfrac{m}{s}$ beschränkt. Die Winkelgeschwindigkeit ist auf $\pm6 \dfrac{rad}{s}$ beschränkt.
 \begin{itemize}
 	\item $k_{PGamma} = 4$
 	\item $k_{PDistanz} = 0,5$
