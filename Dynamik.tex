@@ -62,9 +62,10 @@ Die Koeffizienten lauten:
 Da der Kippregler keinen Offset des Winkels regeln kann wird auch zum Stehen ein Geschwindigkeitsregler benötigt. Des weiteren wird durch ihn auch die Geradeausfahrt ermöglicht. Der Sollwert der Geschwindigkeit soll schnell und möglichst genau erreicht werden.
 Verwendet wurde ein PI - Regler. Ausgelegt wurde hier mittels der Einstellregeln von Ziegler-Nichols nach dem Stabilitätsrand.
 \begin{itemize}
-	\item $ T_{V}=0,4$
+	\item $ T_{N}=0,4$
 	\item $ k_{PI}=4,50$
 \end{itemize}
+Die Simulation wies starkes Schwingen auf, daraufhin wurde der Anteil des Integrators gesenkt, bzw. $ T_{N}=2,66$ erhöht.
 \subsubsection{Rotationsgeschwindigkeitsregler}
 Um auch das Fahren von Kurven zu ermöglichen, wird ein Rotationsgeschwindigkeitsregler, ein einfacher P-Regler verwendet. Die Verstärkung $k_{P}=1$ muss in einem Experiment getestet werden und kann gegebenenfalls erhöht werden.
 \subsubsection{Positionsregler}
