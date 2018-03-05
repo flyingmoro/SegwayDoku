@@ -1,7 +1,7 @@
 % !TEX root = SegwayDoku.tex
 \newpage
 \renewcommand{\autoren}{Valentyn Chepil}
-\section{Die Hindernis umfahren}
+\section{Die Hindernisumfahrung}
 
 Die benötigten, reaktiven Fähigkeiten ”Hindernis umfahren”, (bzw. ”Hindernis rechts umfahren” und ”Hindernis links umfahren”) können alternativ mithilfe der Regelungstechnik und zweier grundlegender Teilschritte realisiert werden. Der prinzipielle Ablauf der reaktiven Fähigkeit ist in Abbildung \ref{bild_HUR} dargestellt. 
 
@@ -15,9 +15,9 @@ Auf der Abbildung \ref{bild_HUR} sind zwei prinzipielle Teilschritte abgebildet 
 
 \subsection{Ampelsystem}
 
-Es wurde drei Zonen (grün, gelb, rot) von mir definiert, die sich wie "Ampelsystem"  (Abbildung \ref{zone}) verhalten. Im grünen Bereich fährt den Roboter mit voller Geschwindigkeit \textcolor{green}{\textit{skal\_zone=1}}. Bei Erkennung des Hindernis in gelber Zone bremst dem Roboter langsam ab \textcolor{green}{\textit{skal\_zone=0.4}} und fängt manövrieren \textcolor{green}{\textit{drehwinkel=0 Grad, positiv oder negativ}}. Die Geschwindigkeit  des Roboters in roter Zone geht auf 0 \textcolor{green}{\textit{skal\_zone=0}}. Den Roboter im Stillstand sucht als weiterer Schritt einen freien Weg zum Ziel über Teilprogramm "Fallauswahl". In der Abbildung \ref{baum2} ist zu sehen.
+Es wurden drei Zonen (grün, gelb, rot)  definiert, die sich wie ein "Ampelsystem"  (Abbildung \ref{zone}) verhalten. Im grünen Bereich fährt den Roboter mit voller Geschwindigkeit \textcolor{green}{\textit{skal\_zone=1}}. Befindet sich das Hindernis in der gelber Zone, so bremst der Roboter langsam ab \textcolor{green}{\textit{skal\_zone=0.4}}. Er beginnt zu manövrieren \textcolor{green}{\textit{drehwinkel=0 Grad, positiv oder negativ}}. Ist das Hindernis in der roten Zone des Roboters, so geht die Geschwindigkeit auf 0 \textcolor{green}{\textit{skal\_zone=0}}. Der Roboter befindet sich somit im Stillstand und sucht als weiterer Schritt einen freien Weg zum Ziel über das Teilprogramm "Fallauswahl". In der Abbildung \ref{baum2} ist zu sehen.
 
-Aus der Fähigkeiten des US-Sensors wurde folgende Entfernung in einzelner Zonen definiert:
+Aus den Fähigkeiten des US-Sensors wurde folgende Entfernung in einzelner Zonen definiert:
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.60\textwidth]{images/entf.jpg}
 	\label{entf} % über das label kann man aus dem Text auf das Bild verweisen
@@ -31,7 +31,7 @@ Aus der Fähigkeiten des US-Sensors wurde folgende Entfernung in einzelner Zonen
 
 \subsection{Fallauswahl}
 
-Es wurde unter sechs Fälle entschieden. Die alle Fälle sind auf Abbildung \ref{faelle} zu betrachten.
+Sechs Fälle wurden in Betracht gezogen und sind der Abbildung \ref{faelle} zu entnehmen.
 
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.7\textwidth]{images/faelle.jpg}
@@ -49,9 +49,9 @@ In diesem Fall wird in Abhängigkeit von der aktuellen Orientierung des Hinderni
 	\label{baum1} 
 \end{figure}
 
-Im Strukturgramm sieht man schön, wie der Roboter sich vor einem Hindernis verhalten soll. Um eine Prüfung des Hinderniserkennung zu starten, muss man Zielkoordinaten eingeben. Danach fängt den Roboter scannen und die Ergebnisse zu bewerten. Für die Bewertung wurde hier wieder eine vereinfachte grafische Darstellung - Bild \ref{baum2} erstellt.
+Im Strukturgramm sieht man schön, wie der Roboter sich vor einem Hindernis verhalten soll. Um eine Prüfung des Hinderniserkennung zu starten, muss man Zielkoordinaten eingeben. Danach fängt der Roboter das scannen der Umgebung an und die Ergebnisse zu bewerten. Für die Bewertung wurde hier wieder eine vereinfachte grafische Darstellung - Bild \ref{baum2} erstellt.
 
-In nachfolgender Abbildung \ref{baum2} wird das Teilprogramm so lange aufgefordert ein Hindernis umzufahren, bis er nicht mehr stört.
+In nachfolgender Abbildung \ref{baum2} wird das Teilprogramm so lange aufgefordert ein Hindernis umzufahren, bis es nicht mehr stört.
 
 \begin{figure}[!h]  % [h] bedeutet, dass das Bild genau an dieser Stelle im Text erscheint
 	\centering\includegraphics[width=0.99\textwidth]{images/Entsch-baum2.jpg}
