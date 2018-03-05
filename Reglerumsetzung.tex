@@ -2,8 +2,27 @@
 \renewcommand{\autoren}{Timo Veit, Aleksandar Stoiljkovic}
 \newpage
 \section{Reglerumsetzung im Roboter}
-\subsection{Rauschen der zu regelnden Größen}
 Bei der Implementierung des Kippreglers fiel auf, dass der Kippwinkel $\beta$ zu sehr rauscht. Dies führte zu großen Schwankungen am Ausgang des Reglers, da der D-Anteil das Rauschen deutlich verstärkte. In der Folge wurde zur Glättung ein FIR Filter mit zirkularem Buffer einprogrammiert. Genauer gesagt wird über die letzen 30 Werte gemittelt.
 In der Folge konnten auch die Werte aus der Simulation übernommen werden.
+
+Auch bei den Geschwindigkeitsreglern wurde jeweils ein FIR Filter eingebaut um die Sprünge auf Grund der Berechnung aus den Encodern zu minimieren.
+
+Der $k_{PI}$ Wert des Geschwindikeitsreglers wurde verdoppelt. Eine genaue Anpassung ist sehr vom Reibwert zwischen Reifen und Boden abhängig. Bei guter Haftung können höhere Sprünge bzw ein höherer $k_{PI}$ Wert verwendet werden.
+
+Der $k_{P}$ Wert von $\dot \gamma$ wurde bei 1 belassen.
+
+In der Positionsregelung wurden die Drehrichtungen in den kritischen Bereichen (bei Vorwärtsfahrt: $\pm180$;bei Vorwärts-/Rückwärtsfahrt: $\pm90$) geloggt, damit die einmal gewählt Richtung beibehalten wird. Wenn der Winkel einen bestimmten Wert unterschreitet, wird die Drehrichtung wieder freigegeben.
+
+Die verschieden Modi sind über mr_controlMode auswählbar.
+
+\begin{itemize}
+	\item Mode 0: keine Regelung
+	\item Mode 1: Kippregler
+	\item Mode 2: Mode 1 und Geschwindigkeitsregler
+	\item Mode 3: Mode 1&2 und Drehregler
+	\item Mode 4: Mode 1&2&3 und Positionsregler Vorwärtsfahrt
+	\item Mode 5: Mode 1&2&3 und Positionsregler Vorwärts-/Rückwärtsfahrt
+	\item Mode 6: Mode 1&2&3 und Positionsregler Vektorregelung
+\end{itemize}
 
 \newpage
