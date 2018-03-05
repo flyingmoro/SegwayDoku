@@ -1,0 +1,63 @@
+% !TEX root = Beispielhauptdokument.tex
+\renewcommand{\autoren}{Aleksandar Stoiljkovic}
+
+\subsection{Kostenunterschied}
+Problemstellung:
+\par\bigskip
+Für die Auswahl eines geeigneten Antriebs kamen sowohl der BLDC, so wie auch der Schrittmotor in Frage. Auf der Suche nach einem Motor der unseren Anforderungen entspricht ist uns aufgefallen, dass deutliche Preisunterschiede zwischen den beiden Klassen bestehen. Der BLDC hat bei den selben Kennzahlen ein deutlich höheres Preisniveau als der Schrittmotor. Dieser Preisdifferenz ist auf den Grund zu gehen.
+\subsubsection{Vor- und Nachteile der jeweiligen Motoren}
+BLDC Vorteile:
+\begin{itemize}
+	\item hohe Effizienz
+	\item bei kleinerer Baureihe höheres Drehmoment und Drehzahl
+	\item höhere Reaktionsgeschwindigkeit
+	\item schnelle Beschleunigung
+	\item sehr hohe Leistungsdichte
+	\item für kurze Dauer kann ein 5-10 Faches Reservemoment erzeugt werden
+	\item leise
+	\item keine Schwingung und somit keine Vibration
+\end{itemize}
+\
+BLDC Nachteile:
+\begin{itemize}
+	\item oft handgewickelt
+	\item braucht Feedback-Loop
+	\item benötigt Encoder
+	\item bei Schäden stoppt der Motor nicht somit sind Sicherheitsmaßnahmen notwendig 
+	\item kann bei Überstrom beschädigt werden
+	
+\end{itemize}
+\newpage
+Vorteile Schrittmotor:
+\begin{itemize}
+\item braucht kein Feedback
+\item standardisierte Konstruktion (NEMA)
+\item simple Mechanik
+\item leicht anzusteuern
+\item bei Schäden stoppt der Motor
+\item kann durch Überstrom nicht beschädigt werden
+\item hohe Haltemomente
+
+\end{itemize}
+Nachteile Schrittmotor:
+\begin{itemize}
+\item geringe Effizienz
+\item das Moment sinkt rapide bei hohen Drehzahlen
+\item benötigt Microstepps um nicht zu schwingen
+\item Motor wird sehr heiß bei Belastung
+\item geringer Output für Baugröße und Gewicht
+\item mit zunehmender Polpaarzahl wird Schrittmotor langsamer
+\newpage
+\subsubsection{Fazit}
+Der Schrittmotor ist aus folgenden Gründen günstiger als der BLDC:
+\begin{itemize}
+	\item -	Für den BLDC werden stärkere Magneten verwendet die aus sehr seltenen Rohstoffen wie z.B. Neodymium bestehen 
+	\item-	BLDC wird häufig per Hand gewunden da die Windungsstruktur komplexer ist als beim Schrittmotor
+	\item -	Schrittmotoren sind leicht zu bauen, brauchen kein Feedback dadurch entfallen auch Bauteile
+	\item -	Fast alle Schrittmotoren sind nach dem NEMA – Standard qualifiziert somit verwenden alle Hersteller die gleichen Bauteile und dies hält den Preis tief Sicherheitsmaßnahmen notwendig 
+	\item -	Der BLDC hat eine sehr hohe Leistungsdichte ist somit kompakt und bietet trotz kleinerer Größe eine höhere Leistung als der Schrittmotor
+	\item -	Im Robotik -  Bereich und Modellbau wird oft auf Schrittmotoren zurückgegriffen da sie in den meisten Fällen alle Anforderungen erfüllen und Präzise genug sind
+	\item -	Der obige Punkt trägt auch dazu bei, dass Schrittmotoren in einer höheren Stückzahl hergestellt werden und somit günstiger werden.
+	
+\end{itemize}
+\newpage
